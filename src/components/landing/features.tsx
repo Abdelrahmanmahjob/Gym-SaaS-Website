@@ -156,20 +156,16 @@ function FeatureCard({
       ========================================================== */}
 
       <div
-        className={`pointer-events-none absolute inset-0 transition-opacity duration-700 ${
-          isHovered ? "opacity-100" : "opacity-0"
-        }`}
+        className={`pointer-events-none absolute inset-0 opacity-100 transition-opacity duration-700 md:opacity-0 md:group-hover:opacity-100`}
       >
-        {isHovered && (
-          <Floating3DParticles
-            color="#6ee7b7"
-            quantity={220}
-            size={3}
-            opacity={0.22}
-            drift={0.45}
-            depth={0.65}
-          />
-        )}
+        <Floating3DParticles
+          color="#6ee7b7"
+          quantity={220}
+          size={3}
+          opacity={0.22}
+          drift={0.45}
+          depth={0.65}
+        />
       </div>
 
       {/* =========================================================
