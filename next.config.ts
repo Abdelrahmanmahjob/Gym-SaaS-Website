@@ -1,10 +1,15 @@
 import type { NextConfig } from "next";
 
-module.exports = {
-  allowedDevOrigins: ["10.2.0.2"],
-};
 const nextConfig: NextConfig = {
-  /* config options here */
+  allowedDevOrigins: ["192.168.8.59"],
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "images.unsplash.com",
+      },
+    ],
+  },
 };
 
 export default nextConfig;

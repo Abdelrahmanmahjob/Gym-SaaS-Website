@@ -171,7 +171,7 @@ export function ProductShowcase({ locale }: { locale: "ar" | "en" }) {
           className="relative"
         >
           {/* Main frame */}
-          <div className="relative overflow-hidden rounded-[1.25rem] border border-white/[0.12] bg-[#111827] p-2 shadow-[0_30px_100px_rgba(0,0,0,0.45)] sm:p-3">
+          <div className="relative min-h-[20rem] overflow-hidden rounded-[1.25rem] border border-white/[0.12] bg-[#111827] p-2 shadow-[0_30px_100px_rgba(0,0,0,0.45)] sm:p-3">
             {/* Top glow */}
             <div className="pointer-events-none absolute inset-x-0 top-0 h-40 bg-[radial-gradient(circle_at_50%_0%,rgba(52,211,153,0.20),transparent_65%)]" />
 
