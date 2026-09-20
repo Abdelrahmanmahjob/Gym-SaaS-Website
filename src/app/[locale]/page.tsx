@@ -9,6 +9,7 @@ import { WhyChooseAnan } from "@/components/landing/why-choose-anan";
 import { Pricing } from "@/components/landing/pricing";
 import FAQs from "@/components/ui/text-reveal-faqs";
 import CtaSection from "@/components/landing/ctaSection";
+import Contact from "@/components/landing/contact";
 import Footer from "@/components/landing/footer";
 
 const locales = ["ar", "en"] as const;
@@ -42,9 +43,9 @@ export default async function LandingPage({
         <Pricing locale={locale as Locale} />
         <Testimonials locale={locale as Locale} />
         <FAQs locale={locale as Locale} />
+        <Contact locale={locale as Locale} />
         <CtaSection locale={locale as Locale} />
         <Footer locale={locale as Locale} />
-        <div id="demo" className="demo-anchor" aria-hidden="true" />
       </div>
     </div>
   );

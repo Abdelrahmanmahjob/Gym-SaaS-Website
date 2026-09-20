@@ -16,7 +16,6 @@ import { Floating3DParticles } from "@/components/ui/floating-3d-particles";
 const content = {
   ar: {
     eyebrow: "منظومة التشغيل / 03",
-
     title: "كل جزء من ناديك يعمل.",
     highlight: "في منظومة واحدة.",
 

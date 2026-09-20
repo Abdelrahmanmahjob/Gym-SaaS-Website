@@ -370,7 +370,7 @@ export function ProductShowcase({ locale }: { locale: "ar" | "en" }) {
               size="lg"
               className="font-[var(--font-mono)] text-[10px] tracking-[0.06em]"
             >
-              <Link href="#demo">
+              <Link href="https://gym-saas-website.vercel.app/" target="_blank">
                 {text.cta}
                 <ArrowUpRight size={17} />
               </Link>
