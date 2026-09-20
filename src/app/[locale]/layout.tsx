@@ -1,3 +1,4 @@
+import ScrollToTop from "@/components/ui/scrollToTop";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
@@ -42,6 +43,7 @@ export default async function LocaleLayout({
   return (
     <div dir={locale === "ar" ? "rtl" : "ltr"} lang={locale}>
       {children}
+      <ScrollToTop isRtl={locale === "ar"} />
     </div>
   );
 }
