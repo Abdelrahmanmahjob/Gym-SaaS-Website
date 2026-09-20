@@ -8,14 +8,24 @@ import { RainbowButton } from "@/components/ui/rainbow-button";
 
 const copy = {
   ar: {
-    links: ["المنتج", "المزايا", "الأسعار", "الأسئلة الشائعة"],
+    links: [
+      { label: "المنتج", href: "#product" },
+      { label: "المزايا", href: "#features" },
+      { label: "الأسعار", href: "#pricing" },
+      { label: "الأسئلة الشائعة", href: "#faq" },
+    ],
     demo: "احجز عرضاً",
     language: "EN",
     open: "فتح القائمة",
     close: "إغلاق القائمة",
   },
   en: {
-    links: ["Product", "Features", "Pricing", "FAQ"],
+    links: [
+      { label: "Product", href: "#product" },
+      { label: "Features", href: "#features" },
+      { label: "Pricing", href: "#pricing" },
+      { label: "FAQ", href: "#faq" },
+    ],
     demo: "Book a demo",
     language: "AR",
     open: "Open menu",
@@ -58,14 +68,14 @@ export function Navbar({ locale }: { locale: "ar" | "en" }) {
         <div
           className={`absolute left-4 right-4 top-[84px] flex-col overflow-hidden rounded-lg border border-white/10 bg-[#101d1c]/95 shadow-2xl backdrop-blur-xl md:static md:flex md:flex-row md:items-center md:gap-8 md:overflow-visible md:border-0 md:bg-transparent md:shadow-none ${isOpen ? "flex" : "hidden"}`}
         >
-          {text.links.map((link, index) => (
+          {text.links.map((link) => (
             <a
               className="border-b border-white/10 px-5 py-4 font-[var(--font-mono)] text-[10px] tracking-[0.08em] text-white/60 transition-colors hover:text-white md:border-0 md:px-0 md:py-2"
-              href={`#section-${index === 1 ? 3 : index + 1}`}
-              key={link}
+              href={link.href}
+              key={link.href}
               onClick={() => setIsOpen(false)}
             >
-              {link}
+              {link.label}
             </a>
           ))}
           <Link

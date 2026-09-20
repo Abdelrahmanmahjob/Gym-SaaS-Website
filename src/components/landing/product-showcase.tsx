@@ -138,7 +138,7 @@ export function ProductShowcase({ locale }: { locale: "ar" | "en" }) {
 
   return (
     <section
-      id="section-1"
+      id="product"
       dir={locale === "ar" ? "rtl" : "ltr"}
       className="relative overflow-hidden border-t border-white/10 py-24 sm:py-28 lg:py-32"
       aria-labelledby="product-showcase-title"

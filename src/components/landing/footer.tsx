@@ -26,8 +26,8 @@ const content = {
       "تقارير مالية ولحظية",
     ],
     links: [
-      { label: "المنتج", href: "#section-2" },
-      { label: "المزايا", href: "#section-3" },
+      { label: "المنتج", href: "#product" },
+      { label: "المزايا", href: "#features" },
       { label: "الأسعار", href: "#pricing" },
       { label: "الأسئلة الشائعة", href: "#faq" },
     ],
@@ -55,8 +55,8 @@ const content = {
       "Real-time Financial Analytics",
     ],
     links: [
-      { label: "Product", href: "#section-2" },
-      { label: "Features", href: "#section-3" },
+      { label: "Product", href: "#product" },
+      { label: "Features", href: "#features" },
       { label: "Pricing", href: "#pricing" },
       { label: "FAQ", href: "#faq" },
     ],

@@ -129,7 +129,7 @@ export function Pricing({ locale = "en" }: { locale?: "ar" | "en" }) {
 
   return (
     <section
-      id="section-pricing"
+      id="pricing"
       dir={locale === "ar" ? "rtl" : "ltr"}
       className="relative overflow-hidden bg-[#09090b] py-24 sm:py-32"
       aria-labelledby="pricing-title"

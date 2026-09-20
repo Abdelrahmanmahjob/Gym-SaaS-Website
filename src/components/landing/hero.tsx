@@ -36,7 +36,7 @@ export function Hero({ locale }: { locale: "ar" | "en" }) {
   const text = content[locale];
 
   return (
-    <main id="#" className="relative isolate overflow-hidden bg-[#071312]">
+    <main id="hero" className="relative isolate overflow-hidden bg-[#071312]">
       <video
         className="pointer-events-none absolute inset-0 h-full w-full object-cover "
         autoPlay
