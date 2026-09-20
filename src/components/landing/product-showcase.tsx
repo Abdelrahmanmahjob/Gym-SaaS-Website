@@ -245,15 +245,15 @@ export function ProductShowcase({ locale }: { locale: "ar" | "en" }) {
           className="max-w-2xl"
         >
           {/* Eyebrow */}
-          <motion.p
+          <motion.div
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="font-[var(--font-mono)] text-[10px] tracking-[0.14em] text-emerald-300/70"
+            className="mb-4 inline-flex items-center gap-2 rounded-full border border-emerald-500/20 bg-emerald-500/10 px-3.5 py-1 font-mono text-xs font-semibold uppercase tracking-widest text-emerald-300 backdrop-blur-md"
           >
             {text.eyebrow}
-          </motion.p>
+          </motion.div>
 
           {/* Heading */}
           <motion.h2
@@ -262,7 +262,7 @@ export function ProductShowcase({ locale }: { locale: "ar" | "en" }) {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.7, delay: 0.25 }}
-            className="mt-6 max-w-3xl font-[var(--font-display)] text-4xl font-medium leading-[1.05] tracking-[-0.035em] text-white sm:text-5xl lg:text-[3.65rem]"
+            className="max-w-3xl text-4xl font-extrabold leading-[1.05] tracking-tight text-white sm:text-6xl"
           >
             {text.title}{" "}
             <span className="text-emerald-300">{text.highlight}</span>
@@ -274,7 +274,7 @@ export function ProductShowcase({ locale }: { locale: "ar" | "en" }) {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.7, delay: 0.35 }}
-            className="mt-6 max-w-xl text-base leading-7 text-white/60 sm:text-lg sm:leading-8"
+            className="mt-5 max-w-xl text-lg leading-relaxed text-zinc-400 sm:text-xl"
           >
             {text.description}
           </motion.p>

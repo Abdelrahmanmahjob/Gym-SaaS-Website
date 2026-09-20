@@ -62,7 +62,7 @@ export function CtaSection({ locale = "ar" }: { locale?: "ar" | "en" }) {
           whileInView={shouldReduceMotion ? undefined : { opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="mb-6 font-mono text-xs uppercase tracking-[0.25em] text-emerald-400/80"
+          className="mb-4 inline-flex items-center gap-2 rounded-full border border-emerald-500/20 bg-emerald-500/10 px-3.5 py-1 font-mono text-xs font-semibold uppercase tracking-widest text-emerald-300 backdrop-blur-md"
         >
           {text.eyebrow}
         </motion.p>
@@ -73,7 +73,7 @@ export function CtaSection({ locale = "ar" }: { locale?: "ar" | "en" }) {
           whileInView={shouldReduceMotion ? undefined : { opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.7, delay: 0.1 }}
-          className="text-4xl font-extrabold tracking-tight sm:text-6xl lg:text-7xl"
+          className="text-4xl font-extrabold leading-[1.05] tracking-tight sm:text-6xl"
         >
           <span className="bg-gradient-to-b from-white via-white/90 to-white/60 bg-clip-text text-transparent">
             {text.title}
@@ -86,7 +86,7 @@ export function CtaSection({ locale = "ar" }: { locale?: "ar" | "en" }) {
           whileInView={shouldReduceMotion ? undefined : { opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.7, delay: 0.2 }}
-          className="mx-auto mt-6 max-w-xl text-base text-zinc-400 sm:text-lg"
+          className="mx-auto mt-5 max-w-xl text-lg leading-relaxed text-zinc-400 sm:text-xl"
         >
           {text.description}
         </motion.p>

@@ -136,16 +136,16 @@ export function WhyChooseAnan({ locale = "en" }: { locale?: "ar" | "en" }) {
       <div className="relative mx-auto w-[min(100%-32px,1440px)]">
         <div className="grid items-start gap-12 lg:grid-cols-12 lg:gap-16">
           <div className="order-2 flex flex-col justify-center pt-4 lg:order-1 lg:col-span-5">
-            <div className="mb-12 space-y-1">
+            <div className="mb-12 space-y-4">
+              <div className="inline-flex items-center gap-2 rounded-full border border-emerald-500/20 bg-emerald-500/10 px-3.5 py-1 font-mono text-xs font-semibold uppercase tracking-widest text-emerald-300 backdrop-blur-md">
+                {text.subheading}
+              </div>
               <h2
                 id="why-choose-us-title"
-                className="font-[var(--font-display)] text-4xl font-medium tracking-[-0.035em] text-white sm:text-5xl lg:text-[3.5rem]"
+                className="text-4xl font-extrabold leading-[1.05] tracking-tight text-white sm:text-6xl"
               >
                 {text.heading}
               </h2>
-              <span className="mt-2 block font-[var(--font-mono)] text-[10px] uppercase tracking-[0.28em] text-white/40">
-                {text.subheading}
-              </span>
             </div>
 
             <div className="flex flex-col">

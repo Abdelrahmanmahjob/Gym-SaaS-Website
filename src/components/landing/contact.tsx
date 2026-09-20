@@ -120,10 +120,27 @@ export function Contact({ locale = "ar" }: { locale?: "ar" | "en" }) {
     });
   };
 
-  const handleCopy = (value: string, index: number) => {
-    void navigator.clipboard?.writeText(value);
-    setCopiedIndex(index);
-    window.setTimeout(() => setCopiedIndex(null), 2000);
+  const handleCopy = async (value: string, index: number) => {
+    try {
+      if (navigator.clipboard && window.isSecureContext) {
+        await navigator.clipboard.writeText(value);
+      } else {
+        const textarea = document.createElement("textarea");
+        textarea.value = value;
+        textarea.setAttribute("readonly", "");
+        textarea.style.position = "fixed";
+        textarea.style.opacity = "0";
+        document.body.appendChild(textarea);
+        textarea.select();
+        document.execCommand("copy");
+        textarea.remove();
+      }
+
+      setCopiedIndex(index);
+      window.setTimeout(() => setCopiedIndex(null), 2000);
+    } catch {
+      setCopiedIndex(null);
+    }
   };
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
@@ -159,7 +176,10 @@ export function Contact({ locale = "ar" }: { locale?: "ar" | "en" }) {
               {text.eyebrow}
             </span>
           </div>
-          <h2 className="text-4xl font-extrabold tracking-tight sm:text-6xl">
+          <h2
+            id="contact-title"
+            className="text-4xl font-extrabold leading-[1.05] tracking-tight sm:text-6xl"
+          >
             <span className="bg-gradient-to-b from-white via-white/90 to-white/50 bg-clip-text text-transparent">
               {text.title}
             </span>

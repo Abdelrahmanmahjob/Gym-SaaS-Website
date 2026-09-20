@@ -120,16 +120,16 @@ export default function FAQs({ locale = "en" }: { locale?: "ar" | "en" }) {
           transition={{ duration: 0.65 }}
           className="md:col-span-2"
         >
-          <p className="font-[var(--font-mono)] text-[10px] tracking-[0.16em] text-emerald-300/80">
+          <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-emerald-500/20 bg-emerald-500/10 px-3.5 py-1 font-mono text-xs font-semibold uppercase tracking-widest text-emerald-300 backdrop-blur-md">
             {text.eyebrow}
-          </p>
+          </div>
           <h2
             id="faq-title"
-            className="mt-4 font-[var(--font-display)] text-3xl font-medium leading-tight tracking-[-0.03em] text-white sm:text-5xl"
+            className="text-4xl font-extrabold leading-[1.05] tracking-tight text-white sm:text-6xl"
           >
             {text.title}
           </h2>
-          <p className="mt-5 max-w-md text-base leading-7 text-white/55 sm:text-lg">
+          <p className="mt-5 max-w-md text-lg leading-relaxed text-zinc-400 sm:text-xl">
             {text.description}
           </p>
           <p className="mt-8 hidden max-w-sm text-sm leading-7 text-white/45 md:block">

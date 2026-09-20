@@ -339,14 +339,14 @@ export function Features({ locale }: { locale: "ar" | "en" }) {
           {/* Left */}
           <div className="max-w-xl">
             {/* Eyebrow */}
-            <p className="font-[var(--font-mono)] text-[10px] tracking-[0.16em] text-emerald-300/70">
+            <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-emerald-500/20 bg-emerald-500/10 px-3.5 py-1 font-mono text-xs font-semibold uppercase tracking-widest text-emerald-300 backdrop-blur-md">
               {text.eyebrow}
-            </p>
+            </div>
 
             {/* Title */}
             <h2
               id="features-title"
-              className="mt-6 max-w-[680px] font-[var(--font-display)] text-4xl font-medium leading-[1.05] tracking-[-0.035em] text-white sm:text-5xl lg:text-[3.8rem]"
+              className="max-w-[680px] text-4xl font-extrabold leading-[1.05] tracking-tight text-white sm:text-6xl"
             >
               {text.title}{" "}
               <span className="bg-gradient-to-r from-emerald-200 via-teal-200 to-cyan-300 bg-clip-text text-transparent">
@@ -358,7 +358,7 @@ export function Features({ locale }: { locale: "ar" | "en" }) {
           {/* Right */}
           <div className="flex items-end">
             <div className="max-w-xl">
-              <p className="text-base leading-7 text-white/55 sm:text-lg sm:leading-8">
+              <p className="text-lg leading-relaxed text-zinc-400 sm:text-xl">
                 {text.description}
               </p>
 

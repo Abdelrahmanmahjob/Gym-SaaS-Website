@@ -148,17 +148,17 @@ export function Testimonials({ locale = "en" }: { locale?: "ar" | "en" }) {
               <div className="space-y-4">
                 <Badge
                   variant="outline"
-                  className="h-auto border-white/10 bg-white/3 px-3 py-1.5 text-[10px] font-medium uppercase tracking-[0.16em] text-emerald-200"
+                  className="h-auto border border-emerald-500/20 bg-emerald-500/10 px-3.5 py-1 font-mono text-xs font-semibold uppercase tracking-widest text-emerald-300 backdrop-blur-md"
                 >
                   {text.eyebrow}
                 </Badge>
                 <h2
                   id="testimonials-title"
-                  className="max-w-xl font-[var(--font-display)] text-4xl font-medium tracking-[-0.035em] text-white sm:text-5xl lg:text-[3.5rem]"
+                  className="max-w-xl text-4xl font-extrabold leading-[1.05] tracking-tight text-white sm:text-6xl"
                 >
                   {text.title}
                 </h2>
-                <p className="max-w-lg text-base leading-7 text-white/60 sm:text-lg">
+                <p className="max-w-lg text-lg leading-relaxed text-zinc-400 sm:text-xl">
                   {text.description}
                 </p>
               </div>
