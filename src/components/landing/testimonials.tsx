@@ -154,7 +154,7 @@ export function Testimonials({ locale = "en" }: { locale?: "ar" | "en" }) {
                 </Badge>
                 <h2
                   id="testimonials-title"
-                  className="max-w-xl text-4xl font-extrabold leading-[1.05] tracking-tight text-white sm:text-6xl"
+                  className="max-w-xl text-3xl font-extrabold leading-[1.05] tracking-tight text-white sm:text-5xl"
                 >
                   {text.title}
                 </h2>

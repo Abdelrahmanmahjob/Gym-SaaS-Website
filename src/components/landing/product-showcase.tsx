@@ -262,7 +262,7 @@ export function ProductShowcase({ locale }: { locale: "ar" | "en" }) {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.7, delay: 0.25 }}
-            className="max-w-3xl text-4xl font-extrabold leading-[1.05] tracking-tight text-white sm:text-6xl"
+            className="max-w-3xl text-3xl font-extrabold leading-[1.05] tracking-tight text-white sm:text-5xl"
           >
             {text.title}{" "}
             <span className="text-emerald-300">{text.highlight}</span>

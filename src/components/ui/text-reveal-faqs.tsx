@@ -125,7 +125,7 @@ export default function FAQs({ locale = "en" }: { locale?: "ar" | "en" }) {
           </div>
           <h2
             id="faq-title"
-            className="text-4xl font-extrabold leading-[1.05] tracking-tight text-white sm:text-6xl"
+            className="text-3xl font-extrabold leading-[1.05] tracking-tight text-white sm:text-5xl"
           >
             {text.title}
           </h2>

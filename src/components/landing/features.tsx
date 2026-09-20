@@ -7,7 +7,6 @@ import {
   CalendarDays,
   CreditCard,
   UsersRound,
-  ArrowUpRight,
   type LucideIcon,
 } from "lucide-react";
 
@@ -53,8 +52,6 @@ const content = {
           "حوّل بيانات النادي اليومية إلى مؤشرات وتقارير تساعد الإدارة على اتخاذ القرار.",
       },
     ],
-
-    explore: "استكشف الوحدة",
   },
 
   en: {
@@ -97,8 +94,6 @@ const content = {
           "Turn daily gym activity into meaningful metrics and reports your management team can act on.",
       },
     ],
-
-    explore: "Explore module",
   },
 } as const;
 
@@ -245,7 +240,7 @@ function FeatureCard({
         </div>
 
         {/* Content */}
-        <div className="mt-auto">
+        <div className="mt-6 flex flex-col gap-2">
           {/* Label */}
           <div className="mb-4 font-[var(--font-mono)] text-[9px] tracking-[0.16em] text-emerald-300/50">
             {item.shortTitle}
@@ -268,25 +263,6 @@ function FeatureCard({
           <p className="mt-3 max-w-[380px] text-sm leading-6 text-white/45 transition-colors duration-300 group-hover:text-white/60">
             {item.description}
           </p>
-
-          {/* Bottom interaction */}
-          <motion.div
-            animate={{
-              opacity: isHovered ? 1 : 0.45,
-              x: isHovered ? 0 : locale === "ar" ? 4 : -4,
-            }}
-            transition={{
-              duration: 0.3,
-            }}
-            className="mt-7 flex items-center gap-2 border-t border-white/[0.07] pt-4 font-[var(--font-mono)] text-[9px] tracking-[0.12em] text-white/45"
-          >
-            <span>{content[locale].explore}</span>
-
-            <ArrowUpRight
-              size={13}
-              className="transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
-            />
-          </motion.div>
         </div>
       </div>
     </motion.article>
@@ -346,7 +322,7 @@ export function Features({ locale }: { locale: "ar" | "en" }) {
             {/* Title */}
             <h2
               id="features-title"
-              className="max-w-[680px] text-4xl font-extrabold leading-[1.05] tracking-tight text-white sm:text-6xl"
+              className="max-w-[680px] text-3xl font-extrabold leading-[1.05] tracking-tight text-white sm:text-5xl"
             >
               {text.title}{" "}
               <span className="bg-gradient-to-r from-emerald-200 via-teal-200 to-cyan-300 bg-clip-text text-transparent">
