@@ -43,7 +43,6 @@ export function Hero({ locale }: { locale: "ar" | "en" }) {
         loop
         muted
         playsInline
-        poster="/media/dashboard/dashboard-laptop-screen.png"
         aria-hidden="true"
       >
         <source src="/media/hero/hero-bg.mp4" type="video/mp4" />
