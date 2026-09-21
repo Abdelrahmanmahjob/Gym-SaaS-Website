@@ -39,7 +39,7 @@
   --accent-emerald: #10b981;
   --accent-lime: #84cc16;
   --font-display: var(--font-space-grotesk), "Segoe UI", sans-serif;
-  --font-body: var(--font-geist), "Segoe UI", sans-serif;
+  --font-body: var(--font-kufam), var(--font-geist), "Segoe UI", sans-serif;
   --font-mono: var(--font-jetbrains-mono), Consolas, monospace;
   --background: oklch(1 0 0);
   --foreground: oklch(0.145 0 0);
@@ -92,6 +92,18 @@
 html {
   scroll-behavior: smooth;
   background: var(--carbon-base);
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--carbon-surface);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--accent-emerald);
+  border-radius: 4px;
 }
 
 body {
