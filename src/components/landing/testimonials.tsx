@@ -131,7 +131,7 @@ export function Testimonials({ locale = "en" }: { locale?: "ar" | "en" }) {
     >
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_28%_10%,rgba(16,185,129,0.08),transparent_28%)]" />
 
-      <div className="relative mx-auto max-w-[1440px] px-4 sm:px-6 lg:px-8">
+      <div className="relative mx-auto max-w-7xl px-6 sm:px-6 lg:px-8">
         <Carousel
           dir="ltr"
           className="mx-auto max-w-7xl"

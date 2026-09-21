@@ -112,7 +112,7 @@ export default function FAQs({ locale = "en" }: { locale?: "ar" | "en" }) {
     >
       <div className="pointer-events-none absolute inset-x-0 top-0 h-[380px] bg-[radial-gradient(ellipse_at_top,rgba(16,185,129,0.09),transparent_68%)]" />
 
-      <div className="relative mx-auto grid max-w-6xl gap-10 px-4 sm:px-6 md:grid-cols-5 md:gap-14 lg:px-8">
+      <div className="relative mx-auto grid max-w-7xl gap-10 px-4 sm:px-6 md:grid-cols-5 md:gap-14 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 18 }}
           whileInView={{ opacity: 1, y: 0 }}

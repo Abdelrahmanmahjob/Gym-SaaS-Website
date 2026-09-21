@@ -133,9 +133,9 @@ export function WhyChooseAnan({ locale = "en" }: { locale?: "ar" | "en" }) {
     >
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_70%_10%,rgba(16,185,129,0.08),transparent_35%)]" />
 
-      <div className="relative mx-auto w-[min(100%-32px,1440px)]">
+      <div className="relative mx-auto max-w-7xl px-6">
         <div className="grid items-start gap-12 lg:grid-cols-12 lg:gap-16">
-          <div className="order-2 flex flex-col justify-center pt-4 lg:order-1 lg:col-span-5">
+          <div className="order-2 min-h-[600px] flex flex-col justify-center pt-4 lg:order-1 lg:col-span-5">
             <div className="mb-12 space-y-4">
               <div className="inline-flex items-center gap-2 rounded-full border border-emerald-500/20 bg-emerald-500/10 px-3.5 py-1 font-mono text-xs font-semibold uppercase tracking-widest text-emerald-300 backdrop-blur-md">
                 {text.subheading}

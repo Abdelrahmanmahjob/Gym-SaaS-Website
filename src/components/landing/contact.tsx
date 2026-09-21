@@ -154,7 +154,7 @@ export function Contact({ locale = "ar" }: { locale?: "ar" | "en" }) {
 
   return (
     <section
-      id="demo"
+      id="contact"
       dir={isRtl ? "rtl" : "ltr"}
       className="relative overflow-hidden bg-[#09090b] py-24 text-white sm:py-32"
     >
@@ -162,7 +162,7 @@ export function Contact({ locale = "ar" }: { locale?: "ar" | "en" }) {
       <div className="pointer-events-none absolute left-1/2 top-0 h-[500px] w-full -translate-x-1/2 bg-[radial-gradient(ellipse_at_top,rgba(16,185,129,0.15),transparent_70%)] blur-2xl" />
       <div className="pointer-events-none absolute -right-32 top-1/3 size-96 rounded-full bg-emerald-500/10 blur-[140px]" />
 
-      <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div className="relative mx-auto max-w-7xl px-6 sm:px-6 lg:px-8">
         <motion.header
           initial={shouldReduceMotion ? false : { opacity: 0, y: 30 }}
           whileInView={shouldReduceMotion ? undefined : { opacity: 1, y: 0 }}

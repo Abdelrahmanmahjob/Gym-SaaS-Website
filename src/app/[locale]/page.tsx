@@ -7,7 +7,7 @@ import { LightRays } from "@/components/ui/light-rays";
 import { Testimonials } from "@/components/landing/testimonials";
 import { WhyChooseAnan } from "@/components/landing/why-choose-anan";
 import { Pricing } from "@/components/landing/pricing";
-import FAQs from "@/components/ui/text-reveal-faqs";
+import FAQs from "@/components/landing/text-reveal-faqs";
 import CtaSection from "@/components/landing/ctaSection";
 import Contact from "@/components/landing/contact";
 import Footer from "@/components/landing/footer";

@@ -38,13 +38,27 @@ export function Navbar({ locale = "ar" }: { locale?: "ar" | "en" }) {
   const text = copy[locale];
   const nextLocale = locale === "ar" ? "en" : "ar";
   const isRtl = locale === "ar";
+  const [prevScrollY, setPrevScrollY] = useState(0);
+  const [scrollY, setScrollY] = useState(0);
+
+  React.useEffect(() => {
+    const handleScroll = () => {
+      setPrevScrollY(scrollY);
+      setScrollY(window.scrollY);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [scrollY]);
 
   return (
-    <header className="fixed top-5 inset-x-0 z-50 mx-auto max-w-6xl px-4">
+    <header
+      className={`fixed  ${scrollY > prevScrollY ? "-top-25" : "top-5"} transition-all duration-300 inset-x-0 z-50 mx-auto max-w-7xl px-4`}
+    >
       {/* 🚀 Floating Pill Navigation Bar */}
       <nav
         dir={isRtl ? "rtl" : "ltr"}
-        className="relative flex items-center justify-between rounded-full border border-white/10 bg-[#071312]/80 px-6 py-3 shadow-[0_12px_40px_rgba(0,0,0,0.4)] backdrop-blur-xl transition-all duration-300 hover:border-emerald-500/30"
+        className="relative flex items-center justify-between rounded-2xl border border-white/10 bg-[var(--accent-emerald)]/10 px-6 py-3 shadow-[0_12px_40px_rgba(0,0,0,0.4)] backdrop-blur-xl transition-all duration-300 hover:border-emerald-500/30"
         aria-label={isRtl ? "التنقل الرئيسي" : "Primary navigation"}
       >
         {/* Brand Logo */}
@@ -53,7 +67,7 @@ export function Navbar({ locale = "ar" }: { locale?: "ar" | "en" }) {
           href={`/${locale}`}
           aria-label="Anan Sustainability home"
         >
-          <div className="relative flex size-9 items-center justify-center rounded-full border border-emerald-500/20 bg-emerald-500/10 p-1.5 backdrop-blur-md">
+          <div className="relative flex size-10 items-center justify-center rounded-full border border-emerald-500/20 bg-emerald-500/10 p-1.5 backdrop-blur-md">
             <Image
               src="/brand/anan-sustainability-icon.svg"
               alt="Anan Logo"
@@ -63,23 +77,23 @@ export function Navbar({ locale = "ar" }: { locale?: "ar" | "en" }) {
               className="h-auto w-5"
             />
           </div>
-          <span className="font-[var(--font-display)] text-xs font-bold tracking-[0.16em] text-white">
+          <span className="font-[var(--font-display)] text-x font-bold tracking-[0.16em] text-white">
             ANAN{" "}
-            <span className="block pt-0.5 font-[var(--font-mono)] text-[7px] tracking-[0.2em] text-emerald-400">
+            <span className="block pt-0.3 font-[var(--font-mono)] text-[8px] tracking-[0.2em] text-emerald-400">
               SUSTAINABILITY
             </span>
           </span>
         </Link>
 
         {/* Desktop Links with Kinetic Hover Pill */}
-        <div className="hidden items-center gap-1 md:flex">
+        <div className="hidden items-center gap-4 md:flex">
           {text.links.map((link, idx) => (
             <a
               key={link.href}
               href={link.href}
               onMouseEnter={() => setHoveredIndex(idx)}
               onMouseLeave={() => setHoveredIndex(null)}
-              className="relative px-4 py-2 font-[var(--font-mono)] text-xs font-medium tracking-wider text-zinc-300 transition-colors duration-200 hover:text-white"
+              className="relative px-4 py-2 font-[var(--font-mono)] text-x font-medium tracking-wider text-zinc-300 transition-colors duration-200 hover:text-white"
             >
               {hoveredIndex === idx && (
                 <motion.span

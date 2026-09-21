@@ -145,7 +145,7 @@ export function ProductShowcase({ locale }: { locale: "ar" | "en" }) {
     >
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_65%_10%,rgba(16,185,129,0.08),transparent_40%)]" />
 
-      <div className="relative mx-auto grid w-[min(100%-32px,1440px)] items-center gap-12 lg:grid-cols-[0.98fr_1.02fr] lg:gap-16">
+      <div className="relative mx-auto grid max-w-7xl px-6 items-center gap-12 lg:grid-cols-[0.98fr_1.02fr] lg:gap-16">
         {/* =========================================================
             DASHBOARD PREVIEW
         ========================================================== */}
@@ -171,7 +171,7 @@ export function ProductShowcase({ locale }: { locale: "ar" | "en" }) {
           className="relative"
         >
           {/* Main frame */}
-          <div className="relative md:min-h-[20rem] overflow-hidden rounded-[1.25rem] border border-white/[0.12] bg-[#111827] p-2 shadow-[0_30px_100px_rgba(0,0,0,0.45)] sm:p-3">
+          <div className="relative md:min-h-[15rem] overflow-hidden rounded-[1.25rem] border border-white/[0.12] bg-[#111827] p-2 shadow-[0_30px_100px_rgba(0,0,0,0.45)] sm:p-3">
             {/* Top glow */}
             <div className="pointer-events-none absolute inset-x-0 top-0 h-40 bg-[radial-gradient(circle_at_50%_0%,rgba(52,211,153,0.20),transparent_65%)]" />
 
@@ -183,7 +183,7 @@ export function ProductShowcase({ locale }: { locale: "ar" | "en" }) {
                 loop
                 playsInline
                 preload="metadata"
-                className="block  w-full rounded-[0.9rem] object-cover object-top"
+                className="block h-full w-full rounded-[0.9rem] object-cover object-top"
               >
                 <source
                   src="/media/dashboard/dashboard-preview.mp4"

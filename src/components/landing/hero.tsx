@@ -10,7 +10,7 @@ import Text3DFlip from "@/components/ui/text-3d-flip";
 const content = {
   ar: {
     eyebrow: "عمليات النادي الرياضي / 01",
-    title: "كل ما يحتاجه ناديك، في نظام واحد ذكي.",
+    title: "نظام واحد، تحكم كامل.",
     description:
       "أدر العضويات، المدفوعات، الحصص، نقاط البيع والمدربين من لوحة تشغيل واحدة صُممت للنمو.",
     primary: "ابدأ تجربة 7 يوماً",
@@ -21,7 +21,7 @@ const content = {
   },
   en: {
     eyebrow: "GYM OPERATIONS / 01",
-    title: "Everything your gym needs, in one intelligent system.",
+    title: "One System , Total Control.",
     description:
       "Manage memberships, payments, classes, retail, and trainers from one operating layer built for growth.",
     primary: "Start 7-day trial",
@@ -36,9 +36,12 @@ export function Hero({ locale }: { locale: "ar" | "en" }) {
   const text = content[locale];
 
   return (
-    <main id="hero" className="relative isolate overflow-hidden bg-[#071312]">
+    <main
+      id="hero"
+      className="relative min-h-screen isolate overflow-hidden bg-[#071312] pt-20"
+    >
       <video
-        className="pointer-events-none absolute inset-0 h-full w-full object-cover "
+        className="pointer-events-none absolute inset-0 h-full w-full object-cover"
         autoPlay
         loop
         muted
@@ -47,10 +50,10 @@ export function Hero({ locale }: { locale: "ar" | "en" }) {
       >
         <source src="/media/hero/hero-bg.mp4" type="video/mp4" />
       </video>
-      <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(90deg,rgba(4,15,14,0.94)_0%,rgba(4,15,14,0.68)_10%,rgba(4,15,14,0.36)_100%)]" />
-      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_75%_30%,rgba(16,185,129,0.18),transparent_33%)]" />
+      {/* <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(90deg,rgba(4,15,14,0.94)_0%,rgba(4,15,14,0.68)_10%,rgba(4,15,14,0.36)_100%)]" />
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_75%_30%,rgba(16,185,129,0.18),transparent_33%)]" /> */}
 
-      <div className="relative mx-auto grid min-h-[calc(100svh-76px)] w-[min(100%-32px,1440px)] items-center gap-14 py-16 md:py-24 lg:grid-cols-[0.82fr_1.18fr] lg:gap-20">
+      <div className="relative mx-auto grid min-h-[100vh] max-w-7xl px-6 items-center gap-14 py-16 md:py-24 lg:grid-cols-[0.82fr_1.18fr] lg:gap-25">
         <motion.section
           className="max-w-[620px]"
           initial={{ opacity: 0, y: 24 }}
@@ -63,7 +66,7 @@ export function Hero({ locale }: { locale: "ar" | "en" }) {
           </div>
           <Text3DFlip
             as="h1"
-            className="max-w-[700px] text-4xl font-semibold leading-[1.08] tracking-[-0.04em] text-white sm:text-5xl lg:text-[clamp(3rem,5.2vw,4.5rem)]"
+            className="max-w-[800px] text-3xl italic font-semibold leading-[1.08] tracking-[-0.04em] text-white sm:text-4xl md:text-5xl lg:text-[72px]"
             textClassName="text-white"
             flipTextClassName="text-emerald-300"
             staggerDuration={0.03}
@@ -98,32 +101,22 @@ export function Hero({ locale }: { locale: "ar" | "en" }) {
         </motion.section>
 
         <motion.section
-          className="relative mx-auto w-full max-w-[780px]"
+          className="relative w-full max-w-[600px] mx-auto "
           aria-label={text.preview}
           initial={{ opacity: 0, scale: 0.96, y: 28 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.12 }}
         >
-          <div className="absolute -inset-5 rounded-[2rem] bg-emerald-300/10 blur-3xl" />
-          <div className="relative overflow-hidden rounded-xl border border-white/20 bg-[#101d1c]/60 p-2 shadow-[0_30px_100px_rgba(0,0,0,0.55)] backdrop-blur-sm sm:p-3">
+          <div className="relative overflow-hidden transition-all duration-300 hover:scale-[1.01]">
             <Image
-              src="/media/dashboard/dashboard-laptop-screen.png"
+              src="/media/dashboard/dashboard-image3.png"
               alt={text.preview}
               width={1899}
               height={1080}
-              className="block w-full rounded-lg"
+              className="block w-full"
               priority
             />
           </div>
-          {/* <div className="absolute -bottom-8 end-3 w-[29%] min-w-[120px] max-w-[210px] rounded-[1.4rem] border-[5px] border-[#101d1c] bg-[#101d1c] shadow-2xl sm:-bottom-12 sm:end-8">
-            <Image
-              src="/media/dashboard/dashboard-mobile-screen.png"
-              alt=""
-              width={1105}
-              height={2048}
-              className="block rounded-[1rem]"
-            />
-          </div> */}
         </motion.section>
       </div>
     </main>

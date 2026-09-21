@@ -276,7 +276,7 @@ export function Features({ locale }: { locale: "ar" | "en" }) {
     <section
       id="features"
       dir={locale === "ar" ? "rtl" : "ltr"}
-      className="relative overflow-hidden border-t border-white/[0.08] py-24 sm:py-28 lg:py-32"
+      className="relative overflow-hidden max-w-7xl px-6 mx-auto border-t border-white/[0.08] py-24 sm:py-28 lg:py-32"
       aria-labelledby="features-title"
     >
       {/* =========================================================

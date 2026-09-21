@@ -67,7 +67,7 @@ export function Footer({ locale = "ar" }: { locale?: "ar" | "en" }) {
   return (
     <footer
       dir={isRtl ? "rtl" : "ltr"}
-      className="relative z-10 mx-auto max-w-[1440px] px-4 py-12 font-['Geist'] text-[#e5e1e4]"
+      className="relative z-10 mx-auto max-w-7xl px-6 py-12 font-['Geist'] text-[#e5e1e4]"
     >
       {/* 🔮 Obsidian Biosphere Outer Deck */}
       <div className="relative overflow-hidden rounded-3xl border border-[#27272a] bg-[#111113] p-8 sm:p-12 md:p-16 shadow-[0_20px_80px_rgba(0,0,0,0.8)] backdrop-blur-2xl">
@@ -97,13 +97,13 @@ export function Footer({ locale = "ar" }: { locale?: "ar" | "en" }) {
                 <span className="block font-['Space_Grotesk'] text-lg font-semibold tracking-wider text-[#fafafa]">
                   ANAN <span className="text-[#4edea3]">SUSTAINABILITY</span>
                 </span>
-                <span className="block font-['JetBrains_Mono'] text-[9px] font-medium tracking-[0.2em] text-[#86948a] uppercase">
+                <span className="block font-['Kufam'] text-[9px] font-medium tracking-[0.2em] text-[#86948a] uppercase">
                   GYM OPERATIONS SAAS
                 </span>
               </div>
             </Link>
 
-            <p className="max-w-sm font-['Geist'] text-sm leading-relaxed text-[#a1a1aa]">
+            <p className="max-w-sm font-['Kufam'] text-sm leading-relaxed text-[#a1a1aa]">
               {text.description}
             </p>
 
@@ -113,7 +113,7 @@ export function Footer({ locale = "ar" }: { locale?: "ar" | "en" }) {
                 <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[#4edea3] opacity-75" />
                 <span className="relative inline-flex size-2 rounded-full bg-[#10b981]" />
               </span>
-              <span className="font-['JetBrains_Mono'] text-[11px] font-medium tracking-wide text-[#4edea3]">
+              <span className="font-['Kufam'] text-[11px] font-medium tracking-wide text-[#4edea3]">
                 {text.status}
               </span>
             </div>
@@ -140,7 +140,7 @@ export function Footer({ locale = "ar" }: { locale?: "ar" | "en" }) {
           <div className="grid grid-cols-2 gap-8 sm:grid-cols-2 lg:col-span-7">
             {/* Explore Column */}
             <div>
-              <h3 className="font-['JetBrains_Mono'] text-xs font-semibold uppercase tracking-[0.12em] text-[#86948a]">
+              <h3 className="font-['Kufam'] text-xs font-semibold uppercase tracking-[0.12em] text-[#86948a]">
                 {text.explore}
               </h3>
               <ul className="mt-5 space-y-3">
@@ -148,7 +148,7 @@ export function Footer({ locale = "ar" }: { locale?: "ar" | "en" }) {
                   <li key={link.href}>
                     <a
                       href={link.href}
-                      className="group relative inline-block font-['Geist'] text-sm font-normal text-[#a1a1aa] transition-colors duration-200 hover:text-[#fafafa]"
+                      className="group relative inline-block font-['Kufam'] text-sm font-normal text-[#a1a1aa] transition-colors duration-200 hover:text-[#fafafa]"
                     >
                       {link.label}
                       <span className="absolute inset-x-0 -bottom-0.5 h-px scale-x-0 bg-[#4edea3] transition-transform duration-300 origin-left group-hover:scale-x-100" />
@@ -160,7 +160,7 @@ export function Footer({ locale = "ar" }: { locale?: "ar" | "en" }) {
 
             {/* Company Column & Language Switcher */}
             <div>
-              <h3 className="font-['JetBrains_Mono'] text-xs font-semibold uppercase tracking-[0.12em] text-[#86948a]">
+              <h3 className="font-['Kufam'] text-xs font-semibold uppercase tracking-[0.12em] text-[#86948a]">
                 {text.company}
               </h3>
               <ul className="mt-5 space-y-3">
@@ -168,7 +168,7 @@ export function Footer({ locale = "ar" }: { locale?: "ar" | "en" }) {
                   <li key={link.label}>
                     <a
                       href={link.href}
-                      className="group relative inline-block font-['Geist'] text-sm font-normal text-[#a1a1aa] transition-colors duration-200 hover:text-[#fafafa]"
+                      className="group relative inline-block font-['Kufam'] text-sm font-normal text-[#a1a1aa] transition-colors duration-200 hover:text-[#fafafa]"
                     >
                       {link.label}
                       <span className="absolute inset-x-0 -bottom-0.5 h-px scale-x-0 bg-[#4edea3] transition-transform duration-300 origin-left group-hover:scale-x-100" />
@@ -179,7 +179,7 @@ export function Footer({ locale = "ar" }: { locale?: "ar" | "en" }) {
                 <li className="pt-3">
                   <Link
                     href={`/${nextLocale}`}
-                    className="inline-flex items-center gap-2 rounded-lg border border-[#27272a] bg-[#09090b] px-3.5 py-1.5 font-['JetBrains_Mono'] text-xs font-medium text-[#a1a1aa] transition-all duration-300 hover:border-[#10b981]/40 hover:text-[#4edea3]"
+                    className="inline-flex items-center gap-2 rounded-lg border border-[#27272a] bg-[#09090b] px-3.5 py-1.5 font-['Kufam'] text-xs font-medium text-[#a1a1aa] transition-all duration-300 hover:border-[#10b981]/40 hover:text-[#4edea3]"
                   >
                     <Globe className="size-3.5 text-[#10b981]" />
                     <span>{locale === "ar" ? "English" : "العربية"}</span>
@@ -194,7 +194,7 @@ export function Footer({ locale = "ar" }: { locale?: "ar" | "en" }) {
         <div className="relative z-10 my-10 border-t border-[#27272a]" />
 
         {/* Bottom Legal & Metadata Bar */}
-        <div className="relative z-10 flex flex-col items-center justify-between gap-4 font-['JetBrains_Mono'] text-xs text-[#71717a] sm:flex-row">
+        <div className="relative z-10 flex flex-col items-center justify-between gap-4 font-['Kufam'] text-xs text-[#71717a] sm:flex-row">
           <p>
             © {new Date().getFullYear()} ANAN SUSTAINABILITY. {text.legal}
           </p>
@@ -219,7 +219,7 @@ export function Footer({ locale = "ar" }: { locale?: "ar" | "en" }) {
             height={200}
             className="h-[clamp(4rem,10vw,8rem)] w-auto"
           />
-          <h1 className="bg-gradient-to-b from-[#fafafa] via-[#a1a1aa] to-transparent bg-clip-text text-center font-['Space_Grotesk'] text-[1.5rem] sm:text-[2rem] md:text-[2.5rem] lg:text-[5rem] font-bold tracking-tighter text-transparent uppercase whitespace-nowrap">
+          <h1 className="bg-gradient-to-b from-[#fafafa] via-[#a1a1aa] to-transparent bg-clip-text text-center font-['Kufam'] text-[1.5rem] sm:text-[2rem] md:text-[2.5rem] lg:text-[5rem] font-bold tracking-tighter text-transparent uppercase whitespace-nowrap">
             ANAN SUSTAINABILITY
           </h1>
         </div>

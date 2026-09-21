@@ -140,7 +140,7 @@ export function Pricing({ locale = "en" }: { locale?: "ar" | "en" }) {
       <div className="pointer-events-none absolute -left-40 top-1/2 size-96 rounded-full bg-emerald-500/10 blur-[140px]" />
       <div className="pointer-events-none absolute -right-40 bottom-10 size-96 rounded-full bg-cyan-500/10 blur-[140px]" />
 
-      <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div className="relative mx-auto max-w-7xl px-6 sm:px-6 lg:px-8">
         {/* 🎯 Section Header */}
         <motion.header
           initial={shouldReduceMotion ? false : { opacity: 0, y: 30 }}
