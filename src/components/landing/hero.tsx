@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowUpRight, Check, Play } from "lucide-react";
+import { ArrowUpRight, Check } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { RainbowButton } from "@/components/ui/rainbow-button";
@@ -13,7 +13,7 @@ const content = {
     title: "كل ما يحتاجه ناديك، في نظام واحد ذكي.",
     description:
       "أدر العضويات، المدفوعات، الحصص، نقاط البيع والمدربين من لوحة تشغيل واحدة صُممت للنمو.",
-    primary: "ابدأ تجربة 14 يوماً",
+    primary: "ابدأ تجربة 7 يوماً",
     secondary: "احجز عرضاً توضيحياً",
     live: "النظام يعمل الآن",
     proof: "مصمم لفرق الأندية متعددة الفروع",
@@ -24,7 +24,7 @@ const content = {
     title: "Everything your gym needs, in one intelligent system.",
     description:
       "Manage memberships, payments, classes, retail, and trainers from one operating layer built for growth.",
-    primary: "Start 14-day trial",
+    primary: "Start 7-day trial",
     secondary: "Book a demo",
     live: "System operational",
     proof: "Built for multi-branch teams",
@@ -85,17 +85,6 @@ export function Hero({ locale }: { locale: "ar" | "en" }) {
               <Link href="#demo">
                 {text.primary}
                 <ArrowUpRight size={17} />
-              </Link>
-            </RainbowButton>
-            <RainbowButton
-              asChild
-              variant="outline"
-              size="lg"
-              className="w-full font-[var(--font-mono)] text-[10px] tracking-[0.06em] sm:w-auto"
-            >
-              <Link href="#demo">
-                <Play size={15} />
-                {text.secondary}
               </Link>
             </RainbowButton>
           </div>

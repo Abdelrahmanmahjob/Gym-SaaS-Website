@@ -3,28 +3,17 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { motion } from "framer-motion";
-import { ArrowUpRight, ArrowUp, Globe, Sparkles } from "lucide-react";
+import { Globe } from "lucide-react";
 import { BsTwitterX } from "react-icons/bs";
-import { FaLinkedinIn } from "react-icons/fa";
-import { FaInstagram } from "react-icons/fa6";
-import { FaFacebookF } from "react-icons/fa6";
+import { FaLinkedinIn, FaInstagram, FaFacebookF } from "react-icons/fa6";
 
 const content = {
   ar: {
     description:
       "منصة تشغيل ذكية تساعد الأندية الرياضية ومراكز اللياقة على أتمتة الإدارة، العضويات، المدفوعات، والنمو من مكان واحد.",
-    explore: "استكشف",
-    company: "عن أنان",
+    explore: "// 01. استكشف",
+    company: "// 02. عن أنان",
     status: "جميع الأنظمة تعمل بكفاءة",
-    tickerItems: [
-      "إدارة الاشتراكات والعضويات",
-      "نقاط البيع الذكية POS",
-      "ربط معتمد مع الفلترة الإلكترونية",
-      "أتمتة الأنظمة الغذائية والحصص",
-      "تطبيق جوال مخصص للأعضاء",
-      "تقارير مالية ولحظية",
-    ],
     links: [
       { label: "المنتج", href: "#product" },
       { label: "المزايا", href: "#features" },
@@ -43,17 +32,9 @@ const content = {
   en: {
     description:
       "A focused operating platform helping gyms manage memberships, payments, and growth from one place.",
-    explore: "Explore",
-    company: "Anan Sustainability",
-    status: "All Systems Operational",
-    tickerItems: [
-      "Membership Management",
-      "Smart POS System",
-      "E-Invoicing Compliant",
-      "Automated Class & Diet Plans",
-      "Custom Gym Member App",
-      "Real-time Financial Analytics",
-    ],
+    explore: "// 01. EXPLORE",
+    company: "// 02. ANAN SUSTAINABILITY",
+    status: "SYSTEMS OPERATIONAL",
     links: [
       { label: "Product", href: "#product" },
       { label: "Features", href: "#features" },
@@ -78,62 +59,32 @@ const socialLinks = [
   { name: "Facebook", href: "#", icon: FaFacebookF },
 ];
 
-export function Footer({ locale = "en" }: { locale?: "ar" | "en" }) {
+export function Footer({ locale = "ar" }: { locale?: "ar" | "en" }) {
   const text = content[locale];
   const nextLocale = locale === "ar" ? "en" : "ar";
   const isRtl = locale === "ar";
 
-  const scrollToTop = (e: React.MouseEvent<HTMLAnchorElement>) => {
-    e.preventDefault();
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  };
-
   return (
     <footer
       dir={isRtl ? "rtl" : "ltr"}
-      className="relative overflow-hidden border-t border-zinc-800/80 bg-[#060709] pt-12 pb-8 text-white"
+      className="relative z-10 mx-auto max-w-[1440px] px-4 py-12 font-['Geist'] text-[#e5e1e4]"
     >
-      {/* 🔮 Ambient Background Mesh Glows */}
-      <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(to_right,#1f29370f_1px,transparent_1px),linear-gradient(to_bottom,#1f29370f_1px,transparent_1px)] bg-[size:3rem_3rem]" />
-      <div className="pointer-events-none absolute inset-x-0 top-0 h-32 bg-[radial-gradient(ellipse_at_top,rgba(16,185,129,0.12),transparent_75%)] blur-xl" />
+      {/* 🔮 Obsidian Biosphere Outer Deck */}
+      <div className="relative overflow-hidden rounded-3xl border border-[#27272a] bg-[#111113] p-8 sm:p-12 md:p-16 shadow-[0_20px_80px_rgba(0,0,0,0.8)] backdrop-blur-2xl">
+        {/* Bio-Luminescent Atmospheric Glows */}
+        <div className="pointer-events-none absolute -right-20 -top-20 size-96 rounded-full bg-[#10b981]/10 blur-[130px]" />
+        <div className="pointer-events-none absolute -left-20 bottom-10 size-96 rounded-full bg-[#84cc16]/5 blur-[140px]" />
 
-      {/* 🚀 Kinetic Infinite Scroll Ticker */}
-      <div className="relative mb-16 overflow-hidden border-y border-zinc-800/60 bg-zinc-950/60 py-3.5 backdrop-blur-md">
-        <div className="pointer-events-none absolute left-0 top-0 z-10 h-full w-20 bg-gradient-to-r from-[#060709] to-transparent" />
-        <div className="pointer-events-none absolute right-0 top-0 z-10 h-full w-20 bg-gradient-to-l from-[#060709] to-transparent" />
-
-        <motion.div
-          animate={{ x: isRtl ? [0, 1000] : [0, -1000] }}
-          transition={{
-            duration: 25,
-            repeat: Infinity,
-            ease: "linear",
-          }}
-          className="flex whitespace-nowrap gap-12 text-xs font-mono font-medium text-emerald-400/90 uppercase tracking-widest"
-        >
-          {[...text.tickerItems, ...text.tickerItems, ...text.tickerItems].map(
-            (item, index) => (
-              <div key={index} className="flex items-center gap-3">
-                <Sparkles className="size-3.5 text-emerald-500 animate-pulse" />
-                <span>{item}</span>
-              </div>
-            ),
-          )}
-        </motion.div>
-      </div>
-
-      <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="grid gap-12 border-b border-zinc-800/80 pb-16 md:grid-cols-[2fr_1fr_1fr] lg:gap-20">
-          {/* Brand Info, System Status & Social Icons */}
-          <div className="max-w-md space-y-6">
+        {/* Top Architectural Grid Content */}
+        <div className="relative z-10 grid gap-12 lg:grid-cols-12 lg:gap-8">
+          {/* Brand Info & Telemetry Badge */}
+          <div className="space-y-6 lg:col-span-5">
             <Link
               href={`/${locale}`}
-              className="inline-flex items-center gap-3 group"
-              aria-label={
-                isRtl ? "العودة إلى الصفحة الرئيسية" : "Back to Anan home"
-              }
+              className="group inline-flex items-center gap-3"
+              aria-label="Anan Sustainability"
             >
-              <div className="relative flex size-10 items-center justify-center rounded-xl border border-emerald-500/20 bg-emerald-500/10 p-2 backdrop-blur-md transition-transform duration-300 group-hover:scale-105">
+              <div className="relative flex size-11 items-center justify-center rounded-xl border border-[#27272a] bg-[#18181b] p-2 transition-all duration-300 group-hover:border-[#10b981]/50 group-hover:shadow-[0_0_20px_rgba(16,185,129,0.2)]">
                 <Image
                   src="/brand/anan-sustainability-icon.svg"
                   alt="Anan Logo"
@@ -143,129 +94,134 @@ export function Footer({ locale = "en" }: { locale?: "ar" | "en" }) {
                 />
               </div>
               <div>
-                <span className="font-bold text-lg tracking-wider text-white block">
-                  ANAN <span className="text-emerald-400">Sustainability</span>
+                <span className="block font-['Space_Grotesk'] text-lg font-semibold tracking-wider text-[#fafafa]">
+                  ANAN <span className="text-[#4edea3]">SUSTAINABILITY</span>
                 </span>
-                <span className="block font-mono text-[9px] tracking-[0.25em] text-emerald-400/70 uppercase">
+                <span className="block font-['JetBrains_Mono'] text-[9px] font-medium tracking-[0.2em] text-[#86948a] uppercase">
                   GYM OPERATIONS SAAS
                 </span>
               </div>
             </Link>
 
-            <p className="text-sm leading-relaxed text-zinc-400">
+            <p className="max-w-sm font-['Geist'] text-sm leading-relaxed text-[#a1a1aa]">
               {text.description}
             </p>
 
-            {/* Live System Status Badge */}
-            <div className="inline-flex items-center gap-2.5 rounded-full border border-emerald-500/20 bg-emerald-500/10 px-3.5 py-1.5 backdrop-blur-md">
+            {/* JetBrains Mono Status Badge */}
+            <div className="inline-flex items-center gap-2.5 rounded-full border border-[#27272a] bg-[#09090b] px-3.5 py-1.5 backdrop-blur-md">
               <span className="relative flex size-2">
-                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75" />
-                <span className="relative inline-flex size-2 rounded-full bg-emerald-500" />
+                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[#4edea3] opacity-75" />
+                <span className="relative inline-flex size-2 rounded-full bg-[#10b981]" />
               </span>
-              <span className="font-mono text-xs font-semibold text-emerald-300">
+              <span className="font-['JetBrains_Mono'] text-[11px] font-medium tracking-wide text-[#4edea3]">
                 {text.status}
               </span>
             </div>
 
-            {/* 🌐 Social Media Icons Grid */}
-            <div className="pt-2">
-              <p className="mb-3 font-mono text-[11px] font-semibold text-zinc-500 uppercase tracking-widest">
-                {isRtl ? "تابعنا على" : "Connect with us"}
-              </p>
-              <div className="flex items-center gap-2.5">
-                {socialLinks.map((social) => {
-                  const Icon = social.icon;
-                  return (
-                    <a
-                      key={social.name}
-                      href={social.href}
-                      aria-label={social.name}
-                      className="group relative flex size-9 items-center justify-center rounded-xl border border-zinc-800 bg-zinc-900/60 text-zinc-400 transition-all duration-300 hover:border-emerald-500/40 hover:bg-emerald-500/10 hover:text-emerald-300 hover:shadow-[0_0_15px_rgba(16,185,129,0.2)] hover:-translate-y-0.5"
-                    >
-                      <Icon className="size-4 transition-transform duration-300 group-hover:scale-110" />
-                    </a>
-                  );
-                })}
-              </div>
+            {/* Social Icons Row */}
+            <div className="flex items-center gap-3 pt-2">
+              {socialLinks.map((social) => {
+                const Icon = social.icon;
+                return (
+                  <a
+                    key={social.name}
+                    href={social.href}
+                    aria-label={social.name}
+                    className="group relative flex size-10 items-center justify-center rounded-lg border border-[#27272a] bg-[#09090b] text-[#a1a1aa] transition-all duration-300 hover:border-[#10b981]/40 hover:bg-[#18181b] hover:text-[#4edea3] hover:-translate-y-0.5 hover:shadow-[0_0_15px_rgba(16,185,129,0.15)]"
+                  >
+                    <Icon className="size-4 transition-transform duration-300 group-hover:scale-110" />
+                  </a>
+                );
+              })}
             </div>
           </div>
 
-          {/* Navigation Links (Explore) */}
-          <div>
-            <h3 className="font-mono text-xs font-bold uppercase tracking-widest text-emerald-400">
-              {text.explore}
-            </h3>
-            <ul className="mt-6 space-y-3.5">
-              {text.links.map((link) => (
-                <li key={link.href}>
-                  <a
-                    href={link.href}
-                    className="group inline-flex items-center gap-1 text-sm font-medium text-zinc-400 transition-colors hover:text-emerald-300"
-                  >
-                    <span>{link.label}</span>
-                    <ArrowUpRight className="size-3.5 opacity-0 transition-all duration-300 group-hover:opacity-100 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 text-emerald-400" />
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
+          {/* Navigation Columns */}
+          <div className="grid grid-cols-2 gap-8 sm:grid-cols-2 lg:col-span-7">
+            {/* Explore Column */}
+            <div>
+              <h3 className="font-['JetBrains_Mono'] text-xs font-semibold uppercase tracking-[0.12em] text-[#86948a]">
+                {text.explore}
+              </h3>
+              <ul className="mt-5 space-y-3">
+                {text.links.map((link) => (
+                  <li key={link.href}>
+                    <a
+                      href={link.href}
+                      className="group relative inline-block font-['Geist'] text-sm font-normal text-[#a1a1aa] transition-colors duration-200 hover:text-[#fafafa]"
+                    >
+                      {link.label}
+                      <span className="absolute inset-x-0 -bottom-0.5 h-px scale-x-0 bg-[#4edea3] transition-transform duration-300 origin-left group-hover:scale-x-100" />
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
 
-          {/* Company Links & Language Switcher */}
-          <div>
-            <h3 className="font-mono text-xs font-bold uppercase tracking-widest text-emerald-400">
-              {text.company}
-            </h3>
-            <ul className="mt-6 space-y-3.5">
-              {text.companyLinks.map((link) => (
-                <li key={link.label}>
-                  <a
-                    href={link.href}
-                    className="group inline-flex items-center gap-1.5 text-sm font-medium text-zinc-400 transition-colors hover:text-emerald-300"
-                  >
-                    <span>{link.label}</span>
-                    <ArrowUpRight className="size-3.5 text-zinc-500 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-emerald-400" />
-                  </a>
-                </li>
-              ))}
+            {/* Company Column & Language Switcher */}
+            <div>
+              <h3 className="font-['JetBrains_Mono'] text-xs font-semibold uppercase tracking-[0.12em] text-[#86948a]">
+                {text.company}
+              </h3>
+              <ul className="mt-5 space-y-3">
+                {text.companyLinks.map((link) => (
+                  <li key={link.label}>
+                    <a
+                      href={link.href}
+                      className="group relative inline-block font-['Geist'] text-sm font-normal text-[#a1a1aa] transition-colors duration-200 hover:text-[#fafafa]"
+                    >
+                      {link.label}
+                      <span className="absolute inset-x-0 -bottom-0.5 h-px scale-x-0 bg-[#4edea3] transition-transform duration-300 origin-left group-hover:scale-x-100" />
+                    </a>
+                  </li>
+                ))}
 
-              <li className="pt-2">
-                <Link
-                  href={`/${nextLocale}`}
-                  className="inline-flex items-center gap-2 rounded-lg border border-zinc-800 bg-zinc-900/60 px-3 py-1.5 text-xs font-semibold text-zinc-300 transition-all duration-300 hover:border-emerald-500/40 hover:bg-emerald-500/10 hover:text-emerald-300"
-                >
-                  <Globe className="size-3.5 text-emerald-400" />
-                  <span>{locale === "ar" ? "English" : "العربية"}</span>
-                </Link>
-              </li>
-            </ul>
+                <li className="pt-3">
+                  <Link
+                    href={`/${nextLocale}`}
+                    className="inline-flex items-center gap-2 rounded-lg border border-[#27272a] bg-[#09090b] px-3.5 py-1.5 font-['JetBrains_Mono'] text-xs font-medium text-[#a1a1aa] transition-all duration-300 hover:border-[#10b981]/40 hover:text-[#4edea3]"
+                  >
+                    <Globe className="size-3.5 text-[#10b981]" />
+                    <span>{locale === "ar" ? "English" : "العربية"}</span>
+                  </Link>
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
 
-        {/* Bottom Bar (Legal & Scroll Top) */}
-        <div className="flex flex-col gap-4 pt-8 text-xs text-zinc-500 sm:flex-row sm:items-center sm:justify-between">
+        {/* Hairline Separator */}
+        <div className="relative z-10 my-10 border-t border-[#27272a]" />
+
+        {/* Bottom Legal & Metadata Bar */}
+        <div className="relative z-10 flex flex-col items-center justify-between gap-4 font-['JetBrains_Mono'] text-xs text-[#71717a] sm:flex-row">
           <p>
-            © {new Date().getFullYear()} Anan Sky Gym. {text.legal}
+            © {new Date().getFullYear()} ANAN SUSTAINABILITY. {text.legal}
           </p>
 
           <div className="flex items-center gap-6">
-            <a href="#" className="transition-colors hover:text-zinc-300">
+            <a href="#" className="transition-colors hover:text-[#a1a1aa]">
               {text.privacy}
             </a>
-            <a href="#" className="transition-colors hover:text-zinc-300">
+            <span className="text-[#3f3f46]">•</span>
+            <a href="#" className="transition-colors hover:text-[#a1a1aa]">
               {text.terms}
             </a>
-
-            <a
-              href="#"
-              onClick={scrollToTop}
-              className="group inline-flex items-center gap-1.5 font-semibold text-emerald-400 transition-colors hover:text-emerald-300"
-            >
-              <span>{text.backToTop}</span>
-              <div className="flex size-6 items-center justify-center rounded-full border border-emerald-500/20 bg-emerald-500/10 transition-transform duration-300 group-hover:-translate-y-1">
-                <ArrowUp className="size-3" />
-              </div>
-            </a>
           </div>
+        </div>
+
+        {/* 🎨 Giant Biosphere Watermark: Official Logo Icon + Brand Name */}
+        <div className="pointer-events-none relative left-0 right-0 mt-12 flex select-none flex-col sm:flex-row items-center justify-center gap-4 sm:gap-8  transition-opacity duration-500 hover:opacity-20">
+          <Image
+            src="/brand/anan-sustainability-icon.png"
+            alt="Anan Logo Watermark"
+            width={160}
+            height={200}
+            className="h-[clamp(4rem,10vw,8rem)] w-auto"
+          />
+          <h1 className="bg-gradient-to-b from-[#fafafa] via-[#a1a1aa] to-transparent bg-clip-text text-center font-['Space_Grotesk'] text-[1.5rem] sm:text-[2rem] md:text-[2.5rem] lg:text-[5rem] font-bold tracking-tighter text-transparent uppercase whitespace-nowrap">
+            ANAN SUSTAINABILITY
+          </h1>
         </div>
       </div>
     </footer>
