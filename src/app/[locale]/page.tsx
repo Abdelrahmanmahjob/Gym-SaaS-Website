@@ -11,6 +11,7 @@ import FAQs from "@/components/landing/text-reveal-faqs";
 import CtaSection from "@/components/landing/ctaSection";
 import Contact from "@/components/landing/contact";
 import Footer from "@/components/landing/footer";
+import { PageTransition } from "@/components/ui/page-transition";
 
 const locales = ["ar", "en"] as const;
 
@@ -25,28 +26,30 @@ export default async function LandingPage({
   if (!locales.includes(locale as Locale)) notFound();
 
   return (
-    <div className="site-shell">
-      <LightRays
-        aria-hidden="true"
-        className="z-0"
-        color="rgba(78, 222, 163, 0.16)"
-        count={8}
-        blur={42}
-        length="90vh"
-      />
-      <div className="relative z-10">
-        <Navbar locale={locale as Locale} />
-        <Hero locale={locale as Locale} />
-        <ProductShowcase locale={locale as Locale} />
-        <Features locale={locale as Locale} />
-        <WhyChooseAnan locale={locale as Locale} />
-        <Pricing locale={locale as Locale} />
-        <Testimonials locale={locale as Locale} />
-        <FAQs locale={locale as Locale} />
-        <Contact locale={locale as Locale} />
-        <CtaSection locale={locale as Locale} />
-        <Footer locale={locale as Locale} />
+    <PageTransition>
+      <div className="site-shell">
+        <LightRays
+          aria-hidden="true"
+          className="z-0"
+          color="rgba(78, 222, 163, 0.16)"
+          count={8}
+          blur={42}
+          length="90vh"
+        />
+        <div className="relative z-10">
+          <Navbar locale={locale as Locale} />
+          <Hero locale={locale as Locale} />
+          <ProductShowcase locale={locale as Locale} />
+          <Features locale={locale as Locale} />
+          <WhyChooseAnan locale={locale as Locale} />
+          <Pricing locale={locale as Locale} />
+          <Testimonials locale={locale as Locale} />
+          <FAQs locale={locale as Locale} />
+          <Contact locale={locale as Locale} />
+          <CtaSection locale={locale as Locale} />
+          <Footer locale={locale as Locale} />
+        </div>
       </div>
-    </div>
+    </PageTransition>
   );
 }

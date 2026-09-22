@@ -27,7 +27,7 @@ export const heroContent = {
       {
         id: "mobile",
         eyebrow: "تجربة الأعضاء / MOBILE",
-        title: "نظام واحد، تحكم كامل.",
+        title: "امنح عملك قوة باستخدام نظام واحد.",
         description:
           "امنح أعضاء النادي تجربة رقمية متصلة للحجز والمتابعة وإدارة الاشتراك، بينما يبقى فريقك على اطلاع كامل بكل ما يحدث.",
         image: "/media/dashboard/dashboard-image3.png",
@@ -64,7 +64,7 @@ export const heroContent = {
       {
         id: "mobile",
         eyebrow: "MEMBER EXPERIENCE / MOBILE",
-        title: "One System , Full Control.",
+        title: "Empower Your Work with One System.",
         description:
           "Give members a connected digital experience for bookings, progress, and membership management while your team stays fully informed.",
         image: "/media/dashboard/dashboard-image3.png",

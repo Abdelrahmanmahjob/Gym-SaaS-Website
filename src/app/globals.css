@@ -137,6 +137,17 @@ button {
   background: var(--carbon-base);
 }
 
+.page-loader-grid {
+  position: absolute;
+  inset: 0;
+  opacity: 0.32;
+  background-image:
+    linear-gradient(rgba(78, 222, 163, 0.07) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(78, 222, 163, 0.07) 1px, transparent 1px);
+  background-size: 72px 72px;
+  mask-image: radial-gradient(circle at center, black, transparent 72%);
+}
+
 .container {
   width: min(100% - 32px, 1440px);
   margin-inline: auto;

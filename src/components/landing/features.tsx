@@ -20,9 +20,9 @@ const content = {
   ar: {
     eyebrow: "منظومة التشغيل / 03",
 
-    title: "كل جزء من ناديك يعمل",
+    title: "حوّل الأفكار إلى تأثير",
 
-    highlight: "في منظومة واحدة.",
+    highlight: "مع التركيز والسرعة.",
 
     description:
       "من العضويات والمدفوعات إلى الحضور والحصص والتقارير، اجمع عمليات النادي اليومية في منصة واحدة تمنح فريقك رؤية أوضح وتحكمًا أسرع.",
@@ -73,9 +73,9 @@ const content = {
   en: {
     eyebrow: "OPERATING SYSTEM / 03",
 
-    title: "Every part of your gym works",
+    title: "Turn Ideas Into Impact",
 
-    highlight: "as one system.",
+    highlight: "With Focus and Speed.",
 
     description:
       "From memberships and payments to attendance, classes, and reporting, bring your daily gym operations into one unified workspace built for clarity and speed.",
@@ -553,7 +553,7 @@ export function Features({ locale }: { locale: "ar" | "en" }) {
             className="
               lg:sticky
               lg:top-28
-              lg:col-span-5
+              lg:col-span-6
               lg:self-start
             "
           >
@@ -771,7 +771,7 @@ export function Features({ locale }: { locale: "ar" | "en" }) {
           <div
             className="
               relative
-              lg:col-span-7
+              lg:col-span-6
             "
           >
             <StackingCards

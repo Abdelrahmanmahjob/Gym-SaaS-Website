@@ -1,10 +1,11 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import Image from "next/image";
 
-import type { HeroSlide } from "@/content/hero-content";
+import type { HeroSlide } from "@/components/content/hero-content";
+import { usePageTransition } from "@/components/ui/page-transition";
 
 const AUTOPLAY_DELAY = 7000;
 
@@ -49,10 +50,24 @@ export function HeroSlider({
   nextLabel,
 }: HeroSliderProps) {
   const shouldReduceMotion = useReducedMotion();
+  const { isLoaded } = usePageTransition();
+  const [isInitialReveal, setIsInitialReveal] = useState(true);
 
   const touchStartX = useRef<number | null>(null);
 
   const activeSlide = slides[activeIndex];
+
+  useEffect(() => {
+    if (!isLoaded) {
+      return;
+    }
+
+    const timeout = window.setTimeout(() => {
+      setIsInitialReveal(false);
+    }, 1100);
+
+    return () => window.clearTimeout(timeout);
+  }, [isLoaded]);
 
   const handleTouchStart = (event: React.TouchEvent<HTMLDivElement>) => {
     touchStartX.current = event.touches[0]?.clientX ?? null;
@@ -140,9 +155,10 @@ export function HeroSlider({
             key={activeSlide.id}
             variants={slideVariants}
             initial="initial"
-            animate="animate"
+            animate={isLoaded ? "animate" : "initial"}
             exit="exit"
             transition={{
+              delay: isInitialReveal ? 1.03 : 0,
               duration: shouldReduceMotion ? 0.15 : 0.7,
 
               ease: [0.22, 1, 0.36, 1],
@@ -159,8 +175,8 @@ export function HeroSlider({
               sizes="(max-width: 640px) 95vw, (max-width: 1024px) 75vw, 52vw"
               className={
                 activeSlide.id === "mobile"
-                  ? "object-contain object-center px-12 sm:px-16 lg:px-20"
-                  : "object-contain object-center px-2 sm:px-4 lg:px-8"
+                  ? "object-contain object-center"
+                  : "object-contain object-center "
               }
             />
           </motion.div>

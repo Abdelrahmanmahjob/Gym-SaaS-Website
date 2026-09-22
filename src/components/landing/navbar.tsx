@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
+import { usePageTransition } from "@/components/ui/page-transition";
 
 const copy = {
   ar: {
@@ -38,6 +39,7 @@ export function Navbar({ locale = "ar" }: { locale?: "ar" | "en" }) {
   const text = copy[locale];
   const nextLocale = locale === "ar" ? "en" : "ar";
   const isRtl = locale === "ar";
+  const { isLoaded } = usePageTransition();
   const [prevScrollY, setPrevScrollY] = useState(0);
   const [scrollY, setScrollY] = useState(0);
 
@@ -52,13 +54,16 @@ export function Navbar({ locale = "ar" }: { locale?: "ar" | "en" }) {
   }, [scrollY]);
 
   return (
-    <header
+    <motion.header
+      initial={{ opacity: 0, y: -80 }}
+      animate={isLoaded ? { opacity: 1, y: 0 } : { opacity: 0, y: -80 }}
+      transition={{ delay: 0.78, duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
       className={`fixed  ${scrollY > prevScrollY ? "-top-25" : "top-5"} transition-all duration-300 inset-x-0 z-50 mx-auto max-w-7xl px-4`}
     >
       {/* 🚀 Floating Pill Navigation Bar */}
       <nav
         dir={isRtl ? "rtl" : "ltr"}
-        className="relative flex items-center justify-between rounded-2xl border border-white/10 bg-[var(--accent-emerald)]/10 px-6 py-3 shadow-[0_12px_40px_rgba(0,0,0,0.4)] backdrop-blur-xl transition-all duration-300 hover:border-emerald-500/30"
+        className="relative flex items-center justify-between rounded-2xl border border-white/10 bg-black/50 px-6 py-3 shadow-[0_12px_40px_rgba(0,0,0,0.4)] backdrop-blur-xl transition-all duration-300 hover:border-emerald-500/30"
         aria-label={isRtl ? "التنقل الرئيسي" : "Primary navigation"}
       >
         {/* Brand Logo */}
@@ -184,7 +189,7 @@ export function Navbar({ locale = "ar" }: { locale?: "ar" | "en" }) {
           </motion.div>
         )}
       </AnimatePresence>
-    </header>
+    </motion.header>
   );
 }
 

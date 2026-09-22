@@ -10,8 +10,8 @@ const content = {
   ar: {
     eyebrow: "نظرة على المنصة / 02",
 
-    title: "أدر ناديك من لوحة تشغيل واحدة.",
-    highlight: "كل شيء أمامك.",
+    title: "شاهدها أثناء العمل:",
+    highlight: "شاهد أدواتنا تتألق",
     description:
       "تابع العضويات، المدفوعات، الحضور، المبيعات، الحصص، المدربين والتقارير من مكان واحد، مع رؤية لحظية تساعد فريقك على اتخاذ قرارات أسرع وإدارة التشغيل بكفاءة أكبر.",
 
@@ -43,8 +43,8 @@ const content = {
   en: {
     eyebrow: "PRODUCT PREVIEW / 02",
 
-    title: "Run your gym from one operating view.",
-    highlight: "Everything in one place.",
+    title: "See It in Action:",
+    highlight: "Watch Our Tools Shine",
     description:
       "Manage memberships, payments, attendance, POS, classes, trainers, and reporting from one unified platform — giving your team the visibility they need to operate faster and smarter.",
 
@@ -262,10 +262,12 @@ export function ProductShowcase({ locale }: { locale: "ar" | "en" }) {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.7, delay: 0.25 }}
-            className="max-w-3xl text-3xl font-extrabold leading-[1.05] tracking-tight text-white sm:text-4xl"
+            className="max-w-3xl text-3xl font-extrabold leading-[1.05] tracking-tight text-white sm:text-[50px]"
           >
             {text.title}{" "}
-            <span className="text-emerald-300">{text.highlight}</span>
+            <div className="bg-gradient-to-r from-emerald-300 via-teal-200 to-cyan-300 bg-clip-text text-transparent">
+              {text.highlight}
+            </div>
           </motion.h2>
 
           {/* Description */}
@@ -323,7 +325,7 @@ export function ProductShowcase({ locale }: { locale: "ar" | "en" }) {
                       duration: 0.2,
                     },
                   }}
-                  className="group relative overflow-hidden rounded-md border border-white/10 bg-[#111113]/90 px-4 py-5 backdrop-blur-xl transition-colors duration-300 hover:border-emerald-300/30 hover:bg-[#18181b] sm:px-5 sm:py-6"
+                  className="group relative overflow-hidden rounded-xl border border-white/10 bg-[#18181b]/50 px-4 py-5 backdrop-blur-xl transition-colors duration-300 hover:border-emerald-300/30 hover:bg-[#18181b] sm:px-5 sm:py-6"
                 >
                   {/* Hover glow */}
                   <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_100%_0%,rgba(16,185,129,0.12),transparent_55%)] opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
@@ -331,9 +333,9 @@ export function ProductShowcase({ locale }: { locale: "ar" | "en" }) {
                   {/* Icon */}
                   <div className="relative mb-4">
                     <Icon
-                      size={16}
-                      strokeWidth={1.7}
-                      className="text-white/35 transition-colors duration-300 group-hover:text-emerald-300/70"
+                      size={20}
+                      strokeWidth={2}
+                      className="text-white transition-colors duration-300 group-hover:text-emerald-300/70"
                     />
                   </div>
 

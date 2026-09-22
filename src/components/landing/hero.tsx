@@ -12,9 +12,10 @@ import { RainbowButton } from "@/components/ui/rainbow-button";
 
 import Text3DFlip from "@/components/ui/text-3d-flip";
 
-import { heroContent, type Locale } from "@/content/hero-content";
+import { heroContent, type Locale } from "@/components/content/hero-content";
 
 import { HeroSlider } from "@/components/ui/hero-slider";
+import { usePageTransition } from "@/components/ui/page-transition";
 
 export function Hero({ locale }: { locale: Locale }) {
   const text = heroContent[locale];
@@ -22,6 +23,7 @@ export function Hero({ locale }: { locale: Locale }) {
   const isArabic = locale === "ar";
 
   const shouldReduceMotion = useReducedMotion();
+  const { isLoaded } = usePageTransition();
 
   const [activeIndex, setActiveIndex] = useState(0);
 
@@ -68,23 +70,26 @@ export function Hero({ locale }: { locale: Locale }) {
           BACKGROUND VIDEO
       ========================================================== */}
 
-      <video
+      <motion.video
         className="pointer-events-none absolute inset-0 h-full w-full object-cover"
         autoPlay
         loop
         muted
         playsInline
         aria-hidden="true"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: isLoaded ? 1 : 0 }}
+        transition={{ duration: 0.65, ease: "easeOut" }}
       >
         <source src="/media/hero/hero-bg.mp4" type="video/mp4" />
-      </video>
+      </motion.video>
 
       {/* =========================================================
           MAIN CONTAINER
       ========================================================== */}
 
       <div className="relative z-10 mx-auto flex min-h-[100vh] max-w-7xl items-center px-6 py-16 sm:py-20 lg:py-24">
-        <div className="grid w-full items-center gap-10 lg:grid-cols-[0.82fr_1.18fr] lg:gap-12">
+        <div className="grid w-full items-center gap-10 lg:grid-cols-[2fr_1.5fr]">
           {/* ======================================================
               HERO CONTENT
           ======================================================= */}
@@ -95,10 +100,11 @@ export function Hero({ locale }: { locale: Locale }) {
               y: 24,
             }}
             animate={{
-              opacity: 1,
-              y: 0,
+              opacity: isLoaded ? 1 : 0,
+              y: isLoaded ? 0 : 24,
             }}
             transition={{
+              delay: 0.38,
               duration: 0.75,
               ease: [0.22, 1, 0.36, 1],
             }}
