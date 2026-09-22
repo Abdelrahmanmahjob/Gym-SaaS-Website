@@ -1,8 +1,6 @@
 "use client";
 
-import { useRef, type MouseEvent } from "react";
-
-import { motion, useMotionTemplate, useMotionValue } from "motion/react";
+import { motion } from "motion/react";
 
 import {
   BarChart3,
@@ -137,28 +135,12 @@ type FeatureItem = (typeof content)[keyof typeof content]["items"][number];
 function FeatureCard({
   item,
   index,
-  stepPrefix,
 }: {
   item: FeatureItem;
   index: number;
   stepPrefix: string;
 }) {
-  const mouseX = useMotionValue(0);
-  const mouseY = useMotionValue(0);
-
   const Icon = icons[index % icons.length];
-
-  function handleMouseMove({
-    currentTarget,
-    clientX,
-    clientY,
-  }: MouseEvent<HTMLElement>) {
-    const { left, top } = currentTarget.getBoundingClientRect();
-
-    mouseX.set(clientX - left);
-
-    mouseY.set(clientY - top);
-  }
 
   return (
     <motion.article
@@ -179,7 +161,6 @@ function FeatureCard({
         delay: index * 0.05,
         ease: [0.22, 1, 0.36, 1],
       }}
-      onMouseMove={handleMouseMove}
       className="
         group
         relative
@@ -364,43 +345,6 @@ function FeatureCard({
           >
             <Icon size={18} strokeWidth={1.7} />
           </div>
-
-          {/* Step */}
-
-          <div
-            className="
-              inline-flex
-              items-center
-              gap-1.5
-              rounded-[2px]
-              border
-              border-[#3f3f46]
-              bg-[#18181b]
-              px-2.5
-              py-1
-              font-mono
-              text-[10px]
-              font-medium
-              tracking-wide
-              text-zinc-500
-              backdrop-blur-md
-              transition-colors
-              duration-300
-              group-hover:border-emerald-500/45
-              group-hover:text-emerald-300
-            "
-          >
-            <span>{stepPrefix}</span>
-
-            <span
-              className="
-                font-bold
-                text-white
-              "
-            >
-              0{index + 1}
-            </span>
-          </div>
         </div>
 
         {/* ============================================================
@@ -513,7 +457,7 @@ export function Features({ locale }: { locale: "ar" | "en" }) {
       aria-labelledby="features-title"
       className="
         relative
-        overflow-hidden
+        overflow-clip
         border-t
         border-white/[0.08]
         bg-[#080b10]
