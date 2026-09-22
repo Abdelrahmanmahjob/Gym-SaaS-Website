@@ -171,12 +171,12 @@ export function ProductShowcase({ locale }: { locale: "ar" | "en" }) {
           className="relative"
         >
           {/* Main frame */}
-          <div className="relative md:min-h-[15rem] overflow-hidden rounded-[1.25rem] border border-white/[0.12] bg-[#111827] p-2 shadow-[0_30px_100px_rgba(0,0,0,0.45)] sm:p-3">
+          <div className="relative h-[600px] overflow-hidden rounded-[1.25rem] border border-white/[0.12] bg-[#111827] p-2 shadow-[0_30px_100px_rgba(0,0,0,0.45)] sm:p-3">
             {/* Top glow */}
             <div className="pointer-events-none absolute inset-x-0 top-0 h-40 bg-[radial-gradient(circle_at_50%_0%,rgba(52,211,153,0.20),transparent_65%)]" />
 
             {/* Product media */}
-            <div className="relative overflow-hidden rounded-[0.9rem]">
+            <div className="relative overflow-hidden h-full rounded-[0.9rem]">
               <video
                 autoPlay
                 muted
@@ -186,7 +186,7 @@ export function ProductShowcase({ locale }: { locale: "ar" | "en" }) {
                 className="block h-full w-full rounded-[0.9rem] object-cover object-top"
               >
                 <source
-                  src="/media/dashboard/dashboard-preview.mp4"
+                  src="/media/dashboard/dashboard-preview2.mp4"
                   type="video/mp4"
                 />
               </video>
@@ -196,7 +196,7 @@ export function ProductShowcase({ locale }: { locale: "ar" | "en" }) {
             </div>
 
             {/* Floating top indicator */}
-            <motion.div
+            {/* <motion.div
               initial={{ opacity: 0, y: -10 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -208,7 +208,7 @@ export function ProductShowcase({ locale }: { locale: "ar" | "en" }) {
               <span className="font-[var(--font-mono)] text-[9px] tracking-[0.12em] text-white/65">
                 LIVE OPERATIONS
               </span>
-            </motion.div>
+            </motion.div> */}
           </div>
 
           {/* Outer decorative glow */}
@@ -262,7 +262,7 @@ export function ProductShowcase({ locale }: { locale: "ar" | "en" }) {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.7, delay: 0.25 }}
-            className="max-w-3xl text-3xl font-extrabold leading-[1.05] tracking-tight text-white sm:text-5xl"
+            className="max-w-3xl text-3xl font-extrabold leading-[1.05] tracking-tight text-white sm:text-4xl"
           >
             {text.title}{" "}
             <span className="text-emerald-300">{text.highlight}</span>
@@ -274,7 +274,7 @@ export function ProductShowcase({ locale }: { locale: "ar" | "en" }) {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.7, delay: 0.35 }}
-            className="mt-5 max-w-xl text-lg leading-relaxed text-zinc-400 sm:text-xl"
+            className="mt-5 max-w-xl text-md leading-relaxed text-zinc-400 sm:text-md"
           >
             {text.description}
           </motion.p>
