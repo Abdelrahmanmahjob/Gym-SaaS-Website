@@ -461,9 +461,13 @@ export function Features({ locale }: { locale: "ar" | "en" }) {
         border-t
         border-white/[0.08]
         bg-[#080b10]
-        py-20
+        py-25
         sm:py-28
         lg:py-32
+        pb-56
+        sm:pb-64
+        md:pb-72
+        lg:pb-80
       "
     >
       {/* ================================================================
@@ -782,15 +786,9 @@ export function Features({ locale }: { locale: "ar" | "en" }) {
                   className="
                       h-[330px]
                       sm:h-[350px]
-                      lg:h-[365px]
+                      lg:h-[320px]
                     "
-                  /*
-                   * Keep the cards very close to each other.
-                   *
-                   * The important part of the effect is still
-                   * the scale driven by scroll progress.
-                   */
-                  topPosition={`calc(${index * 8}px)`}
+                  topPosition={`calc(${index * 65}px)`}
                 >
                   <FeatureCard
                     item={item}
