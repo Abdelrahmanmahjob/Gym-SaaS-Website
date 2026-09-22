@@ -89,7 +89,7 @@ export function Hero({ locale }: { locale: Locale }) {
       ========================================================== */}
 
       <div className="relative z-10 mx-auto flex min-h-[100vh] max-w-7xl items-center px-6 py-16 sm:py-20 lg:py-24">
-        <div className="grid w-full items-center gap-10 lg:grid-cols-[2fr_1.5fr]">
+        <div className="grid w-full items-center gap-10 lg:grid-cols-[1.8fr_1.5fr]">
           {/* ======================================================
               HERO CONTENT
           ======================================================= */}

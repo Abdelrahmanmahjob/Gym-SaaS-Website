@@ -173,11 +173,7 @@ export function HeroSlider({
               fill
               priority={activeIndex === 0}
               sizes="(max-width: 640px) 95vw, (max-width: 1024px) 75vw, 52vw"
-              className={
-                activeSlide.id === "mobile"
-                  ? "object-contain object-center"
-                  : "object-contain object-center "
-              }
+              className="object-contain object-left sm:scale-[1.1] sm:pr-4"
             />
           </motion.div>
         </AnimatePresence>
