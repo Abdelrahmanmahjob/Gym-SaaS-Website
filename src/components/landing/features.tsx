@@ -329,13 +329,15 @@ function FeatureCard({
               w-[42px]
               items-center
               justify-center
-              rounded-[4px]
+              rounded-[8px]
+              font-bold
               border
               border-[#3f3f46]
-              bg-[#18181b]
-              text-emerald-400
+              bg-emerald-500
+              text-white
               transition-all
               duration-500
+              group-hover:-rotate-8
               group-hover:scale-105
               group-hover:border-emerald-400/40
               group-hover:bg-emerald-500/10
@@ -343,7 +345,7 @@ function FeatureCard({
               group-hover:shadow-[0_0_30px_rgba(110,231,183,0.18)]
             "
           >
-            <Icon size={18} strokeWidth={1.7} />
+            <Icon size={25} strokeWidth={1.7} />
           </div>
         </div>
 
