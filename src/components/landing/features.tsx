@@ -422,8 +422,8 @@ function FeatureCard({
         className="
           pointer-events-none
           absolute
-          -bottom-8
-          -right-2
+          -bottom-0
+          right-[20px]
           select-none
           font-mono
           text-[100px]
