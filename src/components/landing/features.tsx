@@ -435,6 +435,7 @@ function FeatureCard({
           transition-all
           duration-700
           group-hover:text-emerald-400/80
+          
         "
       >
         0{index + 1}

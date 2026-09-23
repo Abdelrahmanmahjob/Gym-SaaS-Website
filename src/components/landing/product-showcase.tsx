@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import { motion, useInView } from "framer-motion";
 import { ArrowUpRight, BarChart3, Users, LayoutDashboard } from "lucide-react";
 import Link from "next/link";
-import { RainbowButton } from "@/components/ui/rainbow-button";
+import { StudioButton } from "@/components/ui/studio-button";
 
 const content = {
   ar: {
@@ -125,7 +125,7 @@ function NumberTicker({
   return (
     <span>
       {displayValue.toLocaleString()}
-      {suffix}
+      {suffix && <span className="text-emerald-300">{suffix}</span>}
     </span>
   );
 }
@@ -295,10 +295,8 @@ export function ProductShowcase({ locale }: { locale: "ar" | "en" }) {
           {/* =====================================================
               STAT CARDS
           ====================================================== */}
-          <div ref={statsRef} className="mt-8 grid grid-cols-3 gap-2 sm:gap-3">
+          <div ref={statsRef} className="mt-8 grid grid-cols-3 gap-3 sm:gap-5">
             {text.stats.map((stat, index) => {
-              const Icon = stat.icon;
-
               return (
                 <motion.div
                   key={stat.label}
@@ -320,27 +318,15 @@ export function ProductShowcase({ locale }: { locale: "ar" | "en" }) {
                     ease: [0.22, 1, 0.36, 1],
                   }}
                   whileHover={{
-                    y: -4,
+                    y: -3,
                     transition: {
                       duration: 0.2,
                     },
                   }}
-                  className="group relative overflow-hidden rounded-xl border border-white/10 bg-[#18181b]/50 px-4 py-5 backdrop-blur-xl transition-colors duration-300 hover:border-emerald-300/30 hover:bg-[#18181b] sm:px-5 sm:py-6"
+                  className="group relative overflow-hidden rounded-[1.35rem] border border-emerald-500/[0.12] bg-[linear-gradient(45deg,#1c2c2a_50%,var(--color-emerald-900)_100%)] px-6 py-5 shadow-[0_16px_35px_rgba(0,0,0,0.2)] transition-all duration-300 hover:border-emerald-300/30 hover:shadow-[0_18px_38px_rgba(16,185,129,0.14)]"
                 >
-                  {/* Hover glow */}
-                  <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_100%_0%,rgba(16,185,129,0.12),transparent_55%)] opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
-
-                  {/* Icon */}
-                  <div className="relative mb-4">
-                    <Icon
-                      size={20}
-                      strokeWidth={2}
-                      className="text-white transition-colors duration-300 group-hover:text-emerald-300/70"
-                    />
-                  </div>
-
                   {/* Number */}
-                  <strong className="relative block font-[var(--font-display)] text-3xl font-medium tracking-[-0.03em] text-white sm:text-[2rem]">
+                  <strong className="relative block font-[var(--font-display)] text-[2rem] font-medium leading-[1.5] tracking-[-0.03em] text-white">
                     <NumberTicker
                       value={stat.value}
                       suffix={stat.suffix}
@@ -349,7 +335,7 @@ export function ProductShowcase({ locale }: { locale: "ar" | "en" }) {
                   </strong>
 
                   {/* Label */}
-                  <span className="relative mt-2 block font-[var(--font-mono)] text-[8px] tracking-[0.08em] text-white/45 sm:text-[9px]">
+                  <span className="relative mt-2 block text-[11px] font-medium text-white/75">
                     {stat.label}
                   </span>
                 </motion.div>
@@ -367,16 +353,16 @@ export function ProductShowcase({ locale }: { locale: "ar" | "en" }) {
             transition={{ duration: 0.6, delay: 0.8 }}
             className="mt-8 border-t border-white/10 pt-7"
           >
-            <RainbowButton
+            <StudioButton
               asChild
               size="lg"
-              className="font-[var(--font-mono)] text-[10px] tracking-[0.06em]"
+              className="font-[var(--font-mono)] text-[12px] font-semibold tracking-[0.06em]"
             >
               <Link href="https://gym-saas-website.vercel.app/" target="_blank">
                 {text.cta}
                 <ArrowUpRight size={17} />
               </Link>
-            </RainbowButton>
+            </StudioButton>
           </motion.div>
         </motion.div>
       </div>

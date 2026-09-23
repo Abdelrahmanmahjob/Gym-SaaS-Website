@@ -2,7 +2,6 @@
 
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
-import { cn } from "@/lib/utils";
 import {
   Carousel,
   CarouselContent,
@@ -23,7 +22,7 @@ export type TestimonialItem = {
 const content = {
   ar: {
     eyebrow: "الشهادات",
-    title: "ماذا يقول أصحاب الأندية عن أنان؟",
+    title: "ماذا يقول مستخدمونا السعداء عن أنان",
     description:
       "من التحول الرقمي إلى تحسين تجربة العملاء، هذه هي النتائج التي يحققها فريقنا يوميًا.",
     items: [
@@ -71,7 +70,7 @@ const content = {
   },
   en: {
     eyebrow: "Testimonials",
-    title: "What gym owners say about Anan",
+    title: "What Our Happy Users Say About Anan",
     description:
       "From digital transformation to better customer experience, this is what teams see when they switch to our platform.",
     items: [
@@ -131,136 +130,129 @@ export function Testimonials({ locale = "en" }: { locale?: "ar" | "en" }) {
     >
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_28%_10%,rgba(16,185,129,0.08),transparent_28%)]" />
 
-      <div className="relative mx-auto max-w-7xl px-6 sm:px-6 lg:px-8">
+      <div className="relative mx-auto max-w-7xl px-6 sm:px-8">
+        <div className="mx-auto max-w-3xl text-center">
+          <Badge
+            variant="outline"
+            className="h-auto border-emerald-500/20 bg-emerald-500/10 px-3.5 py-1 font-mono text-xs font-semibold uppercase tracking-widest text-emerald-300 backdrop-blur-md"
+          >
+            {text.eyebrow}
+          </Badge>
+          <h2
+            id="testimonials-title"
+            className="mt-5 text-4xl font-semibold leading-[1.05] tracking-tight text-white sm:text-6xl"
+          >
+            {text.title}
+          </h2>
+          <p className="mx-auto mt-5 max-w-2xl text-base leading-7 text-zinc-400 sm:text-lg">
+            {text.description}
+          </p>
+
+          <div className="mt-8 flex items-center justify-center gap-4">
+            <div className="flex -space-x-3" dir="ltr">
+              {text.items.slice(0, 4).map((testimonial) => (
+                <Avatar
+                  key={testimonial.name}
+                  className="size-10 border-2 border-[#09090b] bg-[#111113]"
+                >
+                  <AvatarImage
+                    src={testimonial.avatar}
+                    alt={testimonial.name}
+                  />
+                  <AvatarFallback className="bg-[#18181b] text-xs text-emerald-200">
+                    {testimonial.name
+                      .split(" ", 2)
+                      .map((name) => name[0])
+                      .join("")}
+                  </AvatarFallback>
+                </Avatar>
+              ))}
+            </div>
+            <div className="text-start">
+              <div className="flex items-center gap-2">
+                <span className="text-lg font-bold text-white">4.8/5</span>
+                <span className="text-base tracking-[0.12em] text-emerald-300">
+                  ★★★★★
+                </span>
+              </div>
+              <span className="font-mono text-[10px] uppercase tracking-wider text-zinc-500">
+                {locale === "ar" ? "تقييمات العملاء" : "Customer reviews"}
+              </span>
+            </div>
+          </div>
+        </div>
+
         <Carousel
           dir="ltr"
-          className="mx-auto max-w-7xl"
-          opts={{
-            align: "start",
-            slidesToScroll: 1,
-          }}
+          className="mt-14"
+          opts={{ align: "start", slidesToScroll: 1 }}
         >
-          <div
-            dir={locale === "ar" ? "rtl" : "ltr"}
-            className="grid grid-cols-1 items-center gap-11 md:grid-cols-2"
-          >
-            <div className="space-y-4 md:space-y-16">
-              <div className="space-y-4">
-                <Badge
-                  variant="outline"
-                  className="h-auto border border-emerald-500/20 bg-emerald-500/10 px-3.5 py-1 font-mono text-xs font-semibold uppercase tracking-widest text-emerald-300 backdrop-blur-md"
-                >
-                  {text.eyebrow}
-                </Badge>
-                <h2
-                  id="testimonials-title"
-                  className="max-w-xl text-3xl font-extrabold leading-[1.05] tracking-tight text-white sm:text-5xl"
-                >
-                  {text.title}
-                </h2>
-                <p className="max-w-lg text-lg leading-relaxed text-zinc-400 sm:text-xl">
-                  {text.description}
-                </p>
-              </div>
-
-              <div
-                className={cn(
-                  "flex items-center gap-5",
-                  locale === "ar" && "flex-row-reverse",
-                )}
+          <CarouselContent className="-ml-4 sm:-ml-5">
+            {text.items.map((testimonial, index) => (
+              <CarouselItem
+                key={`${testimonial.name}-${index}`}
+                className="pl-4 sm:basis-1/2 sm:pl-5 lg:basis-1/3"
               >
-                {locale === "ar" ? (
-                  <>
-                    <CarouselNext
-                      size="icon"
-                      variant="default"
-                      className="disabled:bg-primary/10 disabled:text-primary static translate-y-0 border-white/10 bg-black/30 text-white disabled:opacity-100"
-                    />
-                    <CarouselPrevious
-                      size="icon"
-                      variant="default"
-                      className="disabled:bg-primary/10 disabled:text-primary static translate-y-0 border-white/10 bg-black/30 text-white disabled:opacity-100"
-                    />
-                  </>
-                ) : (
-                  <>
-                    <CarouselPrevious
-                      size="icon"
-                      variant="default"
-                      className="disabled:bg-primary/10 disabled:text-primary static translate-y-0 border-white/10 bg-black/30 text-white disabled:opacity-100"
-                    />
-                    <CarouselNext
-                      size="icon"
-                      variant="default"
-                      className="disabled:bg-primary/10 disabled:text-primary static translate-y-0 border-white/10 bg-black/30 text-white disabled:opacity-100"
-                    />
-                  </>
-                )}
-              </div>
-            </div>
-
-            <div className="relative" dir="ltr">
-              <CarouselContent className="sm:-ml-6">
-                {text.items.map((testimonial, index) => (
-                  <CarouselItem
-                    key={`${testimonial.name}-${index}`}
-                    className="sm:pl-6"
-                  >
-                    <div className="flex min-h-[420px] flex-col justify-between gap-10 rounded-[1.75rem] border border-white/10 bg-[#111827]/60 p-6 shadow-[0_20px_80px_rgba(0,0,0,0.38)] backdrop-blur-sm sm:p-8">
-                      <div className="space-y-3">
-                        <p className="text-7xl leading-none text-emerald-300/80">
-                          &ldquo;
+                <article className="group flex min-h-[280px] flex-col justify-between rounded-[1.25rem] border border-[#3c4a42] bg-[#111113] p-6 shadow-[0_18px_45px_rgba(0,0,0,0.2)] transition-all duration-300 hover:-translate-y-1 hover:border-emerald-500/40 hover:bg-[#18181b] sm:p-7">
+                  <div>
+                    <div className="mb-5 flex items-center gap-3">
+                      <Avatar className="size-10 border border-emerald-500/20 bg-[#18181b]">
+                        <AvatarImage
+                          src={testimonial.avatar}
+                          alt={testimonial.name}
+                        />
+                        <AvatarFallback className="bg-[#18181b] text-xs text-emerald-200">
+                          {testimonial.name
+                            .split(" ", 2)
+                            .map((name) => name[0])
+                            .join("")}
+                        </AvatarFallback>
+                      </Avatar>
+                      <div className="min-w-0 text-start">
+                        <h3 className="truncate text-sm font-semibold text-white">
+                          {testimonial.name}
+                        </h3>
+                        <p className="truncate text-xs text-zinc-500">
+                          {testimonial.role}
                         </p>
-                        <p className="text-lg font-medium leading-8 text-white/75 sm:text-2xl lg:text-[1.8rem]">
-                          {testimonial.content}
-                        </p>
-                      </div>
-
-                      <div className="space-y-4">
-                        <div className="flex items-center gap-2 text-emerald-300">
-                          {Array.from({ length: 5 }).map((_, starIndex) => (
-                            <span
-                              key={starIndex}
-                              className={
-                                starIndex < testimonial.rating
-                                  ? "opacity-100"
-                                  : "opacity-30"
-                              }
-                            >
-                              ★
-                            </span>
-                          ))}
-                        </div>
-
-                        <div className="flex items-center gap-3">
-                          <Avatar className="size-12 border border-emerald-400/20 bg-[#0d1720]">
-                            <AvatarImage
-                              src={testimonial.avatar}
-                              alt={testimonial.name}
-                            />
-                            <AvatarFallback className="bg-[#0d1720] text-sm text-emerald-200">
-                              {testimonial.name
-                                .split(" ", 2)
-                                .map((n) => n[0])
-                                .join("")}
-                            </AvatarFallback>
-                          </Avatar>
-
-                          <div className="flex-1">
-                            <h4 className="text-lg font-medium text-white">
-                              {testimonial.name}
-                            </h4>
-                            <p className="text-sm text-white/55">
-                              {testimonial.role} • {testimonial.company}
-                            </p>
-                          </div>
-                        </div>
                       </div>
                     </div>
-                  </CarouselItem>
-                ))}
-              </CarouselContent>
-            </div>
+                    <div className="mb-5 h-px bg-emerald-500/20" />
+                    <p className="text-sm leading-6 text-zinc-300 sm:text-base">
+                      {testimonial.content}
+                    </p>
+                  </div>
+                  <div className="mt-6 flex items-center gap-1 text-sm text-emerald-300">
+                    {Array.from({ length: 5 }).map((_, starIndex) => (
+                      <span
+                        key={starIndex}
+                        className={
+                          starIndex < testimonial.rating ? "" : "opacity-30"
+                        }
+                      >
+                        ★
+                      </span>
+                    ))}
+                  </div>
+                </article>
+              </CarouselItem>
+            ))}
+          </CarouselContent>
+
+          <div
+            className="mt-10 flex items-center justify-center gap-3"
+            dir={locale === "ar" ? "rtl" : "ltr"}
+          >
+            <CarouselPrevious
+              size="icon"
+              variant="outline"
+              className="static size-10 translate-y-0 rounded-full border-[#86948a] bg-transparent text-white hover:border-emerald-300 hover:bg-emerald-500/10 hover:text-emerald-200 disabled:opacity-40"
+            />
+            <CarouselNext
+              size="icon"
+              variant="outline"
+              className="static size-10 translate-y-0 rounded-full border-[#86948a] bg-transparent text-white hover:border-emerald-300 hover:bg-emerald-500/10 hover:text-emerald-200 disabled:opacity-40"
+            />
           </div>
         </Carousel>
       </div>

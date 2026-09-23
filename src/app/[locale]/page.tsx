@@ -42,10 +42,10 @@ export default async function LandingPage({
           <ProductShowcase locale={locale as Locale} />
           <Features locale={locale as Locale} />
           <WhyChooseAnan locale={locale as Locale} />
-          <Pricing locale={locale as Locale} />
           <Testimonials locale={locale as Locale} />
           <FAQs locale={locale as Locale} />
-          <Contact locale={locale as Locale} />
+          {/* <Contact locale={locale as Locale} /> */}
+          <Pricing locale={locale as Locale} />
           <CtaSection locale={locale as Locale} />
           <Footer locale={locale as Locale} />
         </div>

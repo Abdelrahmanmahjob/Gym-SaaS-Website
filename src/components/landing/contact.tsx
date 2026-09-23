@@ -13,8 +13,9 @@ import {
   User,
   Check,
   Copy,
+  AlertCircle,
 } from "lucide-react";
-import { RainbowButton } from "@/components/ui/rainbow-button";
+import { StudioButton } from "@/components/ui/studio-button";
 
 const content = {
   ar: {
@@ -41,6 +42,7 @@ const content = {
     submitBtn: "إرسال الطلب الآن",
     submitting: "جاري الإرسال...",
     successMessage: "تم إرسال طلبك بنجاح! سيتواصل معك فريقنا قريباً.",
+    errorMessage: "تعذر إرسال الرسالة حالياً. حاول مرة أخرى بعد قليل.",
     contactInfo: [
       {
         title: "المبيعات والدعم الفني",
@@ -83,6 +85,7 @@ const content = {
     submitBtn: "Submit Request",
     submitting: "Submitting...",
     successMessage: "Thank you! Our team will reach out shortly.",
+    errorMessage: "We couldn't send your message right now. Please try again.",
     contactInfo: [
       {
         title: "Sales & Support",
@@ -110,6 +113,7 @@ export function Contact({ locale = "ar" }: { locale?: "ar" | "en" }) {
   const [copiedIndex, setCopiedIndex] = useState<number | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+  const [submitError, setSubmitError] = useState(false);
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
 
   const handleMouseMove = (event: React.MouseEvent<HTMLDivElement>) => {
@@ -143,13 +147,33 @@ export function Contact({ locale = "ar" }: { locale?: "ar" | "en" }) {
     }
   };
 
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     setIsSubmitting(true);
-    window.setTimeout(() => {
+    setSubmitError(false);
+
+    const form = event.currentTarget;
+    const formData = new FormData(form);
+
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(Object.fromEntries(formData.entries())),
+      });
+
+      if (!response.ok) {
+        throw new Error("Contact form submission failed");
+      }
+
       setIsSubmitting(false);
       setSubmitted(true);
-    }, 1200);
+      form.reset();
+      window.setTimeout(() => setSubmitted(false), 3000);
+    } catch {
+      setIsSubmitting(false);
+      setSubmitError(true);
+    }
   };
 
   return (
@@ -285,6 +309,7 @@ export function Contact({ locale = "ar" }: { locale?: "ar" | "en" }) {
                     <div className="relative">
                       <User className="pointer-events-none absolute left-3.5 top-3.5 size-4 text-zinc-500 rtl:right-3.5 rtl:left-auto" />
                       <input
+                        name="name"
                         type="text"
                         required
                         placeholder={text.placeholders.name}
@@ -299,6 +324,7 @@ export function Contact({ locale = "ar" }: { locale?: "ar" | "en" }) {
                     <div className="relative">
                       <Mail className="pointer-events-none absolute left-3.5 top-3.5 size-4 text-zinc-500 rtl:right-3.5 rtl:left-auto" />
                       <input
+                        name="email"
                         type="email"
                         required
                         placeholder={text.placeholders.email}
@@ -315,6 +341,7 @@ export function Contact({ locale = "ar" }: { locale?: "ar" | "en" }) {
                     <div className="relative">
                       <Phone className="pointer-events-none absolute left-3.5 top-3.5 size-4 text-zinc-500 rtl:right-3.5 rtl:left-auto" />
                       <input
+                        name="phone"
                         type="tel"
                         required
                         placeholder={text.placeholders.phone}
@@ -329,6 +356,7 @@ export function Contact({ locale = "ar" }: { locale?: "ar" | "en" }) {
                     <div className="relative">
                       <Building2 className="pointer-events-none absolute left-3.5 top-3.5 size-4 text-zinc-500 rtl:right-3.5 rtl:left-auto" />
                       <input
+                        name="gymName"
                         type="text"
                         placeholder={text.placeholders.gymName}
                         className="w-full rounded-xl border border-zinc-800 bg-zinc-900/60 px-10 py-3 text-sm text-white outline-none transition-all duration-300 placeholder:text-zinc-500 focus:border-emerald-500/60 focus:bg-zinc-900 focus:ring-1 focus:ring-emerald-500/60"
@@ -343,13 +371,23 @@ export function Contact({ locale = "ar" }: { locale?: "ar" | "en" }) {
                   <div className="relative">
                     <MessageSquare className="pointer-events-none absolute left-3.5 top-3.5 size-4 text-zinc-500 rtl:right-3.5 rtl:left-auto" />
                     <textarea
+                      name="message"
                       rows={4}
                       placeholder={text.placeholders.message}
                       className="w-full rounded-xl border border-zinc-800 bg-zinc-900/60 px-10 py-3 text-sm text-white outline-none transition-all duration-300 placeholder:text-zinc-500 focus:border-emerald-500/60 focus:bg-zinc-900 focus:ring-1 focus:ring-emerald-500/60"
                     />
                   </div>
                 </div>
-                <RainbowButton
+                {submitError && (
+                  <p
+                    role="alert"
+                    className="flex items-center gap-2 text-sm text-red-300"
+                  >
+                    <AlertCircle className="size-4 shrink-0" />
+                    {text.errorMessage}
+                  </p>
+                )}
+                <StudioButton
                   type="submit"
                   size="lg"
                   disabled={isSubmitting}
@@ -357,7 +395,7 @@ export function Contact({ locale = "ar" }: { locale?: "ar" | "en" }) {
                 >
                   <Send className="size-4 text-emerald-300" />
                   <span>{isSubmitting ? text.submitting : text.submitBtn}</span>
-                </RainbowButton>
+                </StudioButton>
               </form>
             )}
           </motion.div>

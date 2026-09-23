@@ -3,12 +3,12 @@
 import React, { useState } from "react";
 import { motion, useReducedMotion } from "framer-motion";
 import { Check, Sparkles, Zap, ShieldCheck, Crown } from "lucide-react";
-import { RainbowButton } from "@/components/ui/rainbow-button";
+import { StudioButton } from "@/components/ui/studio-button";
 
 const content = {
   ar: {
     eyebrow: "الخطط والأسعار / 05",
-    title: "اختر الباقة المناسبة لناديك وابدأ النمو",
+    title: "خطط أسعار ذكية تتناسب مع نموك",
     description:
       "خطط واضحة، مرنة، وشاملة مصممة لتسريع نمو صالتك الرياضية وأتمتة عملياتك.",
     month: "شهريًا",
@@ -57,7 +57,7 @@ const content = {
   },
   en: {
     eyebrow: "PLANS & PRICING / 05",
-    title: "Choose the perfect package and start growing",
+    title: "Smart Pricing That Scales With Your Growth",
     description:
       "Transparent and scalable pricing tailored for modern gym operations.",
     month: "month",
@@ -158,7 +158,7 @@ export function Pricing({ locale = "en" }: { locale?: "ar" | "en" }) {
 
           <h2
             id="pricing-title"
-            className="text-4xl font-extrabold tracking-tight text-white sm:text-6xl"
+            className="max-w-2xl mx-auto text-4xl font-extrabold tracking-tight text-white sm:text-5xl"
           >
             <span className="bg-gradient-to-b from-white via-white/90 to-white/50 bg-clip-text text-transparent">
               {text.title}
@@ -231,7 +231,7 @@ export function Pricing({ locale = "en" }: { locale?: "ar" | "en" }) {
 
                   {/* Pricing Display */}
                   <div className="my-8 flex items-baseline gap-2">
-                    <span className="text-xs font-semibold text-emerald-400 uppercase tracking-widest">
+                    <span className="text-xs font-semibold uppercase tracking-widest text-emerald-400">
                       SAR
                     </span>
                     <span className="text-5xl font-black tracking-tight text-white sm:text-6xl">
@@ -243,7 +243,7 @@ export function Pricing({ locale = "en" }: { locale?: "ar" | "en" }) {
                   </div>
 
                   {/* Class Badge */}
-                  <div className="mb-8 rounded-xl border border-zinc-800/80 bg-zinc-900/60 py-2.5 px-4 text-center font-mono text-xs font-medium text-emerald-300/90 backdrop-blur-sm">
+                  <div className="mb-8 rounded-xl border border-zinc-800/80 bg-zinc-900/60 px-4 py-2.5 text-center font-mono text-xs font-medium text-emerald-300/90 backdrop-blur-sm">
                     {plan.classes}
                   </div>
 
@@ -278,19 +278,27 @@ export function Pricing({ locale = "en" }: { locale?: "ar" | "en" }) {
                   </ul>
                 </div>
 
-                {/* CTA Action with RainbowButton */}
+                {/* 🚀 CTA Action Button */}
                 <div className="mt-10 pt-4">
-                  <RainbowButton
+                  <StudioButton
+                    variant={isPopular ? "default" : "pricing"}
                     size="lg"
-                    className="w-full text-base font-bold shadow-lg transition-transform duration-300 hover:scale-[1.02] active:scale-[0.98]"
+                    className="group/btn w-full"
                     onClick={() => {
                       const element = document.getElementById("demo");
                       element?.scrollIntoView({ behavior: "smooth" });
                     }}
                   >
-                    <Sparkles className="size-4 text-emerald-300" />
-                    <span>{text.cta}</span>
-                  </RainbowButton>
+                    {/* Animated Text Roll Container */}
+                    <div className="relative flex h-6 w-full items-center justify-center overflow-hidden">
+                      <span className="absolute inset-0 flex items-center justify-center transition-transform duration-300 ease-out group-hover/btn:-translate-y-full">
+                        {text.cta}
+                      </span>
+                      <span className="absolute inset-0 flex translate-y-full items-center justify-center transition-transform duration-300 ease-out group-hover/btn:translate-y-0">
+                        {text.cta}
+                      </span>
+                    </div>
+                  </StudioButton>
                 </div>
               </motion.div>
             );

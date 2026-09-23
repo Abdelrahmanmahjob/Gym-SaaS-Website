@@ -8,7 +8,7 @@ import { ArrowUpRight, Check, ChevronLeft, ChevronRight } from "lucide-react";
 
 import Link from "next/link";
 
-import { RainbowButton } from "@/components/ui/rainbow-button";
+import { StudioButton } from "@/components/ui/studio-button";
 
 import Text3DFlip from "@/components/ui/text-3d-flip";
 
@@ -195,17 +195,17 @@ export function Hero({ locale }: { locale: Locale }) {
 
             {/* CTA */}
             <div className="mt-9 flex flex-col gap-3 sm:flex-row">
-              <RainbowButton
+              <StudioButton
                 asChild
                 size="lg"
-                className="w-full font-[var(--font-mono)] text-[10px] tracking-[0.06em] sm:w-auto"
+                className="w-full font-[var(--font-mono)] text-[12px] font-semibold tracking-[0.06em] sm:w-auto"
               >
-                <Link href="#demo">
+                <Link href="#pricing">
                   {text.primary}
 
                   <ArrowUpRight size={17} />
                 </Link>
-              </RainbowButton>
+              </StudioButton>
             </div>
 
             {/* Status */}
