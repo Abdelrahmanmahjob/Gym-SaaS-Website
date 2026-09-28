@@ -3,15 +3,18 @@ import { Features } from "@/components/landing/features";
 import { Hero } from "@/components/landing/hero";
 import { Navbar } from "@/components/landing/navbar";
 import { ProductShowcase } from "@/components/landing/product-showcase";
+import { PlatformSection } from "@/components/landing/platform-section";
 import { LightRays } from "@/components/ui/light-rays";
 import { Testimonials } from "@/components/landing/testimonials";
-import { WhyChooseAnan } from "@/components/landing/why-choose-anan";
+import { HowItWorks } from "@/components/landing/how-it-works";
 import { Pricing } from "@/components/landing/pricing";
 import FAQs from "@/components/landing/text-reveal-faqs";
 import CtaSection from "@/components/landing/ctaSection";
-import Contact from "@/components/landing/contact";
+// import Contact from "@/components/landing/contact";
 import Footer from "@/components/landing/footer";
 import { PageTransition } from "@/components/ui/page-transition";
+import { Solutions } from "@/components/landing/solutions";
+import { Problem } from "@/components/landing/problem";
 
 const locales = ["ar", "en"] as const;
 
@@ -39,9 +42,12 @@ export default async function LandingPage({
         <div className="relative z-10">
           <Navbar locale={locale as Locale} />
           <Hero locale={locale as Locale} />
+          <PlatformSection locale={locale as Locale} />
+          <Problem locale={locale as Locale} />
+          <Solutions locale={locale as Locale} />
+          <HowItWorks locale={locale as Locale} />
           <ProductShowcase locale={locale as Locale} />
           <Features locale={locale as Locale} />
-          <WhyChooseAnan locale={locale as Locale} />
           <Testimonials locale={locale as Locale} />
           <FAQs locale={locale as Locale} />
           {/* <Contact locale={locale as Locale} /> */}

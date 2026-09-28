@@ -4,39 +4,16 @@ import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X } from "lucide-react";
+import { ArrowUpRight, Menu, X } from "lucide-react";
 import { usePageTransition } from "@/components/ui/page-transition";
-
-const copy = {
-  ar: {
-    links: [
-      { label: "المنتج", href: "#product" },
-      { label: "المزايا", href: "#features" },
-      { label: "الأسعار", href: "#pricing" },
-      { label: "الأسئلة الشائعة", href: "#faq" },
-    ],
-    language: "EN",
-    open: "فتح القائمة",
-    close: "إغلاق القائمة",
-  },
-  en: {
-    links: [
-      { label: "Product", href: "#product" },
-      { label: "Features", href: "#features" },
-      { label: "Pricing", href: "#pricing" },
-      { label: "FAQ", href: "#faq" },
-    ],
-    language: "AR",
-    open: "Open menu",
-    close: "Close menu",
-  },
-} as const;
+import { navbarContent } from "@/components/content/navbar-content";
+import { StudioButton } from "../ui/studio-button";
 
 export function Navbar({ locale = "ar" }: { locale?: "ar" | "en" }) {
   const [isOpen, setIsOpen] = useState(false);
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
-  const text = copy[locale];
+  const text = navbarContent[locale];
   const nextLocale = locale === "ar" ? "en" : "ar";
   const isRtl = locale === "ar";
   const { isLoaded } = usePageTransition();
@@ -64,13 +41,13 @@ export function Navbar({ locale = "ar" }: { locale?: "ar" | "en" }) {
       <nav
         dir={isRtl ? "rtl" : "ltr"}
         className="relative flex items-center justify-between rounded-2xl border border-white/10 bg-black/50 px-6 py-3 shadow-[0_12px_40px_rgba(0,0,0,0.4)] backdrop-blur-xl transition-all duration-300 hover:border-emerald-500/30"
-        aria-label={isRtl ? "التنقل الرئيسي" : "Primary navigation"}
+        aria-label={text.navigationLabel}
       >
         {/* Brand Logo */}
         <Link
           className="group flex items-center gap-3 transition-transform duration-300 hover:scale-105"
           href={`/${locale}`}
-          aria-label="Anan Sustainability home"
+          aria-label={text.homeLabel}
         >
           <div className="relative flex size-10 items-center justify-center rounded-full border border-emerald-500/20 bg-emerald-500/10 p-1.5 backdrop-blur-md">
             <Image
@@ -91,14 +68,14 @@ export function Navbar({ locale = "ar" }: { locale?: "ar" | "en" }) {
         </Link>
 
         {/* Desktop Links with Kinetic Hover Pill */}
-        <div className="hidden items-center gap-4 md:flex">
+        <div className="hidden items-center gap-3 md:flex">
           {text.links.map((link, idx) => (
             <a
               key={link.href}
               href={link.href}
               onMouseEnter={() => setHoveredIndex(idx)}
               onMouseLeave={() => setHoveredIndex(null)}
-              className="relative px-4 py-2 font-[var(--font-mono)] text-x font-medium tracking-wider text-zinc-300 transition-colors duration-200 hover:text-white"
+              className="relative px-2 py-2 font-[var(--font-mono)] text-[14px] font-medium tracking-wider text-zinc-300 transition-colors duration-200 hover:text-white"
             >
               {hoveredIndex === idx && (
                 <motion.span
@@ -117,9 +94,7 @@ export function Navbar({ locale = "ar" }: { locale?: "ar" | "en" }) {
           <Link
             className="group flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3.5 py-1.5 font-[var(--font-mono)] text-xs font-medium text-zinc-300 transition-all duration-300 hover:border-emerald-500/40 hover:bg-emerald-500/10 hover:text-emerald-300"
             href={`/${nextLocale}`}
-            aria-label={
-              locale === "ar" ? "Switch to English" : "التبديل إلى العربية"
-            }
+            aria-label={text.languageSwitchLabel}
           >
             <Image
               src={
@@ -127,7 +102,7 @@ export function Navbar({ locale = "ar" }: { locale?: "ar" | "en" }) {
                   ? "/brand/flag-usa.svg"
                   : "/brand/flag-saudi.svg"
               }
-              alt={locale === "ar" ? "United States flag" : "علم السعودية"}
+              alt={text.flagAlt}
               width={20}
               height={14}
               className="rounded-[2px] object-cover"

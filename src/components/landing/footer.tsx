@@ -6,61 +6,15 @@ import Link from "next/link";
 import { Globe } from "lucide-react";
 import { BsTwitterX } from "react-icons/bs";
 import { FaLinkedinIn, FaInstagram, FaFacebookF } from "react-icons/fa6";
+import {
+  footerContent,
+  footerSocialLinks,
+} from "@/components/content/footer-content";
 
-const content = {
-  ar: {
-    description:
-      "منصة تشغيل ذكية تساعد الأندية الرياضية ومراكز اللياقة على أتمتة الإدارة، العضويات، المدفوعات، والنمو من مكان واحد.",
-    explore: "// 01. استكشف",
-    company: "// 02. عن أنان",
-    status: "جميع الأنظمة تعمل بكفاءة",
-    links: [
-      { label: "المنتج", href: "#product" },
-      { label: "المزايا", href: "#features" },
-      { label: "الأسعار", href: "#pricing" },
-      { label: "الأسئلة الشائعة", href: "#faq" },
-    ],
-    companyLinks: [
-      { label: "احجز عرضًا مجانياً", href: "#demo" },
-      { label: "تواصل مع المبيعات", href: "#demo" },
-    ],
-    legal: "جميع الحقوق محفوظة.",
-    privacy: "سياسة الخصوصية",
-    terms: "الشروط والأحكام",
-    backToTop: "العودة للأعلى",
-  },
-  en: {
-    description:
-      "A focused operating platform helping gyms manage memberships, payments, and growth from one place.",
-    explore: "// 01. EXPLORE",
-    company: "// 02. ANAN SUSTAINABILITY",
-    status: "SYSTEMS OPERATIONAL",
-    links: [
-      { label: "Product", href: "#product" },
-      { label: "Features", href: "#features" },
-      { label: "Pricing", href: "#pricing" },
-      { label: "FAQ", href: "#faq" },
-    ],
-    companyLinks: [
-      { label: "Book a demo", href: "#demo" },
-      { label: "Contact sales", href: "#demo" },
-    ],
-    legal: "All rights reserved.",
-    privacy: "Privacy Policy",
-    terms: "Terms of Service",
-    backToTop: "Back to top",
-  },
-} as const;
-
-const socialLinks = [
-  { name: "X (Twitter)", href: "#", icon: BsTwitterX },
-  { name: "Instagram", href: "#", icon: FaInstagram },
-  { name: "LinkedIn", href: "#", icon: FaLinkedinIn },
-  { name: "Facebook", href: "#", icon: FaFacebookF },
-];
+const socialIcons = [BsTwitterX, FaInstagram, FaLinkedinIn, FaFacebookF];
 
 export function Footer({ locale = "ar" }: { locale?: "ar" | "en" }) {
-  const text = content[locale];
+  const text = footerContent[locale];
   const nextLocale = locale === "ar" ? "en" : "ar";
   const isRtl = locale === "ar";
 
@@ -82,12 +36,12 @@ export function Footer({ locale = "ar" }: { locale?: "ar" | "en" }) {
             <Link
               href={`/${locale}`}
               className="group inline-flex items-center gap-3"
-              aria-label="Anan Sustainability"
+              aria-label={text.brandLabel}
             >
               <div className="relative flex size-11 items-center justify-center rounded-xl border border-[#27272a] bg-[#18181b] p-2 transition-all duration-300 group-hover:border-[#10b981]/50 group-hover:shadow-[0_0_20px_rgba(16,185,129,0.2)]">
                 <Image
                   src="/brand/anan-sustainability-icon.svg"
-                  alt="Anan Logo"
+                  alt={text.logoAlt}
                   width={28}
                   height={36}
                   className="h-auto w-6"
@@ -120,8 +74,8 @@ export function Footer({ locale = "ar" }: { locale?: "ar" | "en" }) {
 
             {/* Social Icons Row */}
             <div className="flex items-center gap-3 pt-2">
-              {socialLinks.map((social) => {
-                const Icon = social.icon;
+              {footerSocialLinks.map((social, index) => {
+                const Icon = socialIcons[index];
                 return (
                   <a
                     key={social.name}
@@ -182,7 +136,7 @@ export function Footer({ locale = "ar" }: { locale?: "ar" | "en" }) {
                     className="inline-flex items-center gap-2 rounded-lg border border-[#27272a] bg-[#09090b] px-3.5 py-1.5 font-['Kufam'] text-xs font-medium text-[#a1a1aa] transition-all duration-300 hover:border-[#10b981]/40 hover:text-[#4edea3]"
                   >
                     <Globe className="size-3.5 text-[#10b981]" />
-                    <span>{locale === "ar" ? "English" : "العربية"}</span>
+                    <span>{text.switchLanguage}</span>
                   </Link>
                 </li>
               </ul>
@@ -214,7 +168,7 @@ export function Footer({ locale = "ar" }: { locale?: "ar" | "en" }) {
         <div className="pointer-events-none relative left-0 right-0 mt-12 flex select-none flex-col sm:flex-row items-center justify-center gap-4 sm:gap-8  transition-opacity duration-500 hover:opacity-20">
           <Image
             src="/brand/anan-sustainability-icon.png"
-            alt="Anan Logo Watermark"
+            alt={text.watermarkAlt}
             width={160}
             height={200}
             className="h-[clamp(4rem,10vw,8rem)] w-auto"

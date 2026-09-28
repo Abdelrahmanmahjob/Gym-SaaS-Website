@@ -1,0 +1,38 @@
+export const navbarContent = {
+  ar: {
+    links: [
+      { label: "المنصة", href: "#platform" },
+      { label: "الحلول", href: "#solutions" },
+      { label: "الصناعات", href: "#industries" },
+      { label: "التكاملات", href: "#integrations" },
+      { label: "الأسعار", href: "#pricing" },
+      { label: "الموارد", href: "#resources" },
+      { label: "تواصل معنا", href: "#contact" },
+    ],
+    language: "EN",
+    open: "فتح القائمة",
+    close: "إغلاق القائمة",
+    navigationLabel: "التنقل الرئيسي",
+    homeLabel: "Anan Sustainability home",
+    flagAlt: "United States flag",
+    languageSwitchLabel: "Switch to English",
+  },
+  en: {
+    links: [
+      { label: "Platform", href: "#platform" },
+      { label: "Solutions", href: "#solutions" },
+      { label: "Industries", href: "#industries" },
+      { label: "Integrations", href: "#integrations" },
+      { label: "Pricing", href: "#pricing" },
+      { label: "Resources", href: "#resources" },
+      { label: "Contact", href: "#contact" },
+    ],
+    language: "AR",
+    open: "Open menu",
+    close: "Close menu",
+    navigationLabel: "Primary navigation",
+    homeLabel: "Anan Sustainability home",
+    flagAlt: "علم السعودية",
+    languageSwitchLabel: "التبديل إلى العربية",
+  },
+} as const;

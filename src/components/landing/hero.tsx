@@ -4,7 +4,18 @@ import { useCallback, useState } from "react";
 
 import { motion, useReducedMotion } from "framer-motion";
 
-import { ArrowUpRight, Check, ChevronLeft, ChevronRight } from "lucide-react";
+import {
+  ArrowUpRight,
+  Check,
+  ChevronLeft,
+  ChevronRight,
+  Dumbbell,
+  GraduationCap,
+  Scissors,
+  Sparkles,
+  Stethoscope,
+  Trophy,
+} from "lucide-react";
 
 import Link from "next/link";
 
@@ -16,6 +27,15 @@ import { heroContent, type Locale } from "@/components/content/hero-content";
 
 import { HeroSlider } from "@/components/ui/hero-slider";
 import { usePageTransition } from "@/components/ui/page-transition";
+
+const industryIcons = [
+  Dumbbell,
+  Trophy,
+  Sparkles,
+  Scissors,
+  Stethoscope,
+  GraduationCap,
+];
 
 export function Hero({ locale }: { locale: Locale }) {
   const text = heroContent[locale];
@@ -121,25 +141,6 @@ export function Hero({ locale }: { locale: Locale }) {
               {text.heroEyebrow}
             </div>
 
-            {/* Dynamic eyebrow */}
-            <motion.div
-              key={activeSlide.id}
-              initial={{
-                opacity: 0,
-                y: 8,
-              }}
-              animate={{
-                opacity: 1,
-                y: 0,
-              }}
-              transition={{
-                duration: 0.3,
-              }}
-              className="mb-5 font-[var(--font-mono)] text-[9px] tracking-[0.15em] text-[#4edea3]/65"
-            >
-              {activeSlide.eyebrow}
-            </motion.div>
-
             {/* =================================================
                 TITLE
             ================================================== */}
@@ -206,7 +207,58 @@ export function Hero({ locale }: { locale: Locale }) {
                   <ArrowUpRight size={17} />
                 </Link>
               </StudioButton>
+              <StudioButton
+                size="lg"
+                variant="outline"
+                asChild
+                className="w-full sm:w-auto"
+              >
+                <Link
+                  href="#how-it-works"
+                  className="w-full font-[var(--font-mono)] text-[12px] font-semibold tracking-[0.06em] sm:w-auto"
+                >
+                  {text.secondary}
+                  <ArrowUpRight size={17} />
+                </Link>
+              </StudioButton>
             </div>
+
+            <motion.ul
+              aria-label={text.industriesLabel}
+              initial={shouldReduceMotion ? false : { opacity: 0, y: 8 }}
+              animate={{ opacity: isLoaded ? 1 : 0, y: isLoaded ? 0 : 8 }}
+              transition={{
+                delay: 0.48,
+                duration: shouldReduceMotion ? 0 : 0.45,
+                ease: "easeOut",
+              }}
+              className="mt-5 flex max-w-[400px] flex-wrap gap-2"
+            >
+              {text.industries.map((industry, index) => {
+                const Icon = industryIcons[index];
+
+                return (
+                  <motion.li
+                    key={industry}
+                    initial={shouldReduceMotion ? false : { opacity: 0, y: 6 }}
+                    animate={{ opacity: isLoaded ? 1 : 0, y: isLoaded ? 0 : 6 }}
+                    transition={{
+                      delay: shouldReduceMotion ? 0 : 0.5 + index * 0.045,
+                      duration: shouldReduceMotion ? 0 : 0.32,
+                    }}
+                    className="inline-flex h-9 items-center gap-2 rounded-full border border-white/10 bg-black/20 px-3 text-[11px] font-medium text-white/70 backdrop-blur-sm transition-colors hover:border-emerald-300/30 hover:bg-emerald-300/[0.06] hover:text-white sm:h-10 sm:px-3.5 sm:text-xs"
+                  >
+                    <Icon
+                      size={14}
+                      strokeWidth={1.7}
+                      className="shrink-0 text-emerald-200/80"
+                      aria-hidden="true"
+                    />
+                    <span className="whitespace-nowrap">{industry}</span>
+                  </motion.li>
+                );
+              })}
+            </motion.ul>
 
             {/* Status */}
             <div className="mt-9 flex flex-wrap gap-x-6 gap-y-3 font-[var(--font-mono)] text-[9px] tracking-[0.05em] text-white/40">

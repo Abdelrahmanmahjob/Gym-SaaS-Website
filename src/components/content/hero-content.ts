@@ -12,10 +12,19 @@ export type HeroSlide = {
 
 export const heroContent = {
   ar: {
-    heroEyebrow: "عمليات النادي الرياضي / 01",
+    heroEyebrow: "المنصة للشركات الخدمية",
 
-    primary: "ابدأ تجربة 7 أيام",
-    secondary: "احجز عرضًا توضيحيًا",
+    primary: "احجز عرضًا توضيحيًا",
+    secondary: "شاهد كيف تعمل المنصة",
+    industriesLabel: "القطاعات التي نخدمها",
+    industries: [
+      "الأندية الرياضية",
+      "أندية البادل",
+      "الاستوديوهات",
+      "الصالونات",
+      "العيادات",
+      "مراكز التدريب",
+    ],
 
     live: "النظام يعمل الآن",
     proof: "مصمم للأندية متعددة الفروع",
@@ -38,9 +47,9 @@ export const heroContent = {
       {
         id: "desktop",
         eyebrow: "مركز القيادة / DESKTOP",
-        title: "أدر ناديك من رؤية واحدة.",
+        title: "منصة واحدة لتشغيل أعمالك الخدمية.",
         description:
-          "تابع العضويات والمدفوعات والحضور والحصص والمبيعات والأداء من لوحة تشغيل واحدة صُممت للإدارة اليومية.",
+          "قم بإدارة عملائك، الحجوزات، الاشتراكات، الفريق، المدفوعات، والعمليات اليومية — كل ذلك في مكان واحد.",
         image: "/media/dashboard/dashboard-image2.jpeg",
         imageAlt: "لوحة التحكم الرئيسية لمنصة إدارة النادي الرياضي",
         deviceLabel: "لوحة الإدارة",
@@ -49,10 +58,19 @@ export const heroContent = {
   },
 
   en: {
-    heroEyebrow: "GYM OPERATIONS / 01",
+    heroEyebrow: "THE PLATFORM FOR SERVICE BUSINESSES",
 
-    primary: "Start 7-day trial",
-    secondary: "Book a demo",
+    primary: "Book a Demo",
+    secondary: "See How It Works",
+    industriesLabel: "Industries we serve",
+    industries: [
+      "Gyms & Fitness",
+      "Padel Clubs",
+      "Studios",
+      "Salons",
+      "Clinics",
+      "Training Centers",
+    ],
 
     live: "System operational",
     proof: "Built for multi-branch gyms",
@@ -75,9 +93,9 @@ export const heroContent = {
       {
         id: "desktop",
         eyebrow: "COMMAND CENTER / DESKTOP",
-        title: "Run your gym from one view.",
+        title: "One platform to run your service business.",
         description:
-          "Monitor memberships, payments, attendance, classes, retail, and performance from one operating dashboard built for daily management.",
+          "Manage your customers, bookings, memberships, team, payments, and daily operations — all in one place.",
         image: "/media/dashboard/dashboard-image2.jpeg",
         imageAlt: "Main gym management dashboard",
         deviceLabel: "Management dashboard",

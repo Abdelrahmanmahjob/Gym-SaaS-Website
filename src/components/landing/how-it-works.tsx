@@ -6,74 +6,12 @@ import { ArrowLeft, ArrowRight } from "lucide-react";
 
 import { cn } from "@/lib/utils";
 import Image from "next/image";
+import { howItWorksContent } from "@/components/content/how-it-works";
 
 const AUTO_PLAY_DURATION = 5000;
 
-const content = {
-  ar: {
-    heading: "لماذا تختار أنان؟",
-    subheading: "(لماذا نحن)",
-    items: [
-      {
-        id: "01",
-        title: "إدارة متكاملة",
-        description:
-          "من العضويات والمدفوعات إلى الحضور والتقارير، كل شيء في منصة واحدة ترفع من كفاءة التشغيل اليومي.",
-        image:
-          "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=1200&q=80",
-      },
-      {
-        id: "02",
-        title: "تجربة مستخدم ذكية",
-        description:
-          "واجهة سريعة وواضحة تدعم المدراء والمدربين والموظفين في تنفيذ المهام بدون تعقيد.",
-        image:
-          "https://images.unsplash.com/photo-1517836357463-d25dfeac3438?auto=format&fit=crop&w=1200&q=80",
-      },
-      {
-        id: "03",
-        title: "تقارير لحظية",
-        description:
-          "تابع الأداء عبر مؤشرات دقيقة تساعدك على اتخاذ قرارات أسرع وتنمية النادي بثقة أكبر.",
-        image:
-          "https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?auto=format&fit=crop&w=1200&q=80",
-      },
-    ],
-  },
-  en: {
-    heading: "Why choose Anan?",
-    subheading: "(WHY US)",
-    items: [
-      {
-        id: "01",
-        title: "Unified operations",
-        description:
-          "From memberships and payments to attendance and reporting, everything runs in a single system that improves daily performance.",
-        image:
-          "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=1200&q=80",
-      },
-      {
-        id: "02",
-        title: "Smart user experience",
-        description:
-          "A fast, clear interface that helps managers, coaches, and staff carry out tasks without friction.",
-        image:
-          "https://images.unsplash.com/photo-1517836357463-d25dfeac3438?auto=format&fit=crop&w=1200&q=80",
-      },
-      {
-        id: "03",
-        title: "Real-time reporting",
-        description:
-          "Monitor performance through precise metrics so your team can act faster and scale with confidence.",
-        image:
-          "https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?auto=format&fit=crop&w=1200&q=80",
-      },
-    ],
-  },
-} as const;
-
-export function WhyChooseAnan({ locale = "en" }: { locale?: "ar" | "en" }) {
-  const text = content[locale];
+export function HowItWorks({ locale = "en" }: { locale?: "ar" | "en" }) {
+  const text = howItWorksContent[locale];
   const [activeIndex, setActiveIndex] = useState(0);
   const [direction, setDirection] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
@@ -126,26 +64,29 @@ export function WhyChooseAnan({ locale = "en" }: { locale?: "ar" | "en" }) {
 
   return (
     <section
-      id="section-4"
+      id="how-it-works"
       dir={locale === "ar" ? "rtl" : "ltr"}
       className="relative overflow-hidden border-t border-white/[0.08] py-24 sm:py-28 lg:py-32"
-      aria-labelledby="why-choose-us-title"
+      aria-labelledby="how-it-works-title"
     >
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_70%_10%,rgba(16,185,129,0.08),transparent_35%)]" />
 
       <div className="relative mx-auto max-w-7xl px-6">
         <div className="grid items-start gap-12 lg:grid-cols-12 lg:gap-16">
-          <div className="order-2 min-h-[600px] flex flex-col justify-center pt-4 lg:order-1 lg:col-span-5">
+          <div className="order-2 min-h-[1000px] flex flex-col justify-center pt-4 lg:order-1 lg:col-span-5">
             <div className="mb-12 space-y-4">
               <div className="inline-flex items-center gap-2 rounded-full border border-emerald-500/20 bg-emerald-500/10 px-3.5 py-1 font-mono text-xs font-semibold uppercase tracking-widest text-emerald-300 backdrop-blur-md">
-                {text.subheading}
+                {text.eyebrow}
               </div>
               <h2
-                id="why-choose-us-title"
-                className="text-3xl font-extrabold leading-[1.05] tracking-tight text-white sm:text-5xl"
+                id="how-it-works-title"
+                className="text-3xl font-extrabold leading-[1.05] tracking-tight text-white sm:text-4xl"
               >
                 {text.heading}
               </h2>
+              <p className="max-w-xl text-sm leading-6 text-white/55 sm:text-base sm:leading-7">
+                {text.description}
+              </p>
             </div>
 
             <div className="flex flex-col">
@@ -220,7 +161,7 @@ export function WhyChooseAnan({ locale = "en" }: { locale?: "ar" | "en" }) {
             </div>
           </div>
 
-          <div className="order-1 flex h-full flex-col justify-end lg:order-2 lg:col-span-7">
+          <div className="order-1 flex h-full flex-col justify-center lg:order-2 lg:col-span-7">
             <div
               className="relative group/gallery"
               onMouseEnter={() => setIsPaused(true)}
@@ -250,7 +191,7 @@ export function WhyChooseAnan({ locale = "en" }: { locale?: "ar" | "en" }) {
                       width={1200}
                       height={800}
                       src={text.items[activeIndex].image}
-                      alt={text.items[activeIndex].title}
+                      alt={text.items[activeIndex].imageAlt}
                       className="m-0 block h-full w-full object-cover p-0 transition-transform duration-700 hover:scale-105"
                     />
 
@@ -266,7 +207,9 @@ export function WhyChooseAnan({ locale = "en" }: { locale?: "ar" | "en" }) {
                       handlePrev();
                     }}
                     className="flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-black/55 text-white backdrop-blur-md transition-all hover:bg-black/70 active:scale-90 md:h-12 md:w-12"
-                    aria-label="Previous"
+                    aria-label={
+                      locale === "ar" ? "الخطوة السابقة" : "Previous step"
+                    }
                   >
                     <ArrowLeft size={18} />
                   </button>
@@ -277,7 +220,9 @@ export function WhyChooseAnan({ locale = "en" }: { locale?: "ar" | "en" }) {
                       handleNext();
                     }}
                     className="flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-black/55 text-white backdrop-blur-md transition-all hover:bg-black/70 active:scale-90 md:h-12 md:w-12"
-                    aria-label="Next"
+                    aria-label={
+                      locale === "ar" ? "الخطوة التالية" : "Next step"
+                    }
                   >
                     <ArrowRight size={18} />
                   </button>
@@ -291,4 +236,4 @@ export function WhyChooseAnan({ locale = "en" }: { locale?: "ar" | "en" }) {
   );
 }
 
-export default WhyChooseAnan;
+export default HowItWorks;
