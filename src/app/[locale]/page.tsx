@@ -10,7 +10,7 @@ import { HowItWorks } from "@/components/landing/how-it-works";
 import { Pricing } from "@/components/landing/pricing";
 import FAQs from "@/components/landing/text-reveal-faqs";
 import CtaSection from "@/components/landing/ctaSection";
-// import Contact from "@/components/landing/contact";
+import Contact from "@/components/landing/contact";
 import Footer from "@/components/landing/footer";
 import { PageTransition } from "@/components/ui/page-transition";
 import { Solutions } from "@/components/landing/solutions";
@@ -51,9 +51,9 @@ export default async function LandingPage({
           <Features locale={locale as Locale} />
           <Testimonials locale={locale as Locale} />
           <FAQs locale={locale as Locale} />
-          {/* <Contact locale={locale as Locale} /> */}
           <Integrations locale={locale as Locale} />
           <Pricing locale={locale as Locale} />
+          <Contact locale={locale as Locale} />
           <CtaSection locale={locale as Locale} />
           <Footer locale={locale as Locale} />
         </div>

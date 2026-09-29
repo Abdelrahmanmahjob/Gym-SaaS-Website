@@ -21,6 +21,7 @@ import Link from "next/link";
 
 import { LightRays } from "@/components/ui/light-rays";
 import { StudioButton } from "../ui/studio-button";
+import Image from "next/image";
 
 type Locale = "ar" | "en";
 
@@ -42,6 +43,7 @@ type Industry = {
   visualLabel: string;
   visualMeta: string;
   icon: LucideIcon;
+  image: string;
 };
 
 const content = {
@@ -71,6 +73,7 @@ const content = {
         visualLabel: "GYM OPERATIONS",
         visualMeta: "MEMBERSHIPS / CLASSES / POS",
         icon: Dumbbell,
+        image: "/media/industries/gym2.jpeg",
       },
 
       {
@@ -89,6 +92,7 @@ const content = {
         visualLabel: "PADEL OPERATIONS",
         visualMeta: "BOOKINGS / CUSTOMERS / PAYMENTS",
         icon: Trophy,
+        image: "/media/industries/padel.jpg",
       },
 
       {
@@ -107,6 +111,7 @@ const content = {
         visualLabel: "STUDIO OPERATIONS",
         visualMeta: "CLASSES / BOOKINGS / MEMBERS",
         icon: HeartPulse,
+        image: "/media/industries/studio.webp",
       },
 
       {
@@ -125,6 +130,7 @@ const content = {
         visualLabel: "SALON OPERATIONS",
         visualMeta: "APPOINTMENTS / STAFF / PAYMENTS",
         icon: Scissors,
+        image: "/media/industries/salon.jpeg",
       },
 
       {
@@ -143,6 +149,7 @@ const content = {
         visualLabel: "CLINIC OPERATIONS",
         visualMeta: "APPOINTMENTS / CUSTOMERS / STAFF",
         icon: HeartPulse,
+        image: "/media/industries/clinic.jpeg",
       },
 
       {
@@ -161,6 +168,7 @@ const content = {
         visualLabel: "TRAINING OPERATIONS",
         visualMeta: "STUDENTS / SCHEDULES / PAYMENTS",
         icon: GraduationCap,
+        image: "/media/industries/training-center.jpg",
       },
     ] satisfies Industry[],
 
@@ -197,6 +205,7 @@ const content = {
         visualLabel: "GYM OPERATIONS",
         visualMeta: "MEMBERSHIPS / CLASSES / POS",
         icon: Dumbbell,
+        image: "/media/industries/gym2.jpeg",
       },
 
       {
@@ -215,6 +224,7 @@ const content = {
         visualLabel: "PADEL OPERATIONS",
         visualMeta: "BOOKINGS / CUSTOMERS / PAYMENTS",
         icon: Trophy,
+        image: "/media/industries/padel.jpg",
       },
 
       {
@@ -233,6 +243,7 @@ const content = {
         visualLabel: "STUDIO OPERATIONS",
         visualMeta: "CLASSES / BOOKINGS / MEMBERS",
         icon: HeartPulse,
+        image: "/media/industries/studio.webp",
       },
 
       {
@@ -251,6 +262,7 @@ const content = {
         visualLabel: "SALON OPERATIONS",
         visualMeta: "APPOINTMENTS / STAFF / PAYMENTS",
         icon: Scissors,
+        image: "/media/industries/salon.jpeg",
       },
 
       {
@@ -269,6 +281,7 @@ const content = {
         visualLabel: "CLINIC OPERATIONS",
         visualMeta: "APPOINTMENTS / CUSTOMERS / STAFF",
         icon: HeartPulse,
+        image: "/media/industries/clinic.jpeg",
       },
 
       {
@@ -287,6 +300,7 @@ const content = {
         visualLabel: "TRAINING OPERATIONS",
         visualMeta: "STUDENTS / SCHEDULES / PAYMENTS",
         icon: GraduationCap,
+        image: "/media/industries/training-center.jpg",
       },
     ] satisfies Industry[],
 
@@ -363,7 +377,7 @@ function SolutionVisual({
   const accent = visualAccents[industry.id];
 
   return (
-    <div className="relative min-h-[540px] w-full overflow-hidden border border-[#27272a] bg-[#09090b] sm:min-h-[620px] lg:min-h-[680px]">
+    <div className="relative min-h-[540px] w-full overflow-hidden bg-[#09090b] sm:min-h-[620px] lg:min-h-[680px]">
       {/* ==========================================================
           ATMOSPHERE
       =========================================================== */}
@@ -425,7 +439,7 @@ function SolutionVisual({
           ABSTRACT SYSTEM PANEL
       =========================================================== */}
 
-      <div className="absolute inset-x-5 top-28 bottom-8 sm:inset-x-7 sm:top-32 sm:bottom-10">
+      <div className="absolute inset-0 rounded-4xl overflow-hidden">
         {/* Main panel */}
         <motion.div
           initial={{
@@ -439,10 +453,10 @@ function SolutionVisual({
           transition={{
             duration: prefersReducedMotion ? 0.15 : 0.7,
           }}
-          className="absolute left-0 right-[12%] top-[8%] bottom-[5%] border border-[#27272a] bg-[#111113]/70 backdrop-blur-[4px]"
+          className="absolute inset-0 w-full h-full"
         >
           {/* Panel header */}
-          <div className="flex items-center justify-between border-b border-[#27272a] px-4 py-3 sm:px-5">
+          {/* <div className="flex items-center justify-between border-b border-[#27272a] px-4 py-3 sm:px-5">
             <div>
               <div className="h-2.5 w-24 bg-white/[0.08]" />
 
@@ -450,10 +464,10 @@ function SolutionVisual({
             </div>
 
             <div className="h-6 w-20 border border-[#27272a] bg-[#18181b]" />
-          </div>
+          </div> */}
 
           {/* Fake dashboard blocks */}
-          <div className="grid grid-cols-2 gap-3 p-4 sm:p-5">
+          {/* <div className="grid grid-cols-2 gap-3 p-4 sm:p-5">
             {[0, 1, 2, 3].map((item) => (
               <motion.div
                 key={item}
@@ -482,10 +496,10 @@ function SolutionVisual({
                 <div className="mt-3 h-1.5 w-12 bg-white/[0.04]" />
               </motion.div>
             ))}
-          </div>
+          </div> */}
 
           {/* Chart */}
-          <div className="absolute bottom-5 left-4 right-4 top-[44%] border border-[#27272a] bg-[#09090b]/60 p-4 sm:left-5 sm:right-5">
+          {/* <div className="absolute bottom-5 left-4 right-4 top-[44%] border border-[#27272a] bg-[#09090b]/60 p-4 sm:left-5 sm:right-5">
             <div className="flex items-center justify-between">
               <div className="h-1.5 w-20 bg-white/[0.06]" />
 
@@ -537,11 +551,20 @@ function SolutionVisual({
                 }}
               />
             </svg>
-          </div>
+          </div> */}
+          {industry.image && (
+            <Image
+              width={120}
+              height={100}
+              src={industry.image}
+              alt={industry.title}
+              className="absolute inset-0 h-full w-full object-cover"
+            />
+          )}
         </motion.div>
 
         {/* Floating telemetry block */}
-        <motion.div
+        {/* <motion.div
           initial={{
             opacity: 0,
             x: 20,
@@ -597,7 +620,7 @@ function SolutionVisual({
               />
             ))}
           </div>
-        </motion.div>
+        </motion.div> */}
 
         {/* ======================================================
             MOBILE PHONE MOCKUP
@@ -619,7 +642,7 @@ function SolutionVisual({
             delay: 0.18,
             ease: [0.22, 1, 0.36, 1],
           }}
-          className="absolute bottom-[-4%] right-[4%] z-20 w-[38%] min-w-[160px] max-w-[245px] sm:right-[8%] sm:w-[34%] lg:right-[9%]"
+          className="absolute hidden bottom-[5%] right-[4%] z-20 w-[38%] min-w-[160px] max-w-[245px] sm:right-[8%] sm:w-[34%] lg:right-[9%]"
         >
           {/* Device glow */}
           <div className="pointer-events-none absolute -inset-5 rounded-[3rem] bg-[#10b981]/[0.06] blur-[35px]" />
@@ -651,11 +674,11 @@ function SolutionVisual({
               <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#09090b]/35 via-transparent to-transparent" />
 
               {/* Video replacement note */}
-              <div className="pointer-events-none absolute bottom-3 left-1/2 z-20 -translate-x-1/2 whitespace-nowrap border border-white/10 bg-black/45 px-2.5 py-1.5 backdrop-blur-md">
+              {/* <div className="pointer-events-none absolute bottom-3 left-1/2 z-20 -translate-x-1/2 whitespace-nowrap border border-white/10 bg-black/45 px-2.5 py-1.5 backdrop-blur-md">
                 <span className="font-[var(--font-mono)] text-[6px] tracking-[0.1em] text-white/45">
                   {locale === "ar" ? "MOBILE DEMO" : "MOBILE DEMO"}
                 </span>
-              </div>
+              </div> */}
             </div>
 
             {/* Side button */}
@@ -665,7 +688,7 @@ function SolutionVisual({
           </div>
 
           {/* Pause/status chip */}
-          <motion.div
+          {/* <motion.div
             animate={
               prefersReducedMotion
                 ? undefined
@@ -685,7 +708,7 @@ function SolutionVisual({
             <span className="font-[var(--font-mono)] text-[7px] tracking-[0.08em] text-white/45 sm:text-[8px]">
               {locale === "ar" ? "LIVE" : "LIVE"}
             </span>
-          </motion.div>
+          </motion.div> */}
         </motion.div>
 
         {/* Bottom module strip */}
@@ -739,10 +762,10 @@ export function Solutions({ locale }: { locale: Locale }) {
 
   return (
     <section
-      id="solutions"
+      id="industries"
       dir={locale === "ar" ? "rtl" : "ltr"}
       className="relative overflow-hidden border-t border-[#27272a] bg-[#09090b] py-24 sm:py-28 lg:py-32"
-      aria-labelledby="solutions-title"
+      aria-labelledby="industries-title"
     >
       {/* ==========================================================
           SECTION ATMOSPHERE

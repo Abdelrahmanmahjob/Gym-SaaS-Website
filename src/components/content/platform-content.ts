@@ -1,6 +1,6 @@
 import type { Locale } from "@/components/content/hero-content";
 
-type PlatformArea = {
+export type PlatformArea = {
   id: string;
   title: string;
   heading: string;
@@ -173,62 +173,6 @@ export const platformContent: Record<Locale, PlatformCopy> = {
         ],
       },
       {
-        id: "website",
-        title: "Website",
-        heading: "Bring your website into your workflow",
-        description: "Create landing pages and connect your custom domain.",
-        features: [
-          "Publish pages for plans and services",
-          "Connect your business domain",
-          "Review visits to published pages",
-        ],
-        metricLabel: "Page visits",
-        metricValue: "9,840",
-        metricChange: "+12.3%",
-        activityTitle: "Published pages",
-        records: [
-          {
-            name: "Membership plans",
-            detail: "anan.example/plans",
-            state: "Live",
-          },
-          {
-            name: "Personal training",
-            detail: "anan.example/coaching",
-            state: "Live",
-          },
-          { name: "Summer campaign", detail: "Edited today", state: "Draft" },
-        ],
-      },
-      {
-        id: "marketing",
-        title: "Marketing",
-        heading: "Stay connected with your members",
-        description: "Connect WhatsApp and manage customer engagement.",
-        features: [
-          "Send updates through connected channels",
-          "Keep campaign activity in one view",
-          "Manage reminders and welcome messages",
-        ],
-        metricLabel: "Campaigns sent",
-        metricValue: "12",
-        metricChange: "+3 this month",
-        activityTitle: "Recent campaigns",
-        records: [
-          {
-            name: "Class schedule update",
-            detail: "WhatsApp · Today",
-            state: "Sent",
-          },
-          {
-            name: "Membership reminder",
-            detail: "WhatsApp · Yesterday",
-            state: "Sent",
-          },
-          { name: "Welcome message", detail: "Automation", state: "Active" },
-        ],
-      },
-      {
         id: "tools",
         title: "Business Tools",
         heading: "Keep your business tools working together",
@@ -378,50 +322,6 @@ export const platformContent: Record<Locale, PlatformCopy> = {
           { name: "تجديد عضوية", detail: "اليوم · بطاقة", state: "مدفوع" },
           { name: "باقة حصص", detail: "اليوم · إلكتروني", state: "مدفوع" },
           { name: "خطة شهرية", detail: "أمس · بطاقة", state: "مدفوع" },
-        ],
-      },
-      {
-        id: "website",
-        title: "الموقع الإلكتروني",
-        heading: "اجعل موقعك جزءًا من عملك اليومي",
-        description: "أنشئ صفحات هبوط واربط نطاقك الخاص.",
-        features: [
-          "انشر صفحات الخطط والخدمات",
-          "اربط نطاق نشاطك التجاري",
-          "تابع زيارات الصفحات المنشورة",
-        ],
-        metricLabel: "زيارات الصفحات",
-        metricValue: "9,840",
-        metricChange: "+12.3%",
-        activityTitle: "الصفحات المنشورة",
-        records: [
-          { name: "خطط العضوية", detail: "anan.example/plans", state: "مباشر" },
-          {
-            name: "التدريب الشخصي",
-            detail: "anan.example/coaching",
-            state: "مباشر",
-          },
-          { name: "حملة الصيف", detail: "تم التعديل اليوم", state: "مسودة" },
-        ],
-      },
-      {
-        id: "marketing",
-        title: "التسويق",
-        heading: "ابقَ على تواصل مع أعضائك",
-        description: "اربط واتساب وأدر تواصلك مع العملاء.",
-        features: [
-          "أرسل التحديثات عبر القنوات المتصلة",
-          "تابع نشاط الحملات في مكان واحد",
-          "أدر التذكيرات ورسائل الترحيب",
-        ],
-        metricLabel: "الحملات المرسلة",
-        metricValue: "12",
-        metricChange: "3 هذا الشهر",
-        activityTitle: "الحملات الأخيرة",
-        records: [
-          { name: "تحديث جدول الحصص", detail: "واتساب · اليوم", state: "مرسل" },
-          { name: "تذكير بالعضوية", detail: "واتساب · أمس", state: "مرسل" },
-          { name: "رسالة ترحيب", detail: "آلية", state: "نشط" },
         ],
       },
       {

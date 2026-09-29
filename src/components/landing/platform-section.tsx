@@ -1,12 +1,10 @@
 "use client";
 
 import { useRef, useState, type KeyboardEvent } from "react";
+
 import {
   ArrowLeft,
-  ArrowDownLeft,
-  ArrowDownRight,
   ArrowRight,
-  BatteryFull,
   BriefcaseBusiness,
   CalendarDays,
   Check,
@@ -14,15 +12,39 @@ import {
   Globe2,
   Megaphone,
   Package,
-  Signal,
   UsersRound,
   UserRound,
-  Wifi,
 } from "lucide-react";
+
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
-import { platformContent } from "@/components/content/platform-content";
-import type { Locale } from "@/components/content/hero-content";
+
 import Image from "next/image";
+
+import {
+  PlatformArea,
+  platformContent,
+} from "@/components/content/platform-content";
+
+import type { Locale } from "@/components/content/hero-content";
+
+/* ================================================================
+   TYPES
+================================================================ */
+
+type VisualType = "mobile" | "laptop";
+
+type AreaPresentation = {
+  type: VisualType;
+  image: string;
+};
+
+type PlatformSectionProps = {
+  locale: Locale;
+};
+
+/* ================================================================
+   ICONS
+================================================================ */
 
 const areaIcons = [
   UserRound,
@@ -35,24 +57,286 @@ const areaIcons = [
   BriefcaseBusiness,
 ];
 
-const areaImages: Record<string, string> = {
-  customers: "/media/platform/customers.png",
-  bookings: "/media/platform/bookings.png",
-  memberships: "/media/platform/memberships2.png",
-  team: "/media/platform/team.png",
-  payments: "/media/platform/payments.png",
-  website: "/media/platform/website.png",
-  marketing: "/media/platform/marketing.png",
-  tools: "/media/platform/tools.png",
+/* ================================================================
+   PRESENTATION CONFIG
+================================================================ */
+
+const areaPresentation: Record<string, AreaPresentation> = {
+  customers: {
+    type: "mobile",
+    image: "/media/platform/customers2.png",
+  },
+
+  bookings: {
+    type: "laptop",
+    image: "/media/platform/bookings-laptop3.png",
+  },
+
+  memberships: {
+    type: "mobile",
+    image: "/media/platform/memberships.png",
+  },
+
+  team: {
+    type: "mobile",
+    image: "/media/platform/team.png",
+  },
+
+  payments: {
+    type: "laptop",
+    image: "/media/platform/payments-laptop2.png",
+  },
+
+  tools: {
+    type: "mobile",
+    image: "/media/platform/tools3.png",
+  },
 };
 
-export function PlatformSection({ locale }: { locale: Locale }) {
+/* ================================================================
+   MOBILE MOCKUP
+================================================================ */
+
+function MobileMockup({
+  image,
+  alt,
+  shouldReduceMotion,
+}: {
+  image: string;
+  alt: string;
+  locale: Locale;
+  shouldReduceMotion: boolean;
+}) {
+  return (
+    <motion.div
+      initial={
+        shouldReduceMotion
+          ? false
+          : {
+              opacity: 0,
+              y: 28,
+              rotate: 3,
+            }
+      }
+      animate={{
+        opacity: 1,
+        y: 0,
+        rotate: 0,
+      }}
+      transition={{
+        duration: shouldReduceMotion ? 0 : 0.65,
+        ease: [0.22, 1, 0.36, 1],
+      }}
+      className="relative mx-auto w-full max-w-[320px]"
+    >
+      {/* Device glow */}
+      <div className="pointer-events-none absolute -inset-8 rounded-[4rem] bg-emerald-400/[0.06] blur-[42px]" />
+
+      {/* Phone shell */}
+      <div className="relative rounded-[2.5rem] border-[5px] border-[#27272a] bg-[#030303] p-1.5 shadow-[0_30px_80px_rgba(0,0,0,0.45)]">
+        {/* Top speaker / Dynamic island */}
+        <div className="absolute left-1/2 top-3 z-30 h-5 w-20 -translate-x-1/2 rounded-full bg-black sm:h-6 sm:w-24" />
+
+        {/* Screen */}
+        <div className="relative aspect-[9/19] overflow-hidden rounded-[2rem] bg-[#111113]">
+          <Image
+            src={image}
+            alt={alt}
+            fill
+            sizes="320px"
+            className="object-cover object-top"
+          />
+
+          {/* Screen atmosphere */}
+          <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#09090b]/30 via-transparent to-transparent" />
+        </div>
+
+        {/* Side buttons */}
+        <div className="absolute -left-[7px] top-[28%] h-10 w-1 rounded-full bg-[#3f3f46]" />
+
+        <div className="absolute -left-[7px] top-[38%] h-7 w-1 rounded-full bg-[#3f3f46]" />
+      </div>
+    </motion.div>
+  );
+}
+
+/* ================================================================
+   LAPTOP MOCKUP
+================================================================ */
+
+function LaptopMockup({
+  image,
+  alt,
+  shouldReduceMotion,
+}: {
+  image: string;
+  alt: string;
+  locale: Locale;
+  shouldReduceMotion: boolean;
+}) {
+  return (
+    <motion.div
+      initial={
+        shouldReduceMotion
+          ? false
+          : {
+              opacity: 0,
+              y: 28,
+              scale: 0.97,
+            }
+      }
+      animate={{
+        opacity: 1,
+        y: 0,
+        scale: 1,
+      }}
+      transition={{
+        duration: shouldReduceMotion ? 0 : 0.7,
+        ease: [0.22, 1, 0.36, 1],
+      }}
+      className="relative mx-auto w-full"
+    >
+      {/* Laptop atmosphere */}
+      <div className="pointer-events-none absolute left-1/2 top-1/2 h-[260px] w-[70%] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#10b981]/[0.055] blur-[100px]" />
+
+      {/* ========================================================
+          LAPTOP SCREEN
+      ======================================================== */}
+
+      <div className="relative mx-auto w-full max-w-[900px]">
+        {/* Screen */}
+        <div className="relative overflow-hidden rounded-[8px] border border-[#3f3f46] bg-[#111113] p-[5px] shadow-[0_30px_80px_rgba(0,0,0,0.42)] sm:p-1.5">
+          {/* Browser top bar */}
+          <div className="flex h-9 items-center justify-between border-b border-[#27272a] bg-[#18181b] px-3 sm:h-10 sm:px-4">
+            {/* Browser dots */}
+            <div className="flex items-center gap-1.5">
+              <span className="h-1.5 w-1.5 rounded-full bg-white/20" />
+              <span className="h-1.5 w-1.5 rounded-full bg-white/20" />
+              <span className="h-1.5 w-1.5 rounded-full bg-white/20" />
+            </div>
+
+            {/* Address */}
+            <div className="absolute left-1/2 flex h-5 w-[38%] -translate-x-1/2 items-center justify-center bg-[#27272a]">
+              <span className="font-[var(--font-mono)] text-[7px] tracking-[0.05em] text-white/25 sm:text-[8px]">
+                app.anan-sustainability.com
+              </span>
+            </div>
+
+            <div className="font-[var(--font-mono)] text-[7px] tracking-[0.08em] text-white/20">
+              DESKTOP
+            </div>
+          </div>
+
+          {/* Dashboard screen */}
+          <div className="relative aspect-[16/9] overflow-hidden bg-[#09090b] rounded-2xl">
+            <Image
+              src={image}
+              alt={alt}
+              fill
+              sizes="(max-width: 1024px) 90vw, 900px"
+              className="object-cover object-top object-left"
+            />
+
+            {/* Very subtle screen tint */}
+            <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[#09090b]/10" />
+          </div>
+        </div>
+
+        {/* ======================================================
+            LAPTOP BASE
+        ======================================================= */}
+
+        <div className="relative mx-auto h-3 w-[88%] bg-gradient-to-b from-[#3f3f46] to-[#18181b] sm:h-4">
+          <div className="absolute left-1/2 top-0 h-1 w-16 -translate-x-1/2 bg-[#71717a]/30" />
+        </div>
+
+        <div className="mx-auto h-2 w-[72%] rounded-b-[4px] bg-[#18181b] sm:h-2.5" />
+      </div>
+    </motion.div>
+  );
+}
+
+/* ================================================================
+   MOBILE / LAPTOP VISUAL
+================================================================ */
+
+function AreaVisual({
+  activeArea,
+  locale,
+  shouldReduceMotion,
+}: {
+  activeArea: PlatformArea;
+  locale: Locale;
+  shouldReduceMotion: boolean;
+}) {
+  const presentation = areaPresentation[activeArea.id];
+
+  if (!presentation) {
+    return null;
+  }
+
+  return (
+    <AnimatePresence mode="wait">
+      <motion.div
+        key={activeArea.id}
+        initial={{
+          opacity: 0,
+        }}
+        animate={{
+          opacity: 1,
+        }}
+        exit={{
+          opacity: 0,
+        }}
+        transition={{
+          duration: shouldReduceMotion ? 0.1 : 0.25,
+        }}
+        className="w-full"
+      >
+        {presentation.type === "laptop" ? (
+          <LaptopMockup
+            image={presentation.image}
+            alt={activeArea.heading}
+            locale={locale}
+            shouldReduceMotion={shouldReduceMotion}
+          />
+        ) : (
+          <MobileMockup
+            image={presentation.image}
+            alt={activeArea.heading}
+            locale={locale}
+            shouldReduceMotion={shouldReduceMotion}
+          />
+        )}
+      </motion.div>
+    </AnimatePresence>
+  );
+}
+
+/* ================================================================
+   MAIN COMPONENT
+================================================================ */
+
+export function PlatformSection({ locale }: PlatformSectionProps) {
   const [activeIndex, setActiveIndex] = useState(0);
+
   const tabRefs = useRef<(HTMLButtonElement | null)[]>([]);
-  const shouldReduceMotion = useReducedMotion();
+
+  const shouldReduceMotion = Boolean(useReducedMotion());
+
   const content = platformContent[locale];
+
   const activeArea = content.areas[activeIndex];
+
   const sectionId = `platform-${locale}`;
+
+  const presentation = areaPresentation[activeArea.id];
+
+  const isLaptop = presentation?.type === "laptop";
+
+  /* ============================================================
+     ACCESSIBLE TAB NAVIGATION
+  ============================================================ */
 
   const handleTabKeyDown = (
     event: KeyboardEvent<HTMLButtonElement>,
@@ -74,7 +358,9 @@ export function PlatformSection({ locale }: { locale: Locale }) {
     }
 
     event.preventDefault();
+
     setActiveIndex(nextIndex);
+
     tabRefs.current[nextIndex]?.focus();
   };
 
@@ -85,39 +371,86 @@ export function PlatformSection({ locale }: { locale: Locale }) {
       aria-labelledby={`${sectionId}-title`}
       className="relative overflow-hidden border-t border-white/[0.08] bg-[#09090b] py-20 sm:py-24 lg:py-28"
     >
-      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_78%_20%,rgba(16,185,129,0.07),transparent_38%)]" />
+      {/* =========================================================
+          BACKGROUND
+      ========================================================== */}
 
-      <div className="relative mx-auto max-w-7xl px-5 sm:px-8 lg:px-10">
+      <div className="pointer-events-none absolute inset-0">
+        <div className="absolute left-[75%] top-[5%] h-[420px] w-[420px] rounded-full bg-[#10b981]/[0.035] blur-[130px]" />
+
+        <div className="absolute bottom-[10%] left-[5%] h-[320px] w-[320px] rounded-full bg-[#84cc16]/[0.018] blur-[120px]" />
+      </div>
+
+      {/* =========================================================
+          CONTAINER
+      ========================================================== */}
+
+      <div className="relative mx-auto max-w-7xl px-6">
+        {/* =======================================================
+            HEADER
+        ======================================================== */}
+
         <motion.header
-          initial={shouldReduceMotion ? false : { opacity: 0, y: 18 }}
-          whileInView={shouldReduceMotion ? undefined : { opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.25 }}
-          transition={{ duration: shouldReduceMotion ? 0 : 0.6 }}
+          initial={
+            shouldReduceMotion
+              ? false
+              : {
+                  opacity: 0,
+                  y: 18,
+                }
+          }
+          whileInView={
+            shouldReduceMotion
+              ? undefined
+              : {
+                  opacity: 1,
+                  y: 0,
+                }
+          }
+          viewport={{
+            once: true,
+            amount: 0.25,
+          }}
+          transition={{
+            duration: shouldReduceMotion ? 0 : 0.6,
+          }}
           className="max-w-3xl"
         >
           <div className="mb-5 inline-flex items-center gap-2 font-[var(--font-mono)] text-[10px] font-medium uppercase tracking-[0.12em] text-emerald-300/80">
-            <span className="size-1.5 rounded-full bg-emerald-300" />
+            <span className="size-1.5 rounded-full bg-emerald-300 shadow-[0_0_10px_rgba(78,222,163,0.6)]" />
+
             {content.eyebrow}
           </div>
+
           <h2
             id={`${sectionId}-title`}
-            className="max-w-3xl text-3xl font-semibold leading-[1.12] text-white sm:text-4xl lg:text-5xl"
+            className="max-w-3xl font-[var(--font-display)] text-3xl font-medium leading-[1.08] tracking-[-0.035em] text-white sm:text-4xl lg:text-5xl"
           >
             {content.title}
           </h2>
+
           <p className="mt-4 max-w-2xl text-sm leading-6 text-white/55 sm:text-base sm:leading-7">
             {content.description}
           </p>
         </motion.header>
 
-        <div className="mt-10 grid gap-4 lg:mt-14 lg:grid-cols-[230px_minmax(0,1fr)] lg:gap-7 xl:grid-cols-[260px_minmax(0,1fr)]">
+        {/* =======================================================
+            TABS + CONTENT
+        ======================================================== */}
+
+        <div className="mt-10 grid gap-4 lg:mt-14 lg:grid-cols-[240px_minmax(0,1fr)] lg:gap-8 xl:grid-cols-[260px_minmax(0,1fr)]">
+          {/* =====================================================
+              TAB LIST
+          ====================================================== */}
+
           <div
             role="tablist"
             aria-label={content.eyebrow}
-            className="flex gap-2 overflow-x-auto pb-1 lg:flex-col lg:gap-1 lg:overflow-visible lg:pb-0"
+            className="flex gap-2 overflow-x-auto pb-1 scrollbar-none lg:flex-col lg:gap-1 lg:overflow-visible lg:pb-0"
           >
             {content.areas.map((area, index) => {
               const Icon = areaIcons[index];
+
               const isActive = index === activeIndex;
 
               return (
@@ -134,47 +467,78 @@ export function PlatformSection({ locale }: { locale: Locale }) {
                   tabIndex={isActive ? 0 : -1}
                   onClick={() => setActiveIndex(index)}
                   onKeyDown={(event) => handleTabKeyDown(event, index)}
-                  className={`group relative flex min-h-12 shrink-0 items-center gap-3 rounded-sm border px-3 text-start transition-colors duration-200 lg:w-full lg:border-transparent lg:px-3.5 ${
+                  className={`group relative my-1.5 min-h-12 shrink-0 cursor-pointer items-center gap-3 border px-4 text-start transition-all duration-300 lg:w-full lg:border-transparent lg:px-6 lg:py-4 ${
                     isActive
-                      ? "border-emerald-300/20 bg-emerald-300/[0.07] text-white lg:border-emerald-300/20"
-                      : "border-white/[0.07] bg-white/[0.015] text-white/48 hover:border-white/15 hover:bg-white/[0.035] hover:text-white/80 lg:bg-transparent"
+                      ? "border-emerald-300/20 bg-emerald-300/[0.07] text-white"
+                      : "border-white/[0.06] bg-white/[0.012] text-white/45 hover:border-white/15 hover:bg-white/[0.03] hover:text-white/80 lg:bg-transparent"
                   }`}
                 >
+                  {/* Active indicator */}
                   {isActive && (
                     <motion.span
-                      layoutId={`${sectionId}-active-tab`}
-                      className="absolute inset-y-2 start-0 w-[2px] rounded-full bg-emerald-300"
-                      transition={{
-                        duration: shouldReduceMotion ? 0 : 0.25,
-                        ease: "easeOut",
-                      }}
+                      layoutId="platform-active-tab"
+                      className="absolute bottom-0 left-0 top-0 w-px bg-[#4edea3] shadow-[0_0_12px_rgba(78,222,163,0.6)]"
                     />
                   )}
-                  <span className="font-[var(--font-mono)] text-[9px] text-white/30">
-                    {String(index + 1).padStart(2, "0")}
-                  </span>
-                  <Icon
-                    size={15}
-                    strokeWidth={1.7}
-                    className={isActive ? "text-emerald-200" : "text-white/40"}
-                    aria-hidden="true"
-                  />
-                  <span className="whitespace-nowrap text-xs font-medium sm:text-sm">
-                    {area.title}
-                  </span>
-                  {isActive && (
-                    <span className="ms-auto hidden text-emerald-200/70 lg:block">
-                      {locale === "ar" ? (
-                        <ArrowDownLeft size={14} />
-                      ) : (
-                        <ArrowDownRight size={14} />
-                      )}
+
+                  <span className="relative z-10 flex items-center gap-3">
+                    {/* Number */}
+                    <span className="font-[var(--font-mono)] text-[9px] text-white/25">
+                      {String(index + 1).padStart(2, "0")}
                     </span>
+
+                    {/* Icon */}
+                    <Icon
+                      size={15}
+                      strokeWidth={1.5}
+                      className={
+                        isActive ? "text-emerald-200" : "text-white/30"
+                      }
+                      aria-hidden="true"
+                    />
+
+                    {/* Title */}
+                    <span className="whitespace-nowrap text-xs font-medium sm:text-sm">
+                      {area.title}
+                    </span>
+                  </span>
+
+                  {/* Desktop heading */}
+                  {isActive && (
+                    <motion.div
+                      initial={
+                        shouldReduceMotion
+                          ? false
+                          : {
+                              opacity: 0,
+                              y: 10,
+                            }
+                      }
+                      animate={
+                        shouldReduceMotion
+                          ? undefined
+                          : {
+                              opacity: 1,
+                              y: 0,
+                            }
+                      }
+                      transition={{
+                        duration: shouldReduceMotion ? 0 : 0.45,
+                      }}
+                    >
+                      <span className="mt-3 hidden ps-[31px] text-[13px] leading-snug text-white/45 lg:block">
+                        {area.heading}
+                      </span>
+                    </motion.div>
                   )}
                 </button>
               );
             })}
           </div>
+
+          {/* =====================================================
+              ACTIVE PANEL
+          ====================================================== */}
 
           <AnimatePresence mode="wait" initial={false}>
             <motion.div
@@ -184,153 +548,242 @@ export function PlatformSection({ locale }: { locale: Locale }) {
               aria-labelledby={`${sectionId}-tab-${activeArea.id}`}
               tabIndex={0}
               initial={
-                shouldReduceMotion ? { opacity: 0 } : { opacity: 0, y: 12 }
+                shouldReduceMotion
+                  ? {
+                      opacity: 0,
+                    }
+                  : {
+                      opacity: 0,
+                      y: 14,
+                    }
               }
-              animate={{ opacity: 1, y: 0 }}
-              exit={shouldReduceMotion ? { opacity: 0 } : { opacity: 0, y: -8 }}
-              transition={{ duration: shouldReduceMotion ? 0.12 : 0.28 }}
-              className="relative min-w-0 overflow-hidden rounded-md border border-white/[0.09] bg-[#111113] p-4 sm:p-6 lg:p-7"
+              animate={{
+                opacity: 1,
+                y: 0,
+              }}
+              exit={
+                shouldReduceMotion
+                  ? {
+                      opacity: 0,
+                    }
+                  : {
+                      opacity: 0,
+                      y: -8,
+                    }
+              }
+              transition={{
+                duration: shouldReduceMotion ? 0.12 : 0.35,
+              }}
+              className={`relative min-w-0 overflow-hidden border border-white/[0.09] bg-[#111113] ${
+                isLaptop ? "p-4 sm:p-6 lg:p-8" : "p-4 sm:p-5 lg:p-7"
+              }`}
             >
-              <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(to_right,rgba(78,222,163,0.025)_1px,transparent_1px),linear-gradient(to_bottom,rgba(78,222,163,0.025)_1px,transparent_1px)] bg-[size:28px_28px]" />
-              <div className="relative grid items-center gap-6 lg:grid-cols-[minmax(0,2fr)_minmax(0,1fr)] xl:gap-8">
-                <div className="min-w-0 py-1 sm:py-3">
-                  <p className="font-[var(--font-mono)] text-[9px] uppercase tracking-[0.12em] text-emerald-300/65">
-                    {String(activeIndex + 1).padStart(2, "0")} /{" "}
-                    {content.areas.length.toString().padStart(2, "0")}
-                  </p>
-                  <h3 className="mt-3 text-2xl font-medium leading-tight text-white sm:text-3xl">
-                    {activeArea.heading}
-                  </h3>
-                  <p className="mt-3 max-w-md text-sm leading-6 text-white/55 sm:text-[15px] sm:leading-7">
-                    {activeArea.description}
-                  </p>
-                  <ul className="mt-5 space-y-2.5">
-                    {activeArea.features.map((feature) => (
-                      <li
-                        key={feature}
-                        className="flex min-w-0 items-start gap-2.5 text-xs leading-5 text-white/65 sm:text-sm"
-                      >
-                        <Check
-                          size={15}
-                          strokeWidth={3}
-                          className="mt-0.5 size-4 shrink-0 rounded-full border border-emerald-300/35 bg-emerald-300/[0.08] p-[2px] text-emerald-200"
-                          aria-hidden="true"
-                        />
-                        <span>{feature}</span>
-                      </li>
-                    ))}
-                  </ul>
-                  <div className="mt-6 flex items-center gap-2 text-[10px] text-white/35">
-                    <span className="size-1.5 rounded-full bg-emerald-300/80" />
-                    <span className="font-[var(--font-mono)] uppercase tracking-[0.08em]">
-                      {content.sampleLabel}
-                    </span>
+              {/* =================================================
+                  PANEL ATMOSPHERE
+              ================================================== */}
+
+              <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_80%_15%,rgba(78,222,163,0.055),transparent_38%)]" />
+
+              <div
+                className="pointer-events-none absolute inset-0 opacity-[0.045]"
+                style={{
+                  backgroundImage:
+                    "linear-gradient(rgba(78,222,163,0.10) 1px, transparent 1px), linear-gradient(90deg, rgba(78,222,163,0.10) 1px, transparent 1px)",
+                  backgroundSize: "30px 30px",
+                }}
+              />
+
+              {/* =================================================
+                  LAPTOP LAYOUT
+              ================================================== */}
+
+              {isLaptop ? (
+                <div className="relative grid grid-cols-1 gap-10 lg:gap-12">
+                  {/* -------------------------------------------
+                      CONTENT TOP
+                  -------------------------------------------- */}
+
+                  <div className="max-w-4xl">
+                    {/* Index */}
+                    <p className="font-[var(--font-mono)] text-[9px] tracking-[0.12em] text-emerald-300/60">
+                      {String(activeIndex + 1).padStart(2, "0")} /{" "}
+                      {String(content.areas.length).padStart(2, "0")}
+                    </p>
+
+                    {/* Heading */}
+                    <h3 className="mt-4 max-w-4xl font-[var(--font-display)] text-3xl font-medium leading-[1.06] tracking-[-0.035em] text-white sm:text-4xl lg:text-5xl">
+                      {activeArea.heading}
+                    </h3>
+
+                    {/* Description */}
+                    <p className="mt-5 max-w-3xl text-sm leading-6 text-white/50 sm:text-base sm:leading-7">
+                      {activeArea.description}
+                    </p>
+
+                    {/* Features */}
+                    <div className="mt-7 grid gap-x-10 gap-y-4 sm:grid-cols-2 lg:max-w-3xl">
+                      {activeArea.features.map((feature, index) => (
+                        <motion.div
+                          key={feature}
+                          initial={
+                            shouldReduceMotion
+                              ? false
+                              : {
+                                  opacity: 0,
+                                  y: 8,
+                                }
+                          }
+                          animate={
+                            shouldReduceMotion
+                              ? undefined
+                              : {
+                                  opacity: 1,
+                                  y: 0,
+                                }
+                          }
+                          transition={{
+                            duration: shouldReduceMotion ? 0 : 0.35,
+                            delay: shouldReduceMotion ? 0 : index * 0.06,
+                          }}
+                          className="flex min-w-0 items-start gap-2.5 text-xs leading-5 text-white/65 sm:text-sm"
+                        >
+                          <Check
+                            size={15}
+                            strokeWidth={3}
+                            className="mt-0.5 size-4 shrink-0 rounded-full border border-emerald-300/35 bg-emerald-300/[0.08] p-[2px] text-emerald-200"
+                            aria-hidden="true"
+                          />
+
+                          <span>{feature}</span>
+                        </motion.div>
+                      ))}
+                    </div>
+
+                    {/* Meta */}
+                    <div className="mt-7 flex flex-wrap items-center gap-x-6 gap-y-3 border-t border-white/[0.07] pt-5">
+                      <div className="flex items-center gap-2 text-[9px] text-white/30">
+                        <span className="size-1.5 rounded-full bg-emerald-300/80 shadow-[0_0_8px_rgba(78,222,163,0.5)]" />
+
+                        <span className="font-[var(--font-mono)] uppercase tracking-[0.08em]">
+                          {content.sampleLabel}
+                        </span>
+                      </div>
+
+                      <div className="font-[var(--font-mono)] text-[8px] tracking-[0.08em] text-white/20">
+                        DESKTOP EXPERIENCE
+                      </div>
+                    </div>
                   </div>
 
-                  <div className="mt-7 hidden items-center gap-2 lg:flex">
-                    <span className="font-[var(--font-mono)] text-[9px] text-white/30">
-                      {String(activeIndex + 1).padStart(2, "0")}
+                  {/* -------------------------------------------
+                      LAPTOP BELOW CONTENT
+                  -------------------------------------------- */}
+
+                  <div className="relative">
+                    <AreaVisual
+                      activeArea={activeArea}
+                      locale={locale}
+                      shouldReduceMotion={shouldReduceMotion}
+                    />
+                  </div>
+
+                  {/* -------------------------------------------
+                      BOTTOM CONNECTION
+                  -------------------------------------------- */}
+
+                  <div className="flex items-center gap-3 border-t border-white/[0.07] pt-5">
+                    <span className="font-[var(--font-mono)] text-[8px] text-white/25">
+                      0{activeIndex + 1}
                     </span>
-                    <span className="h-px w-10 bg-emerald-300/45" />
-                    <span className="font-[var(--font-mono)] text-[9px] text-white/30">
+
+                    <span className="h-px w-10 bg-emerald-300/40" />
+
+                    <span className="font-[var(--font-mono)] text-[8px] text-white/25">
                       {String(
                         activeIndex === content.areas.length - 1
                           ? 1
                           : activeIndex + 2,
                       ).padStart(2, "0")}
                     </span>
-                    <span className="text-[10px] text-white/35">
+
+                    <span className="text-[10px] text-white/25">
                       {locale === "ar"
                         ? "مرتبط بباقي عملياتك"
                         : "Connected to the rest of your workflow"}
                     </span>
                   </div>
                 </div>
+              ) : (
+                /* =================================================
+                   MOBILE LAYOUT
+                ================================================== */
 
-                {/* ======================================================
-                    MOBILE PHONE MOCKUP
-                ======================================================= */}
+                <div className="relative grid items-center gap-7 lg:grid-cols-[minmax(0,1.75fr)_minmax(250px,0.8fr)] xl:gap-10">
+                  {/* -------------------------------------------
+                      CONTENT
+                  -------------------------------------------- */}
 
-                <motion.div
-                  initial={{
-                    opacity: 0,
-                    y: 35,
-                    rotate: 4,
-                  }}
-                  animate={{
-                    opacity: 1,
-                    y: 0,
-                    rotate: 0,
-                  }}
-                  transition={{
-                    duration: 0.3,
-                    delay: 0.18,
-                    ease: [0.22, 1, 0.36, 1],
-                  }}
-                  className="relative mx-auto w-full min-w-0 max-w-[345px] lg:mx-0"
-                >
-                  {/* Device glow */}
-                  <div className="pointer-events-none absolute -inset-5 rounded-[3rem] bg-[#10b981]/[0.06] blur-[35px]" />
+                  <div className="min-w-0 py-1 sm:py-3">
+                    <p className="font-[var(--font-mono)] text-[9px] tracking-[0.12em] text-emerald-300/60">
+                      {String(activeIndex + 1).padStart(2, "0")} /{" "}
+                      {String(content.areas.length).padStart(2, "0")}
+                    </p>
 
-                  {/* Phone */}
-                  <div className="relative rounded-[2.3rem] border-[5px] border-[#27272a] bg-[#030303] p-1.5 shadow-[0_30px_80px_rgba(0,0,0,0.45)] sm:rounded-[2.7rem]">
-                    {/* Screen */}
-                    <div className="relative aspect-[9/19] overflow-hidden rounded-[1.9rem] bg-[#111113] sm:rounded-[2.2rem]">
-                      {/* Video placeholder */}
-                      {/* <video
-                        key={activeArea.id}
-                        className="absolute inset-0 h-full w-full object-cover object-top"
-                        autoPlay
-                        loop
-                        muted
-                        playsInline
-                        preload="metadata"
-                        aria-label={activeArea.title}
-                      >
-                        <source
-                          src={areaVideos[activeArea.id]}
-                          type="video/mp4"
-                        />
-                      </video> */}
-                      <Image
-                        width={1200}
-                        height={800}
-                        src={areaImages[activeArea.id]}
-                        alt={activeArea.title}
-                        className="absolute left-0 top-2 h-full w-full object-cover object-left object-top"
-                      />
-                      <div
-                        dir="ltr"
-                        className="absolute inset-x-0 top-0 z-10 flex h-12 items-center justify-between bg-transparent px-[7%] text-white sm:h-14"
-                      >
-                        <span className="text-[13px] font-semibold leading-none">
-                          9:41
-                        </span>
-                        <span className="absolute left-1/2 top-1/2 h-7 w-[35%] max-w-[108px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-black sm:h-8" />
-                        <span
-                          className="flex items-center gap-1.5"
-                          aria-hidden="true"
+                    <h3 className="mt-3 text-2xl font-medium leading-tight text-white sm:text-3xl">
+                      {activeArea.heading}
+                    </h3>
+
+                    <p className="mt-3 max-w-md text-sm leading-6 text-white/55 sm:text-[15px] sm:leading-7">
+                      {activeArea.description}
+                    </p>
+
+                    <ul className="mt-5 space-y-2.5">
+                      {activeArea.features.map((feature) => (
+                        <li
+                          key={feature}
+                          className="flex min-w-0 items-start gap-2.5 text-xs leading-5 text-white/65 sm:text-sm"
                         >
-                          <Signal size={14} strokeWidth={2.4} />
-                          <Wifi size={15} strokeWidth={2.4} />
-                          <BatteryFull size={16} strokeWidth={2.2} />
-                        </span>
-                      </div>
+                          <Check
+                            size={15}
+                            strokeWidth={3}
+                            className="mt-0.5 size-4 shrink-0 rounded-full border border-emerald-300/35 bg-emerald-300/[0.08] p-[2px] text-emerald-200"
+                            aria-hidden="true"
+                          />
 
-                      {/* Very subtle screen tint */}
-                      <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#09090b]/35 via-transparent to-transparent" />
+                          <span>{feature}</span>
+                        </li>
+                      ))}
+                    </ul>
+
+                    <div className="mt-6 flex items-center gap-2 text-[10px] text-white/35">
+                      <span className="size-1.5 rounded-full bg-emerald-300/80" />
+
+                      <span className="font-[var(--font-mono)] uppercase tracking-[0.08em]">
+                        {content.sampleLabel}
+                      </span>
                     </div>
-
-                    {/* Side button */}
-                    <div className="absolute -left-[7px] top-[28%] h-10 w-1 rounded-full bg-[#3f3f46]" />
-
-                    <div className="absolute -left-[7px] top-[38%] h-7 w-1 rounded-full bg-[#3f3f46]" />
                   </div>
-                </motion.div>
-              </div>
+
+                  {/* -------------------------------------------
+                      MOBILE MOCKUP
+                  -------------------------------------------- */}
+
+                  <div className="min-w-0">
+                    <AreaVisual
+                      activeArea={activeArea}
+                      locale={locale}
+                      shouldReduceMotion={shouldReduceMotion}
+                    />
+                  </div>
+                </div>
+              )}
             </motion.div>
           </AnimatePresence>
         </div>
+
+        {/* =======================================================
+            CONNECTED WORKFLOW
+        ======================================================== */}
 
         <div className="mt-5 border-t border-white/[0.07] pt-4">
           <p className="font-[var(--font-mono)] text-[9px] uppercase tracking-[0.1em] text-white/30">
@@ -338,36 +791,47 @@ export function PlatformSection({ locale }: { locale: Locale }) {
               ? "تسلسل عمليات الأعمال"
               : "CONNECTED BUSINESS WORKFLOW"}
           </p>
-          <ol className="mt-3 flex items-center gap-2 overflow-x-auto pb-1 sm:gap-3 lg:justify-between">
+
+          <ol className="mt-3 flex items-center gap-2 overflow-x-auto pb-1 scrollbar-none sm:gap-3 lg:justify-between">
             {content.areas.map((area, index) => {
               const FlowArrow = locale === "ar" ? ArrowLeft : ArrowRight;
+
+              const isActive = index === activeIndex;
 
               return (
                 <li
                   key={`flow-${area.id}`}
-                  aria-current={index === activeIndex ? "step" : undefined}
+                  aria-current={isActive ? "step" : undefined}
                   className="flex shrink-0 items-center gap-2"
                 >
-                  <span
-                    className={`font-[var(--font-mono)] text-[8px] ${
-                      index === activeIndex
-                        ? "text-emerald-200"
-                        : "text-white/30"
-                    }`}
+                  <button
+                    type="button"
+                    onClick={() => setActiveIndex(index)}
+                    className="flex items-center gap-2"
                   >
-                    {String(index + 1).padStart(2, "0")}
-                  </span>
-                  <span
-                    className={`whitespace-nowrap text-[10px] ${
-                      index === activeIndex ? "text-white/85" : "text-white/40"
-                    }`}
-                  >
-                    {area.title}
-                  </span>
+                    <span
+                      className={`font-[var(--font-mono)] text-[8px] ${
+                        isActive ? "text-emerald-200" : "text-white/30"
+                      }`}
+                    >
+                      {String(index + 1).padStart(2, "0")}
+                    </span>
+
+                    <span
+                      className={`whitespace-nowrap text-[10px] transition-colors ${
+                        isActive
+                          ? "text-white/85"
+                          : "text-white/40 hover:text-white/65"
+                      }`}
+                    >
+                      {area.title}
+                    </span>
+                  </button>
+
                   {index < content.areas.length - 1 && (
                     <FlowArrow
                       size={12}
-                      className="ms-1 text-emerald-300/35"
+                      className="ms-1 text-emerald-300/25"
                       aria-hidden="true"
                     />
                   )}

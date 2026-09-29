@@ -2,11 +2,11 @@ export const navbarContent = {
   ar: {
     links: [
       { label: "المنصة", href: "#platform" },
-      { label: "الحلول", href: "#solutions" },
+      // { label: "الحلول", href: "#solutions" },
       { label: "الصناعات", href: "#industries" },
       { label: "التكاملات", href: "#integrations" },
       { label: "الأسعار", href: "#pricing" },
-      { label: "الموارد", href: "#resources" },
+      // { label: "الموارد", href: "#resources" },
       { label: "تواصل معنا", href: "#contact" },
     ],
     language: "EN",
@@ -20,11 +20,11 @@ export const navbarContent = {
   en: {
     links: [
       { label: "Platform", href: "#platform" },
-      { label: "Solutions", href: "#solutions" },
+      // { label: "Solutions", href: "#solutions" },
       { label: "Industries", href: "#industries" },
       { label: "Integrations", href: "#integrations" },
       { label: "Pricing", href: "#pricing" },
-      { label: "Resources", href: "#resources" },
+      // { label: "Resources", href: "#resources" },
       { label: "Contact", href: "#contact" },
     ],
     language: "AR",

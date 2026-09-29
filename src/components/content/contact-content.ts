@@ -1,7 +1,7 @@
 export const contactContent = {
   ar: {
     eyebrow: "تواصل معنا / 07",
-    title: "جاهز لتطوير ناديك الرياضي؟",
+    title: "هل أنت مستعد للارتقاء بعملك إلى المستوى التالي؟",
     description:
       "تواصل مع فريق خبراء منصة أنان اليوم للحصول على استشارة مجانية وعرض توضيحي مباشر.",
     formTitle: "أرسل لنا رسالة",
@@ -32,7 +32,7 @@ export const contactContent = {
   },
   en: {
     eyebrow: "GET IN TOUCH / 07",
-    title: "Ready to scale your gym operations?",
+    title: "Ready to take your work to the next level?",
     description:
       "Connect with Anan experts today for a personalized consultation and live product walkthrough.",
     formTitle: "Send us a message",
