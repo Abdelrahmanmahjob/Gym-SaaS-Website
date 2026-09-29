@@ -632,7 +632,7 @@ function SolutionVisual({
             {/* Screen */}
             <div className="relative aspect-[9/19] overflow-hidden rounded-[1.9rem] bg-[#111113] sm:rounded-[2.2rem]">
               {/* Video placeholder */}
-              <video
+              {/* <video
                 className="absolute inset-0 h-full w-full object-cover"
                 autoPlay
                 loop
@@ -645,7 +645,7 @@ function SolutionVisual({
                   src="/media/solutions/mobile-demo.mp4"
                   type="video/mp4"
                 />
-              </video>
+              </video> */}
 
               {/* Very subtle screen tint */}
               <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#09090b]/35 via-transparent to-transparent" />

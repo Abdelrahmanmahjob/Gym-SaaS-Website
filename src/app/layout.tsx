@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Geist, JetBrains_Mono, Space_Grotesk, Kufam } from "next/font/google";
 import "./globals.css";
+import "swiper/css";
+import "swiper/css/free-mode";
 
 const spaceGrotesk = Space_Grotesk({
   variable: "--font-space-grotesk",

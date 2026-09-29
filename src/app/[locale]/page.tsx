@@ -15,6 +15,7 @@ import Footer from "@/components/landing/footer";
 import { PageTransition } from "@/components/ui/page-transition";
 import { Solutions } from "@/components/landing/solutions";
 import { Problem } from "@/components/landing/problem";
+import { Integrations } from "@/components/landing/integrations";
 
 const locales = ["ar", "en"] as const;
 
@@ -51,6 +52,7 @@ export default async function LandingPage({
           <Testimonials locale={locale as Locale} />
           <FAQs locale={locale as Locale} />
           {/* <Contact locale={locale as Locale} /> */}
+          <Integrations locale={locale as Locale} />
           <Pricing locale={locale as Locale} />
           <CtaSection locale={locale as Locale} />
           <Footer locale={locale as Locale} />
