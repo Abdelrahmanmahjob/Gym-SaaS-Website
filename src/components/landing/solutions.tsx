@@ -73,7 +73,7 @@ const content = {
         visualLabel: "GYM OPERATIONS",
         visualMeta: "MEMBERSHIPS / CLASSES / POS",
         icon: Dumbbell,
-        image: "/media/industries/gym2.jpeg",
+        image: "/media/industries/gym4.webp",
       },
 
       {
@@ -205,7 +205,7 @@ const content = {
         visualLabel: "GYM OPERATIONS",
         visualMeta: "MEMBERSHIPS / CLASSES / POS",
         icon: Dumbbell,
-        image: "/media/industries/gym2.jpeg",
+        image: "/media/industries/gym4.webp",
       },
 
       {
@@ -553,13 +553,15 @@ function SolutionVisual({
             </svg>
           </div> */}
           {industry.image && (
-            <Image
-              width={120}
-              height={100}
-              src={industry.image}
-              alt={industry.title}
-              className="absolute inset-0 h-full w-full object-cover"
-            />
+            <div className="relative h-full w-full">
+              <Image
+                src={industry.image}
+                alt={industry.title}
+                fill
+                sizes="100vw"
+                className="object-cover"
+              />
+            </div>
           )}
         </motion.div>
 
