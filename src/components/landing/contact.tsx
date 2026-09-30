@@ -307,7 +307,7 @@ export function Contact({ locale = "ar" }: { locale?: "ar" | "en" }) {
                   disabled={isSubmitting}
                   className="h-12 w-full text-base font-bold shadow-lg transition-transform duration-300 hover:scale-[1.01]"
                 >
-                  <Send className="size-4 text-emerald-300" />
+                  <Send className="size-4 text-white" />
                   <span>{isSubmitting ? text.submitting : text.submitBtn}</span>
                 </StudioButton>
               </form>

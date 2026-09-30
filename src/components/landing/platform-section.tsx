@@ -83,8 +83,8 @@ const areaPresentation: Record<string, AreaPresentation> = {
   },
 
   payments: {
-    type: "laptop",
-    image: "/media/platform/payments-laptop2.png",
+    type: "mobile",
+    image: "/media/platform/payments.png",
   },
 
   tools: {
