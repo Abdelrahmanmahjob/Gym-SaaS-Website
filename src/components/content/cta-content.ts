@@ -1,17 +1,17 @@
 export const ctaContent = {
   ar: {
     eyebrow: "( كلمة أخيرة )",
-    title: "ابنِ مستقبل ناديك\nاليوم مع أنان للاستدامة.",
+    title: "هل أنت مستعد لإدارة عملك بذكاء أكبر؟",
     description:
-      "لا تعقيدات، لا ملفات مبعثرة، شاشة واحدة تمنحك التحكم الكامل في تشغيل ونمو ناديك الرياضي.",
+      "اجمع بيانات عملائك، والحجوزات، والعضويات، وفريق العمل، والمدفوعات، وأدوات إدارة الأعمال في مكان واحد.",
     subText: "ابدأ تجربتك المجانية اليوم وانضم لأحدث منصة SaaS لإدارة الأندية.",
     cta: "ابدأ محادثتك معنا",
   },
   en: {
     eyebrow: "( LAST WORD )",
-    title: "Build your gym's future\nwith Anan.",
+    title: "Ready to Run Your Business Smarter?",
     description:
-      "No decks, no detours, one dashboard to run, scale, and automate your entire fitness center.",
+      "Bring your customers, bookings, memberships, team, payments, and business tools together in one place.",
     subText: "Start your 14-day free trial today. No credit card required.",
     cta: "Start the conversation",
   },
