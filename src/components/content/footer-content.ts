@@ -8,48 +8,46 @@ export const footerContent = {
     status: "جميع الأنظمة تعمل بكفاءة",
     links: [
       { label: "المنصة", href: "#platform" },
-      { label: "الحلول", href: "#solutions" },
       { label: "الصناعات", href: "#industries" },
       { label: "التكاملات", href: "#integrations" },
       { label: "الأسعار", href: "#pricing" },
-      { label: "الموارد", href: "#resources" },
       { label: "تواصل معنا", href: "#contact" },
     ],
     companyLinks: [
       {
         label: "المدفوعات",
         href: "#integrations",
-        logoUrl: "https://cdn.simpleicons.org/stripe",
+        logoUrl: "/media/footer/payment.png",
       },
       {
         label: "قيود",
         href: "#integrations",
-        logoUrl: "https://logo.clearbit.com/qoyod.com",
+        logoUrl: "/media/footer/qoyod.jpg",
       },
       {
         label: "زاتكا",
         href: "#integrations",
-        logoUrl: "https://logo.clearbit.com/zatca.gov.sa",
+        logoUrl: "/media/footer/zatca.png",
       },
       {
         label: "تقويم Google",
         href: "#integrations",
-        logoUrl: "https://cdn.simpleicons.org/googlecalendar",
+        logoUrl: "/media/footer/google-calender.webp",
       },
       {
         label: "واتساب",
         href: "#integrations",
-        logoUrl: "https://cdn.simpleicons.org/whatsapp",
+        logoUrl: "/media/footer/WhatsApp.webp",
       },
       {
         label: "واجهة API",
         href: "#integrations",
-        logoUrl: "https://cdn.simpleicons.org/openapiinitiative",
+        logoUrl: "/media/footer/api.avif",
       },
       {
         label: "الأجهزة البيومترية",
         href: "#integrations",
-        logoUrl: "https://cdn.simpleicons.org/fingerprint",
+        logoUrl: "/media/footer/bio.avif",
       },
     ],
     legal: "جميع الحقوق محفوظة.",
@@ -68,11 +66,9 @@ export const footerContent = {
     status: "SYSTEMS OPERATIONAL",
     links: [
       { label: "Platform", href: "#platform" },
-      { label: "Solutions", href: "#solutions" },
       { label: "Industries", href: "#industries" },
       { label: "Integrations", href: "#integrations" },
       { label: "Pricing", href: "#pricing" },
-      { label: "Resources", href: "#resources" },
       { label: "Contact", href: "#contact" },
     ],
     companyLinks: [
