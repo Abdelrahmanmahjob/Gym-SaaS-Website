@@ -168,7 +168,7 @@ const content = {
         visualLabel: "TRAINING OPERATIONS",
         visualMeta: "STUDENTS / SCHEDULES / PAYMENTS",
         icon: GraduationCap,
-        image: "/media/industries/training-center.jpg",
+        image: "/media/industries/training-center2.jpg",
       },
     ] satisfies Industry[],
 
@@ -300,7 +300,7 @@ const content = {
         visualLabel: "TRAINING OPERATIONS",
         visualMeta: "STUDENTS / SCHEDULES / PAYMENTS",
         icon: GraduationCap,
-        image: "/media/industries/training-center.jpg",
+        image: "/media/industries/training-center2.jpg",
       },
     ] satisfies Industry[],
 
@@ -559,7 +559,7 @@ function SolutionVisual({
                 alt={industry.title}
                 fill
                 sizes="100vw"
-                className="object-cover"
+                className="object-cover object-left"
               />
             </div>
           )}
