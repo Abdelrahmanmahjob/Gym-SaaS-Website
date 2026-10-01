@@ -3,6 +3,7 @@
 import { useCallback, useState } from "react";
 
 import { motion, useReducedMotion } from "framer-motion";
+import DemoPopup from "@/components/ui/demo-popup";
 
 import {
   ArrowUpRight,
