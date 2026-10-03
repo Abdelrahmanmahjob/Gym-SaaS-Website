@@ -9,32 +9,28 @@ export const howItWorksContent = {
         id: "01",
         title: "العميل",
         description: "يختار الخدمة المناسبة له.",
-        image:
-          "https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=1200&q=85",
+        image: "/media/how-it-works/customer.png",
         imageAlt: "عميل وفريق خدمة يتحدثان عن احتياجاته",
       },
       {
         id: "02",
         title: "احجز أو انضم",
         description: "يحجز موعدًا أو يشترك في عضوية.",
-        image:
-          "https://images.unsplash.com/photo-1506784983877-45594efa4cbe?auto=format&fit=crop&w=1200&q=85",
+        image: "/media/how-it-works/book-or-join.png",
         imageAlt: "مفكرة وجدول مواعيد لتخطيط الحجوزات",
       },
       {
         id: "03",
         title: "تقديم الخدمة",
         description: "يقدم فريقك الخدمة للعميل.",
-        image:
-          "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=1200&q=85",
+        image: "/media/how-it-works/service.png",
         imageAlt: "مدرب يقدم خدمة لعميل في النادي الرياضي",
       },
       {
         id: "04",
         title: "الدفع",
         description: "تتم معالجة الدفع عبر مزود الدفع الذي تفضله.",
-        image:
-          "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=1200&q=85",
+        image: "/media/how-it-works/payment2.png",
         imageAlt: "عميل يدفع باستخدام بطاقة عند نقطة بيع",
       },
       {
@@ -65,24 +61,21 @@ export const howItWorksContent = {
         id: "01",
         title: "Customer",
         description: "Chooses a service.",
-        image:
-          "https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=1200&q=85",
+        image: "/media/how-it-works/customer.png",
         imageAlt: "Customer discussing their needs with a service team",
       },
       {
         id: "02",
         title: "Book or Join",
         description: "Books an appointment or subscribes to a membership.",
-        image:
-          "https://images.unsplash.com/photo-1506784983877-45594efa4cbe?auto=format&fit=crop&w=1200&q=85",
+        image: "/media/how-it-works/book-or-join.png",
         imageAlt: "Planner and calendar for scheduling appointments",
       },
       {
         id: "03",
         title: "Service",
         description: "Your team delivers the service.",
-        image:
-          "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=1200&q=85",
+        image: "/media/how-it-works/service.png",
         imageAlt: "Trainer delivering a service to a gym customer",
       },
       {
@@ -90,8 +83,7 @@ export const howItWorksContent = {
         title: "Payment",
         description:
           "Payment is processed through your preferred payment provider.",
-        image:
-          "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=1200&q=85",
+        image: "/media/how-it-works/payment2.png",
         imageAlt: "Customer paying by card at a point of sale",
       },
       {
