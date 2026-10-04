@@ -5,7 +5,8 @@ export const ctaContent = {
     description:
       "اجمع بيانات عملائك، والحجوزات، والعضويات، وفريق العمل، والمدفوعات، وأدوات إدارة الأعمال في مكان واحد.",
     subText: "ابدأ تجربتك المجانية اليوم وانضم لأحدث منصة SaaS لإدارة الأندية.",
-    cta: "ابدأ محادثتك معنا",
+    cta: "احجز عرضًا توضيحيًا",
+    secondary: "شاهد كيف تعمل المنصة",
   },
   en: {
     eyebrow: "( LAST WORD )",
@@ -13,6 +14,7 @@ export const ctaContent = {
     description:
       "Bring your customers, bookings, memberships, team, payments, and business tools together in one place.",
     subText: "Start your 14-day free trial today. No credit card required.",
-    cta: "Start the conversation",
+    cta: "Book a Demo",
+    secondary: "See How It Works",
   },
 } as const;

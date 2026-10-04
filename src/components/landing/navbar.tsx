@@ -4,10 +4,9 @@ import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
-import { ArrowUpRight, Menu, X } from "lucide-react";
 import { usePageTransition } from "@/components/ui/page-transition";
 import { navbarContent } from "@/components/content/navbar-content";
-import { StudioButton } from "../ui/studio-button";
+import { Menu, X } from "lucide-react";
 
 export function Navbar({ locale = "ar" }: { locale?: "ar" | "en" }) {
   const [isOpen, setIsOpen] = useState(false);
@@ -35,7 +34,7 @@ export function Navbar({ locale = "ar" }: { locale?: "ar" | "en" }) {
       initial={{ opacity: 0, y: -80 }}
       animate={isLoaded ? { opacity: 1, y: 0 } : { opacity: 0, y: -80 }}
       transition={{ delay: 0.78, duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
-      className={`fixed  ${scrollY > prevScrollY ? "-top-25" : "top-5"} transition-all duration-300 inset-x-0 z-50 mx-auto max-w-7xl px-4`}
+      className={`fixed  ${scrollY > prevScrollY ? "-top-25" : "top-5"} transition-all duration-300 inset-x-0 z-20 mx-auto max-w-7xl px-4`}
     >
       {/* 🚀 Floating Pill Navigation Bar */}
       <nav

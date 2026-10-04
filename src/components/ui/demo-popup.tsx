@@ -1,259 +1,345 @@
 "use client";
 
-import { FormEvent, useEffect, useState } from "react";
-import { ArrowUpRight, Check, X } from "lucide-react";
+import { useEffect, useState, type ReactNode } from "react";
+import { createPortal } from "react-dom";
+
+import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
+
+import { CalendarDays, Clock3, Globe2, Video, X } from "lucide-react";
+
+import type { Locale } from "@/components/content/hero-content";
 
 type DemoPopupProps = {
-  locale?: "ar" | "en";
-  salesEmail?: string;
-  triggerLabel?: string;
-  className?: string;
+  locale?: Locale;
+  children: ReactNode;
 };
 
-const copy = {
-  en: {
-    trigger: "Book a demo",
-    eyebrow: "LET'S TALK",
-    title: "See how ANAN can simplify your operations.",
-    description:
-      "Tell us a little about your business and our team will get back to you to arrange a suitable demo.",
-    name: "Full name",
-    email: "Work email",
-    company: "Company name",
-    message: "What would you like to improve?",
-    namePlaceholder: "Your full name",
-    emailPlaceholder: "you@company.com",
-    companyPlaceholder: "Your company",
-    messagePlaceholder: "Optional",
-    submit: "Send demo request",
-    close: "Close dialog",
-    required: "Please complete the required fields.",
-    successTitle: "Your request is ready.",
-    successText:
-      "Your email app should open now. Send the prepared message to complete the request.",
-    back: "Send another request",
-    privacy: "We only use these details to respond to your demo request.",
-  },
+const content = {
   ar: {
-    trigger: "احجز عرضًا توضيحيًا",
-    eyebrow: "لنتحدث",
-    title: "اكتشف كيف تساعدك أنان على تبسيط عملياتك.",
-    description: "أخبرنا قليلًا عن نشاطك وسيتواصل معك فريقنا لترتيب عرض مناسب.",
-    name: "الاسم الكامل",
-    email: "البريد الإلكتروني للعمل",
-    company: "اسم الشركة",
-    message: "ما الذي ترغب في تحسينه؟",
-    namePlaceholder: "اكتب اسمك الكامل",
-    emailPlaceholder: "you@company.com",
-    companyPlaceholder: "اسم الشركة",
-    messagePlaceholder: "اختياري",
-    submit: "إرسال طلب العرض",
-    close: "إغلاق النافذة",
-    required: "يرجى إكمال الحقول المطلوبة.",
-    successTitle: "طلبك جاهز.",
-    successText:
-      "من المفترض أن يفتح تطبيق البريد الإلكتروني الآن. اضغط إرسال لإكمال الطلب.",
-    back: "إرسال طلب آخر",
-    privacy: "نستخدم هذه البيانات فقط للرد على طلب العرض.",
+    eyebrow: "احجز عرضًا توضيحيًا",
+
+    title: "اكتشف كيف تعمل أنان مع نشاطك.",
+
+    description:
+      "اختر الوقت المناسب لك وسنلتقي عبر Google Meet لعرض المنصة ومناقشة احتياجات نشاطك.",
+
+    duration: "60 دقيقة",
+
+    meeting: "Google Meet",
+
+    timezone: "توقيت الرياض · GMT+3",
+
+    close: "إغلاق",
+
+    bookingPage: "هل لا تظهر صفحة الحجز؟ افتحها مباشرة",
+  },
+
+  en: {
+    eyebrow: "SCHEDULE A DEMO",
+
+    title: "See how ANAN can work for your business.",
+
+    description:
+      "Choose a time that works for you and meet our team on Google Meet for a focused product walkthrough.",
+
+    duration: "60 minutes",
+
+    meeting: "Google Meet",
+
+    timezone: "Riyadh Time · GMT+3",
+
+    close: "Close",
+
+    bookingPage: "Booking page not loading? Open it directly",
   },
 } as const;
 
-export function DemoPopup({
-  locale = "en",
-  salesEmail = "abdelrahmanmahjob@gmail.com",
-  triggerLabel,
-  className = "",
-}: DemoPopupProps) {
-  const text = copy[locale];
-  const isRtl = locale === "ar";
-  const [isOpen, setIsOpen] = useState(false);
-  const [isSent, setIsSent] = useState(false);
-  const [error, setError] = useState("");
+export function DemoPopup({ locale = "en", children }: DemoPopupProps) {
+  const text = content[locale];
 
-  useEffect(() => {
-    if (!isOpen) return;
+  const reducedMotion = Boolean(useReducedMotion());
 
-    const onKeyDown = (event: KeyboardEvent) => {
-      if (event.key === "Escape") setIsOpen(false);
-    };
+  const [open, setOpen] = useState(false);
 
-    const previousOverflow = document.body.style.overflow;
-    document.body.style.overflow = "hidden";
-    window.addEventListener("keydown", onKeyDown);
+  const bookingUrl = process.env.NEXT_PUBLIC_GOOGLE_BOOKING_URL;
 
-    return () => {
-      document.body.style.overflow = previousOverflow;
-      window.removeEventListener("keydown", onKeyDown);
-    };
-  }, [isOpen]);
-
-  const openPopup = () => {
-    setError("");
-    setIsSent(false);
-    setIsOpen(true);
-  };
-
-  const closePopup = () => setIsOpen(false);
-
-  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    const form = new FormData(event.currentTarget);
-    const name = String(form.get("name") || "").trim();
-    const email = String(form.get("email") || "").trim();
-    const company = String(form.get("company") || "").trim();
-    const message = String(form.get("message") || "").trim();
-
-    if (!name || !email || !company) {
-      setError(text.required);
-      return;
-    }
-
-    const subject = encodeURIComponent(`Demo request from ${company}`);
-    const body = encodeURIComponent(
-      `Name: ${name}\nWork email: ${email}\nCompany: ${company}\n\nWhat they want to improve:\n${message || "Not provided"}`,
-    );
-
-    window.location.href = `mailto:${salesEmail}?subject=${subject}&body=${body}`;
-    setIsSent(true);
-  };
-
-  return (
-    <>
-      <button
-        type="button"
-        onClick={openPopup}
-        className={`inline-flex min-h-12 items-center justify-center gap-2 rounded-xl bg-[#4edea3] px-5 py-3 font-[var(--font-mono)] text-xs font-semibold tracking-[0.06em] text-[#07110d] transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#72efbd] focus:outline-none focus:ring-2 focus:ring-[#4edea3]/60 focus:ring-offset-2 focus:ring-offset-[#09090b] ${className}`}
-      >
-        {triggerLabel || text.trigger}
-        <ArrowUpRight size={17} aria-hidden="true" />
-      </button>
-
-      {isOpen && (
-        <div
-          dir={isRtl ? "rtl" : "ltr"}
-          className="fixed inset-0 z-[100] flex items-end justify-center overflow-y-auto bg-black/75 p-3 backdrop-blur-sm sm:items-center sm:p-6"
-          role="presentation"
+  const modal = (
+    <AnimatePresence>
+      {open && (
+        <motion.div
+          initial={{
+            opacity: 0,
+          }}
+          animate={{
+            opacity: 1,
+          }}
+          exit={{
+            opacity: 0,
+          }}
+          transition={{
+            duration: reducedMotion ? 0.1 : 0.3,
+          }}
+          className="fixed inset-0 z-[100] flex items-center justify-center overflow-y-auto bg-black/75 px-3 py-4 backdrop-blur-xl sm:px-5 sm:py-8 lg:px-8"
           onMouseDown={(event) => {
-            if (event.target === event.currentTarget) closePopup();
+            if (event.target === event.currentTarget) {
+              setOpen(false);
+            }
           }}
         >
-          <section
+          {/* ==================================================
+                MODAL
+            =================================================== */}
+
+          <motion.div
+            dir={locale === "ar" ? "rtl" : "ltr"}
             role="dialog"
             aria-modal="true"
-            aria-labelledby="demo-popup-title"
-            className="relative my-auto max-h-[calc(100vh-1.5rem)] w-full max-w-xl overflow-y-auto rounded-3xl border border-white/10 bg-[#111113] p-5 text-white shadow-[0_24px_100px_rgba(0,0,0,0.65)] sm:max-h-[calc(100vh-3rem)] sm:p-8"
+            aria-labelledby="demo-title"
+            initial={
+              reducedMotion
+                ? {
+                    opacity: 0,
+                  }
+                : {
+                    opacity: 0,
+                    y: 20,
+                    scale: 0.985,
+                  }
+            }
+            animate={{
+              opacity: 1,
+              y: 0,
+              scale: 1,
+            }}
+            exit={
+              reducedMotion
+                ? {
+                    opacity: 0,
+                  }
+                : {
+                    opacity: 0,
+                    y: 12,
+                    scale: 0.99,
+                  }
+            }
+            transition={{
+              duration: reducedMotion ? 0.12 : 0.45,
+              ease: [0.22, 1, 0.36, 1],
+            }}
+            className="relative z-50 flex w-full max-h-[95vh] rounded-3xl max-w-[1180px] flex-col overflow-hidden border border-[#3f3f46] bg-[#111113] shadow-[0_30px_120px_rgba(0,0,0,0.55)]"
           >
-            <button
-              type="button"
-              onClick={closePopup}
-              aria-label={text.close}
-              className="absolute right-4 top-4 inline-flex size-9 items-center justify-center rounded-full border border-white/10 text-white/55 transition-colors hover:border-[#4edea3]/40 hover:text-[#4edea3] rtl:left-4 rtl:right-auto"
-            >
-              <X size={18} aria-hidden="true" />
-            </button>
+            {/* =================================================
+                  ATMOSPHERE
+              ================================================== */}
 
-            {!isSent ? (
-              <>
-                <div className="mb-7 max-w-[34rem] pr-8 rtl:pl-8 rtl:pr-0">
-                  <p className="mb-3 font-[var(--font-mono)] text-[10px] uppercase tracking-[0.18em] text-[#4edea3]">
+            <div className="pointer-events-none absolute -right-32 -top-32 h-[420px] w-[420px] rounded-full bg-[#10b981]/[0.055] blur-[130px]" />
+
+            <div className="pointer-events-none absolute -bottom-32 -left-32 h-[420px] w-[420px] rounded-full bg-[#84cc16]/[0.02] blur-[130px]" />
+
+            {/* =================================================
+                  HEADER
+              ================================================== */}
+
+            <header className="relative z-10 border-b border-[#27272a] px-5 py-5 sm:px-7 sm:py-6 lg:px-8">
+              <div className="flex items-start justify-between gap-6">
+                <div className="min-w-0">
+                  {/* Eyebrow */}
+
+                  <div className="mb-3 flex items-center gap-2 font-[var(--font-mono)] text-[8px] tracking-[0.15em] text-[#4edea3]/70 sm:text-[9px]">
+                    <span className="h-1.5 w-1.5 rounded-full bg-[#4edea3] shadow-[0_0_10px_rgba(78,222,163,0.65)]" />
+
                     {text.eyebrow}
-                  </p>
+                  </div>
+
+                  {/* Title */}
+
                   <h2
-                    id="demo-popup-title"
-                    className="text-2xl font-semibold leading-tight tracking-[-0.03em] sm:text-3xl"
+                    id="demo-title"
+                    className="max-w-3xl font-[var(--font-display)] text-2xl font-medium leading-[1.08] tracking-[-0.03em] text-[#fafafa] sm:text-3xl lg:text-4xl"
                   >
                     {text.title}
                   </h2>
-                  <p className="mt-3 text-sm leading-6 text-white/55">
+
+                  <p className="mt-3 max-w-2xl text-sm leading-6 text-[#a1a1aa]">
                     {text.description}
                   </p>
                 </div>
 
-                <form onSubmit={handleSubmit} className="space-y-4">
-                  <div className="grid gap-4 sm:grid-cols-2">
-                    <label className="space-y-2 text-sm text-white/70">
-                      <span>{text.name} *</span>
-                      <input
-                        name="name"
-                        required
-                        placeholder={text.namePlaceholder}
-                        className="h-12 w-full rounded-xl border border-white/10 bg-white/[0.04] px-4 text-sm text-white outline-none transition-colors placeholder:text-white/25 focus:border-[#4edea3]/70"
-                      />
-                    </label>
-                    <label className="space-y-2 text-sm text-white/70">
-                      <span>{text.email} *</span>
-                      <input
-                        name="email"
-                        type="email"
-                        required
-                        placeholder={text.emailPlaceholder}
-                        className="h-12 w-full rounded-xl border border-white/10 bg-white/[0.04] px-4 text-sm text-white outline-none transition-colors placeholder:text-white/25 focus:border-[#4edea3]/70"
-                      />
-                    </label>
-                  </div>
+                {/* Close */}
 
-                  <label className="block space-y-2 text-sm text-white/70">
-                    <span>{text.company} *</span>
-                    <input
-                      name="company"
-                      required
-                      placeholder={text.companyPlaceholder}
-                      className="h-12 w-full rounded-xl border border-white/10 bg-white/[0.04] px-4 text-sm text-white outline-none transition-colors placeholder:text-white/25 focus:border-[#4edea3]/70"
-                    />
-                  </label>
-
-                  <label className="block space-y-2 text-sm text-white/70">
-                    <span>{text.message}</span>
-                    <textarea
-                      name="message"
-                      rows={4}
-                      placeholder={text.messagePlaceholder}
-                      className="w-full resize-y rounded-xl border border-white/10 bg-white/[0.04] px-4 py-3 text-sm text-white outline-none transition-colors placeholder:text-white/25 focus:border-[#4edea3]/70"
-                    />
-                  </label>
-
-                  {error && (
-                    <p role="alert" className="text-sm text-red-300">
-                      {error}
-                    </p>
-                  )}
-
-                  <button
-                    type="submit"
-                    className="inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-xl bg-[#4edea3] px-5 py-3 font-[var(--font-mono)] text-xs font-semibold tracking-[0.06em] text-[#07110d] transition-colors hover:bg-[#72efbd] focus:outline-none focus:ring-2 focus:ring-[#4edea3]/60"
-                  >
-                    {text.submit}
-                    <ArrowUpRight size={17} aria-hidden="true" />
-                  </button>
-
-                  <p className="text-center text-[11px] leading-5 text-white/35">
-                    {text.privacy}
-                  </p>
-                </form>
-              </>
-            ) : (
-              <div className="flex min-h-[22rem] flex-col items-center justify-center text-center">
-                <div className="mb-5 flex size-14 items-center justify-center rounded-full bg-[#4edea3]/10 text-[#4edea3]">
-                  <Check size={28} aria-hidden="true" />
-                </div>
-                <h2 className="text-2xl font-semibold">{text.successTitle}</h2>
-                <p className="mt-3 max-w-sm text-sm leading-6 text-white/55">
-                  {text.successText}
-                </p>
                 <button
                   type="button"
-                  onClick={() => setIsSent(false)}
-                  className="mt-7 text-sm text-[#4edea3] underline underline-offset-4 hover:text-[#72efbd]"
+                  onClick={() => setOpen(false)}
+                  aria-label={text.close}
+                  className="flex size-9 shrink-0 rounded-full cursor-pointer items-center justify-center border border-[#27272a] bg-[#09090b] text-white/40 transition-all duration-300 hover:border-[#3f3f46] hover:text-white"
                 >
-                  {text.back}
+                  <X size={17} strokeWidth={1.5} />
                 </button>
               </div>
-            )}
-          </section>
-        </div>
+
+              {/* Meeting info */}
+
+              <div className="mt-5 flex flex-wrap gap-2">
+                <InfoChip icon={<Clock3 size={13} />} text={text.duration} />
+
+                <InfoChip icon={<Video size={13} />} text={text.meeting} />
+
+                <InfoChip icon={<Globe2 size={13} />} text={text.timezone} />
+              </div>
+            </header>
+
+            {/* =================================================
+                  GOOGLE BOOKING AREA
+              ================================================== */}
+
+            <div className="relative z-10 min-h-0 flex-1 overflow-auto bg-[#09090b]">
+              {bookingUrl ? (
+                <iframe
+                  title={
+                    locale === "ar"
+                      ? "حجز موعد مع أنان Sustainability"
+                      : "Book a meeting with ANAN Sustainability"
+                  }
+                  src={bookingUrl}
+                  className="h-[680px] w-full border-0 bg-white sm:h-[720px] lg:h-[760px]"
+                  loading="eager"
+                  allow="camera; microphone"
+                />
+              ) : (
+                <MissingBookingUrl locale={locale} />
+              )}
+            </div>
+
+            {/* =================================================
+                  FOOTER
+              ================================================== */}
+
+            <footer className="relative z-10 border-t border-[#27272a] px-5 py-4 sm:px-7">
+              <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+                <div className="flex items-center gap-2">
+                  <span className="relative flex h-1.5 w-1.5">
+                    <span className="absolute inset-0 animate-ping rounded-full bg-[#4edea3]/30" />
+
+                    <span className="relative h-1.5 w-1.5 rounded-full bg-[#4edea3]" />
+                  </span>
+
+                  <span className="font-[var(--font-mono)] text-[8px] tracking-[0.08em] text-white/25">
+                    {text.bookingPage}
+                  </span>
+                </div>
+
+                {bookingUrl && (
+                  <a
+                    href={bookingUrl}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="inline-flex items-center gap-2 font-[var(--font-mono)] text-[8px] tracking-[0.08em] text-[#4edea3]/70 transition-colors hover:text-[#6ffbbe]"
+                  >
+                    <CalendarDays size={13} />
+
+                    {locale === "ar" ? "فتح صفحة الحجز" : "Open booking page"}
+                  </a>
+                )}
+              </div>
+            </footer>
+          </motion.div>
+        </motion.div>
       )}
+    </AnimatePresence>
+  );
+
+  /* ============================================================
+     BODY LOCK
+  ============================================================ */
+
+  useEffect(() => {
+    if (!open) return;
+
+    const previous = document.body.style.overflow;
+
+    document.body.style.overflow = "hidden";
+
+    return () => {
+      document.body.style.overflow = previous;
+    };
+  }, [open]);
+
+  /* ============================================================
+     ESCAPE
+  ============================================================ */
+
+  useEffect(() => {
+    if (!open) return;
+
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        setOpen(false);
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [open]);
+
+  return (
+    <>
+      {/* ======================================================
+          TRIGGER
+      ======================================================= */}
+
+      <span className="contents" onClick={() => setOpen(true)}>
+        {children}
+      </span>
+
+      {/* ======================================================
+          MODAL
+      ======================================================= */}
+      {typeof document !== "undefined" && createPortal(modal, document.body)}
     </>
   );
 }
 
-export default DemoPopup;
+/* ================================================================
+   INFO CHIP
+================================================================ */
+
+function InfoChip({ icon, text }: { icon: React.ReactNode; text: string }) {
+  return (
+    <div className="flex items-center gap-2 border border-[#27272a] bg-[#09090b]/80 px-3 py-2">
+      <span className="text-[#4edea3]">{icon}</span>
+
+      <span className="font-[var(--font-mono)] text-[8px] tracking-[0.05em] text-white/35">
+        {text}
+      </span>
+    </div>
+  );
+}
+
+/* ================================================================
+   FALLBACK
+================================================================ */
+
+function MissingBookingUrl({ locale }: { locale: Locale }) {
+  return (
+    <div className="flex h-[500px] items-center justify-center p-8 text-center">
+      <div className="max-w-md">
+        <div className="mx-auto flex size-12 items-center justify-center border border-[#27272a] bg-[#111113]">
+          <CalendarDays size={19} className="text-[#4edea3]" />
+        </div>
+
+        <h3 className="mt-5 font-[var(--font-display)] text-xl font-medium text-white">
+          {locale === "ar"
+            ? "رابط الحجز غير مهيأ"
+            : "Booking URL is not configured"}
+        </h3>
+
+        <p className="mt-3 text-sm leading-6 text-white/35">
+          {locale === "ar"
+            ? "أضف NEXT_PUBLIC_GOOGLE_BOOKING_URL إلى ملف البيئة."
+            : "Add NEXT_PUBLIC_GOOGLE_BOOKING_URL to your environment variables."}
+        </p>
+      </div>
+    </div>
+  );
+}

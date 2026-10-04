@@ -3,7 +3,7 @@
 import { useCallback, useState } from "react";
 
 import { motion, useReducedMotion } from "framer-motion";
-import DemoPopup from "@/components/ui/demo-popup";
+import { DemoPopup } from "@/components/ui/demo-popup";
 
 import {
   ArrowUpRight,
@@ -197,17 +197,18 @@ export function Hero({ locale }: { locale: Locale }) {
 
             {/* CTA */}
             <div className="mt-9 flex flex-col gap-3 sm:flex-row">
-              <StudioButton
-                asChild
-                size="lg"
-                className="w-full font-[var(--font-mono)] text-[12px] font-semibold tracking-[0.06em] sm:w-auto"
-              >
-                <Link href="#pricing">
-                  {text.primary}
-
-                  <ArrowUpRight size={17} />
-                </Link>
-              </StudioButton>
+              <DemoPopup locale={locale}>
+                <StudioButton
+                  asChild
+                  size="lg"
+                  className="w-full font-[var(--font-mono)] text-[12px] font-semibold tracking-[0.06em] sm:w-auto"
+                >
+                  <div className="flex items-center gap-2 text-white">
+                    {text.primary}
+                    <ArrowUpRight size={17} />
+                  </div>
+                </StudioButton>
+              </DemoPopup>
               <StudioButton
                 size="lg"
                 variant="outline"

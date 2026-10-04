@@ -5,12 +5,13 @@ import Image from "next/image";
 import { ArrowUpLeft, ArrowUpRight } from "lucide-react";
 import { StudioButton } from "@/components/ui/studio-button";
 import { ctaContent } from "@/components/content/cta-content";
+import { DemoPopup } from "../ui/demo-popup";
+import Link from "next/link";
 
 export function CtaSection({ locale = "ar" }: { locale?: "ar" | "en" }) {
   const text = ctaContent[locale];
   const isRtl = locale === "ar";
   const shouldReduceMotion = useReducedMotion();
-  const ArrowIcon = isRtl ? ArrowUpLeft : ArrowUpRight;
 
   return (
     <section
@@ -64,28 +65,43 @@ export function CtaSection({ locale = "ar" }: { locale?: "ar" | "en" }) {
             >
               {text.description}
             </motion.p>
-            <motion.div
-              initial={shouldReduceMotion ? false : { opacity: 0, y: 15 }}
-              whileInView={
-                shouldReduceMotion ? undefined : { opacity: 1, y: 0 }
-              }
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.3 }}
-              className="mt-8 flex flex-wrap items-center gap-5"
-            >
+            {/* CTA */}
+            <div className="mt-9 flex flex-col gap-3 sm:flex-row">
+              <DemoPopup locale={locale}>
+                <StudioButton
+                  asChild
+                  size="lg"
+                  className="w-full font-[var(--font-mono)] text-[12px] font-semibold tracking-[0.06em] sm:w-auto"
+                >
+                  <div className="flex items-center gap-2 text-white">
+                    {text.cta}
+                    {locale === "ar" ? (
+                      <ArrowUpLeft size={17} />
+                    ) : (
+                      <ArrowUpRight size={17} />
+                    )}
+                  </div>
+                </StudioButton>
+              </DemoPopup>
               <StudioButton
-                size="sm"
-                className="group text-white"
-                onClick={() => {
-                  document.getElementById("contact")?.scrollIntoView({
-                    behavior: "smooth",
-                  });
-                }}
+                size="lg"
+                variant="outline"
+                asChild
+                className="w-full sm:w-auto"
               >
-                <span>{text.cta}</span>
-                <ArrowIcon className="size-4 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+                <Link
+                  href="#how-it-works"
+                  className="w-full font-[var(--font-mono)] text-[12px] font-semibold tracking-[0.06em] sm:w-auto"
+                >
+                  {text.secondary}
+                  {locale === "ar" ? (
+                    <ArrowUpLeft size={17} />
+                  ) : (
+                    <ArrowUpRight size={17} />
+                  )}
+                </Link>
               </StudioButton>
-            </motion.div>
+            </div>
           </div>
 
           <motion.div
