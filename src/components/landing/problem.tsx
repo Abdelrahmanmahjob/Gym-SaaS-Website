@@ -32,7 +32,7 @@ const content = {
         title: "أدوات كثيرة",
         description:
           "معلومات العملاء، الحجوزات، العضويات، المدفوعات وبيانات النشاط موزعة بين أنظمة مختلفة.",
-        image: "/media/problem/problems.png",
+        image: "/media/problem/problems.webp",
       },
       {
         id: "manual",
@@ -41,7 +41,7 @@ const content = {
         title: "عمل يدوي كثير",
         description:
           "يقضي فريقك وقتًا ثمينًا في إدارة مهام كان من المفترض أن تكون بسيطة وسريعة.",
-        image: "/media/problem/problem2.jpg",
+        image: "/media/problem/problem2.webp",
       },
       {
         id: "visibility",
@@ -50,7 +50,7 @@ const content = {
         title: "صعوبة رؤية الصورة كاملة",
         description:
           "قد يصبح من الصعب معرفة ما يحدث فعليًا عبر نشاطك بالكامل، ومتى تحتاج إلى التدخل.",
-        image: "/media/problem/problem3.png",
+        image: "/media/problem/problem3.webp",
       },
     ] satisfies Problem[],
 
@@ -76,7 +76,7 @@ const content = {
         title: "Too Many Tools",
         description:
           "Customer information, bookings, memberships, payments, and business data are spread across different systems.",
-        image: "/media/problem/problems.png",
+        image: "/media/problem/problems.webp",
       },
       {
         id: "manual",
@@ -85,7 +85,7 @@ const content = {
         title: "Too Much Manual Work",
         description:
           "Your team spends valuable time managing tasks that should be simple.",
-        image: "/media/problem/problem2.jpg",
+        image: "/media/problem/problem2.webp",
       },
       {
         id: "visibility",
@@ -94,7 +94,7 @@ const content = {
         title: "Hard to See the Full Picture",
         description:
           "It can be difficult to know what’s happening across your business.",
-        image: "/media/problem/problem3.png",
+        image: "/media/problem/problem3.webp",
       },
     ] satisfies Problem[],
 

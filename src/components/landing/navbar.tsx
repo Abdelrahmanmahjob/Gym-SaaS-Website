@@ -7,6 +7,8 @@ import { motion, AnimatePresence } from "framer-motion";
 import { usePageTransition } from "@/components/ui/page-transition";
 import { navbarContent } from "@/components/content/navbar-content";
 import { Menu, X } from "lucide-react";
+import { DemoPopup } from "../ui/demo-popup";
+import { StudioButton } from "../ui/studio-button";
 
 export function Navbar({ locale = "ar" }: { locale?: "ar" | "en" }) {
   const [isOpen, setIsOpen] = useState(false);
@@ -90,6 +92,17 @@ export function Navbar({ locale = "ar" }: { locale?: "ar" | "en" }) {
 
         {/* Right Section: Language Switcher & Mobile Menu Trigger */}
         <div className="flex items-center gap-3">
+          <DemoPopup locale={locale}>
+            <StudioButton
+              asChild
+              size="sm"
+              className="hidden sm:block w-full font-[var(--font-mono)]  text-[12px] font-semibold sm:w-auto"
+            >
+              <span className="h-fit flex items-center gap-2 text-white px-3 py-1.5">
+                {locale === "ar" ? "احجز عرضًا" : "Book a Demo"}
+              </span>
+            </StudioButton>
+          </DemoPopup>
           <Link
             className="group flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3.5 py-1.5 font-[var(--font-mono)] text-xs font-medium text-zinc-300 transition-all duration-300 hover:border-emerald-500/40 hover:bg-emerald-500/10 hover:text-emerald-300"
             href={`/${nextLocale}`}
@@ -159,6 +172,17 @@ export function Navbar({ locale = "ar" }: { locale?: "ar" | "en" }) {
                   {link.label}
                 </motion.a>
               ))}
+              <DemoPopup locale={locale}>
+                <StudioButton
+                  asChild
+                  size="sm"
+                  className="w-full font-[var(--font-mono)] text-[12px] line-height-[37px] font-semibold tracking-[0.06em] sm:w-auto"
+                >
+                  <div className="flex items-center gap-2 text-white">
+                    {locale === "ar" ? "احجز عرضًا" : "Book a Demo"}
+                  </div>
+                </StudioButton>
+              </DemoPopup>
             </motion.div>
           </motion.div>
         )}

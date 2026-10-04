@@ -92,7 +92,7 @@ const content = {
         visualLabel: "PADEL OPERATIONS",
         visualMeta: "BOOKINGS / CUSTOMERS / PAYMENTS",
         icon: Trophy,
-        image: "/media/industries/padel.jpg",
+        image: "/media/industries/padel.webp",
       },
 
       {
@@ -130,7 +130,7 @@ const content = {
         visualLabel: "SALON OPERATIONS",
         visualMeta: "APPOINTMENTS / STAFF / PAYMENTS",
         icon: Scissors,
-        image: "/media/industries/salon.jpeg",
+        image: "/media/industries/salon.webp",
       },
 
       {
@@ -149,7 +149,7 @@ const content = {
         visualLabel: "CLINIC OPERATIONS",
         visualMeta: "APPOINTMENTS / CUSTOMERS / STAFF",
         icon: HeartPulse,
-        image: "/media/industries/clinic.jpeg",
+        image: "/media/industries/clinic.webp",
       },
 
       {
@@ -168,7 +168,7 @@ const content = {
         visualLabel: "TRAINING OPERATIONS",
         visualMeta: "STUDENTS / SCHEDULES / PAYMENTS",
         icon: GraduationCap,
-        image: "/media/industries/training-center2.jpg",
+        image: "/media/industries/training-center2.webp",
       },
     ] satisfies Industry[],
 
@@ -224,7 +224,7 @@ const content = {
         visualLabel: "PADEL OPERATIONS",
         visualMeta: "BOOKINGS / CUSTOMERS / PAYMENTS",
         icon: Trophy,
-        image: "/media/industries/padel.jpg",
+        image: "/media/industries/padel.webp",
       },
 
       {
@@ -262,7 +262,7 @@ const content = {
         visualLabel: "SALON OPERATIONS",
         visualMeta: "APPOINTMENTS / STAFF / PAYMENTS",
         icon: Scissors,
-        image: "/media/industries/salon.jpeg",
+        image: "/media/industries/salon.webp",
       },
 
       {
@@ -281,7 +281,7 @@ const content = {
         visualLabel: "CLINIC OPERATIONS",
         visualMeta: "APPOINTMENTS / CUSTOMERS / STAFF",
         icon: HeartPulse,
-        image: "/media/industries/clinic.jpeg",
+        image: "/media/industries/clinic.webp",
       },
 
       {
@@ -300,7 +300,7 @@ const content = {
         visualLabel: "TRAINING OPERATIONS",
         visualMeta: "STUDENTS / SCHEDULES / PAYMENTS",
         icon: GraduationCap,
-        image: "/media/industries/training-center2.jpg",
+        image: "/media/industries/training-center2.webp",
       },
     ] satisfies Industry[],
 
