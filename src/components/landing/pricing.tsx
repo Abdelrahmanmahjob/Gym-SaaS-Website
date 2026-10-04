@@ -62,7 +62,7 @@ export function Pricing({ locale = "en" }: { locale?: "ar" | "en" }) {
             id="pricing-title"
             className="max-w-2xl mx-auto text-4xl font-extrabold tracking-tight text-white sm:text-5xl"
           >
-            <span className="bg-gradient-to-b from-white via-white/90 to-white/50 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-b from-white via-white/90 to-white/50 bg-clip-text text-transparent pb-4">
               {text.title}
             </span>
           </h2>

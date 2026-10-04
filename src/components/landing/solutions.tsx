@@ -805,7 +805,7 @@ export function Solutions({ locale }: { locale: Locale }) {
 
           <h2
             id="solutions-title"
-            className="mt-6 font-[var(--font-display)] text-4xl font-medium leading-[1.05] tracking-[-0.04em] bg-gradient-to-b from-white via-white/90 to-white/50 bg-clip-text text-transparent font-bold sm:text-5xl"
+            className="mt-6 font-[var(--font-display)] text-4xl font-medium leading-[1.05] pb-4 tracking-[-0.04em] bg-gradient-to-b from-white via-white/90 to-white/50 bg-clip-text text-transparent font-bold sm:text-5xl"
           >
             {text.headline} <span>{text.highlight}</span>
           </h2>

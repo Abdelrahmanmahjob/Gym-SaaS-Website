@@ -118,7 +118,7 @@ export function Contact({ locale = "ar" }: { locale?: "ar" | "en" }) {
             id="contact-title"
             className="text-4xl font-extrabold leading-[1.05] tracking-tight sm:text-6xl"
           >
-            <span className="bg-gradient-to-b from-white via-white/90 to-white/50 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-b from-white via-white/90 to-white/50 bg-clip-text text-transparent pb-4">
               {text.title}
             </span>
           </h2>

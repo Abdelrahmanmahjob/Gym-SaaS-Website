@@ -542,6 +542,7 @@ export function Features({ locale }: { locale: "ar" | "en" }) {
                   bg-gradient-to-b from-white via-white/90 to-white/50 bg-clip-text text-transparent
                   sm:text-4xl
                   lg:text-5xl
+                  pb-4
                 "
               >
                 {text.title}

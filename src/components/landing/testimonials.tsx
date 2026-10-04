@@ -42,7 +42,7 @@ export function Testimonials({ locale = "en" }: { locale?: "ar" | "en" }) {
           </Badge>
           <h2
             id="testimonials-title"
-            className="mt-5 text-4xl font-semibold leading-[1.05] tracking-tight bg-gradient-to-b from-white via-white/90 to-white/50 bg-clip-text text-transparent sm:text-6xl"
+            className="mt-5 text-4xl pb-4 font-semibold leading-[1.05] tracking-tight bg-gradient-to-b from-white via-white/90 to-white/50 bg-clip-text text-transparent sm:text-6xl"
           >
             {text.title}
           </h2>

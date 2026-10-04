@@ -409,7 +409,7 @@ export function Integrations({ locale }: { locale: Locale }) {
 
           <h2
             id="integrations-title"
-            className="mt-6 font-[var(--font-display)] text-4xl font-medium leading-[1.05] tracking-[-0.04em] bg-gradient-to-b from-white via-white/90 to-white/50 bg-clip-text text-transparent sm:text-5xl lg:text-[4.25rem]"
+            className="mt-6 font-[var(--font-display)] text-4xl font-medium leading-[1.05] tracking-[-0.04em] bg-gradient-to-b from-white via-white/90 to-white/50 bg-clip-text text-transparent pb-4 sm:text-5xl lg:text-[4.25rem]"
           >
             {text.title} <span>{text.highlight}</span>
           </h2>

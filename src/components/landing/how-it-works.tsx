@@ -80,7 +80,7 @@ export function HowItWorks({ locale = "en" }: { locale?: "ar" | "en" }) {
               </div>
               <h2
                 id="how-it-works-title"
-                className="text-3xl font-extrabold leading-[1.05] tracking-tight bg-gradient-to-b from-white via-white/90 to-white/50 bg-clip-text text-transparent sm:text-4xl"
+                className="text-3xl pb-4 font-extrabold leading-[1.05] tracking-tight bg-gradient-to-b from-white via-white/90 to-white/50 bg-clip-text text-transparent sm:text-4xl"
               >
                 {text.heading}
               </h2>
