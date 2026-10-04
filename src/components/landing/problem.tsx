@@ -20,7 +20,7 @@ type Problem = {
 const content = {
   ar: {
     eyebrow: "التحدي",
-    title: "إدارة نشاط خدمي لا يجب أن تبدو معقدة.",
+    title: "إدارة خدماتك لا يجب أن تبدو معقدة.",
     description:
       "يجب ألا يمضي يومك بين أنظمة متعددة، والبحث عن المعلومات، وتنفيذ مهام متكررة يمكن أن تكون أبسط بكثير.",
 
@@ -272,7 +272,7 @@ export function Problem({ locale }: { locale: Locale }) {
 
             <h2
               id="problem-title"
-              className="mt-6 max-w-2xl font-[var(--font-display)] text-4xl font-medium leading-[1.04] tracking-[-0.04em] text-[#fafafa] sm:text-5xl "
+              className="mt-6 max-w-2xl font-[var(--font-display)] text-4xl font-medium leading-[1.04] tracking-[-0.04em] bg-gradient-to-b from-white via-white/90 to-white/50 bg-clip-text text-transparent font-bold sm:text-5xl "
             >
               {text.title}
             </h2>
@@ -367,7 +367,7 @@ export function Problem({ locale }: { locale: Locale }) {
                 {locale === "ar" ? "الخطوة التالية" : "THE NEXT STEP"}
               </p>
 
-              <h3 className="mt-4 max-w-4xl font-[var(--font-display)] text-3xl font-medium tracking-[-0.03em] text-[#fafafa] sm:text-4xl lg:text-5xl">
+              <h3 className="mt-4 max-w-4xl font-[var(--font-display)] text-2xl font-medium tracking-[-0.03em] text-[#fafafa] sm:text-3xl lg:text-4xl">
                 {text.closing}
               </h3>
             </div>

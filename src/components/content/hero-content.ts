@@ -47,7 +47,7 @@ export const heroContent = {
       {
         id: "desktop",
         eyebrow: "مركز القيادة / DESKTOP",
-        title: "منصة واحدة لتشغيل أعمالك الخدمية.",
+        title: "منصة واحدة لتشغيل جميع أعمالك .",
         description:
           "قم بإدارة عملائك، الحجوزات، الاشتراكات، الفريق، المدفوعات، والعمليات اليومية — كل ذلك في مكان واحد.",
         image: "/media/dashboard/dashboard-image2.jpeg",

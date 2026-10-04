@@ -424,7 +424,7 @@ export function PlatformSection({ locale }: PlatformSectionProps) {
 
           <h2
             id={`${sectionId}-title`}
-            className="max-w-3xl font-[var(--font-display)] text-3xl font-medium leading-[1.08] tracking-[-0.035em] text-white sm:text-4xl lg:text-5xl"
+            className="max-w-3xl font-[var(--font-display)] text-3xl font-medium leading-[1.08] tracking-[-0.035em] bg-gradient-to-b from-white via-white/90 to-white/50 bg-clip-text text-transparen font-bold sm:text-4xl lg:text-5xl"
           >
             {content.title}
           </h2>

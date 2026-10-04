@@ -93,7 +93,7 @@ export default function FAQs({ locale = "en" }: { locale?: "ar" | "en" }) {
 
           <h2
             id="faq-title"
-            className="text-3xl font-extrabold leading-[1.05] tracking-tight text-white sm:text-5xl"
+            className="text-3xl font-extrabold leading-[1.05] tracking-tight bg-gradient-to-b from-white via-white/90 to-white/50 bg-clip-text text-transparent sm:text-5xl"
           >
             {text.title}
           </h2>

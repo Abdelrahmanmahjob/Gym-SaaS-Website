@@ -163,7 +163,7 @@ export function Hero({ locale }: { locale: Locale }) {
             >
               <Text3DFlip
                 as="h1"
-                className="max-w-[820px] text-4xl font-semibold leading-[1.04] tracking-[-0.045em] text-white sm:text-5xl md:text-6xl lg:text-[62px]"
+                className="max-w-[820px] text-4xl font-semibold leading-[1.04] tracking-[-0.045em] bg-gradient-to-b from-white via-white/90 to-white/50 bg-clip-text text-transparent sm:text-5xl md:text-6xl lg:text-[62px]"
                 textClassName="text-white"
                 flipTextClassName="text-[#4edea3]"
                 staggerDuration={0.025}

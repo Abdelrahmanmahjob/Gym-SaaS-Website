@@ -195,12 +195,9 @@ export function ProductShowcase({ locale }: { locale: "ar" | "en" }) {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.7, delay: 0.25 }}
-            className="max-w-3xl text-3xl font-extrabold leading-[1.05] tracking-tight text-white sm:text-[50px]"
+            className="max-w-3xl text-3xl font-extrabold leading-[1.05] tracking-tight bg-gradient-to-b from-white via-white/90 to-white/50 bg-clip-text text-transparent sm:text-[50px]"
           >
-            {text.title}{" "}
-            <div className="bg-gradient-to-r from-emerald-300 via-teal-200 to-cyan-300 bg-clip-text text-transparent">
-              {text.highlight}
-            </div>
+            {text.title} <div className="text-white">{text.highlight}</div>
           </motion.h2>
 
           {/* Description */}

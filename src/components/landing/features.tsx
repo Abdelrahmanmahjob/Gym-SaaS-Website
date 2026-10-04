@@ -539,7 +539,7 @@ export function Features({ locale }: { locale: "ar" | "en" }) {
                   font-extrabold
                   leading-[1.12]
                   tracking-tight
-                  text-white
+                  bg-gradient-to-b from-white via-white/90 to-white/50 bg-clip-text text-transparent
                   sm:text-4xl
                   lg:text-5xl
                 "
