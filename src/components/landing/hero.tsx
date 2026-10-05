@@ -161,7 +161,7 @@ export function Hero({ locale }: { locale: Locale }) {
                 ease: [0.22, 1, 0.36, 1],
               }}
             >
-              <Text3DFlip
+              {/* <Text3DFlip
                 as="h1"
                 className="max-w-[820px] text-4xl font-semibold leading-[1.04] tracking-[-0.045em] bg-gradient-to-b from-white via-white/90 to-white/50 bg-clip-text text-transparent sm:text-5xl md:text-6xl lg:text-[62px]"
                 textClassName="text-white"
@@ -172,7 +172,10 @@ export function Hero({ locale }: { locale: Locale }) {
                 dir={isArabic ? "rtl" : "ltr"}
               >
                 {activeSlide.title}
-              </Text3DFlip>
+              </Text3DFlip> */}
+              <h1 className="max-w-[820px] text-4xl pb-4 font-semibold leading-[1.04] tracking-[-0.045em] bg-gradient-to-b from-white via-white/90 to-white/50 bg-clip-text text-transparent sm:text-5xl md:text-6xl lg:text-[62px]">
+                {activeSlide.title}
+              </h1>
             </motion.div>
 
             {/* Description */}
